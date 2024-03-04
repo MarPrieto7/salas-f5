@@ -1,5 +1,6 @@
 import "./RoomView.css";
 import RoomCard from '../../components/RoomCard/RoomCard.jsx'
+import Imagemap from '../../assets/image/mapf5.png'
 function RoomView() {
     return (
         <main>
@@ -8,7 +9,7 @@ function RoomView() {
                 <p>Madrid <br/> Nuestras salas</p>
             </section>
             <section className="room-view-section-2">
-                {RoomCard}
+                <RoomCard/>
             </section>
             <section className="room-view-section-3">
 
@@ -23,13 +24,13 @@ function RoomView() {
             <section className="room-view-section-4">
                 <p><strong>¿No sabes que sala escoger?</strong></p>
                 <figure>
-                    <img alt="Imagen de google map con la indicación de la sede de madrid en la calle Fernando Poo 25" />
-                    <div>
+                    <div><img src={Imagemap} className="image-map" alt="Imagen de google map con la indicación de la sede de madrid en la calle Fernando Poo 25" />
+                   </div> <div>
                         <p className="p-color">Visítanos</p>
                         <p>Madrid <br/>
                         C. Fernando Poo, 25 <br/>
                     28045 Madrid <br/>
-                madrid@factoriaf5.org</p>
+                <u>madrid@factoriaf5.org</u></p>
                  </div>
                 </figure >
             </section >
