@@ -16,16 +16,27 @@
     text-align: center;
     
 }
-.home-section article button{
+.home-section article button {
     background-color: #020100;
-    color:#FFFFFF;
+    color:#FFFFFF !important;
     width: 12rem;
     font-size: 1.5rem;
     border-radius: 12px;
+    text-decoration: none;
 }
+.home-section article button a {
+   
+    color:#FFFFFF !important;
+    text-decoration: none;
+}
+
 .home-section article button:hover{
-    background-color: #FFFFFF;
-    color:#FF4700;
+    background-color: #FFFFFF ;
+    color:#FF4700 !important;
+}
+.home-section article button a:hover{
+    background-color: #FFFFFF ;
+    color:#FF4700 !important;
 }
 .home-image{
     width: 100%;

@@ -26,7 +26,7 @@ function RoomView() {
                 <figure>
                     <div><img src={Imagemap} className="image-map" alt="Imagen de google map con la indicación de la sede de madrid en la calle Fernando Poo 25" />
                    </div> <div>
-                        <p className="p-color">Visítanos</p>
+                        <p className="p-color"><strong>Visítanos</strong></p>
                         <p>Madrid <br/>
                         C. Fernando Poo, 25 <br/>
                     28045 Madrid <br/>

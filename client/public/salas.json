@@ -1,0 +1,21 @@
+[
+   { "id":1,
+    "nombre": "Mary Lee",
+    "tamaño": "30m",
+    "objeto":["grande", "proyector", "luz natural"]
+   },
+   {
+
+    "id":2,
+    "nombre": "Hedy Lamarr",
+    "tamaño": "30m",
+    "objeto":["grande", "proyector", "luz natural"]
+   },
+   {
+    "id":3,
+    "nombre": "Sala Only",
+    "tamaño": "2m",
+    "objeto":["mesa", "silla"]
+   }
+
+]
