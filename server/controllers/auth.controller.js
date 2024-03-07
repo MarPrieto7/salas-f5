@@ -54,3 +54,56 @@ export const Login = async (req, res) => {
         res.status(500).json({ message: "El login ha ido mal", error })
     }
 }    
+
+// Controlador para mostrar todos los registros
+export const getAllUsers = async (req, res) => {
+    try {
+        const users = await User.find();
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(500).json({ message: "Hubo un error al obtener los usuarios", error });
+    }
+}
+
+// Controlador para mostrar un único registro por su ID
+export const getUserById = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const user = await User.findById(id);
+        if (!user) {
+            return res.status(404).json({ message: "Usuario no encontrado" });
+        }
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json({ message: "Hubo un error al obtener el usuario", error });
+    }
+}
+
+// Controlador para actualizar un registro por su ID
+export const updateUserById = async (req, res) => {
+    const { id } = req.params;
+    const { name, username, password, email, status } = req.body;
+    try {
+        const updatedUser = await User.findByIdAndUpdate(id, { name, username, password, email, status }, { new: true });
+        if (!updatedUser) {
+            return res.status(404).json({ message: "Usuario no encontrado" });
+        }
+        res.status(200).json({ message: "Usuario actualizado exitosamente", updatedUser });
+    } catch (error) {
+        res.status(500).json({ message: "Hubo un error al actualizar el usuario", error });
+    }
+}
+
+// Controlador para eliminar un registro por su ID
+export const deleteUserById = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const deletedUser = await User.findByIdAndDelete(id);
+        if (!deletedUser) {
+            return res.status(404).json({ message: "Usuario no encontrado" });
+        }
+        res.status(200).json({ message: "Usuario eliminado exitosamente", deletedUser });
+    } catch (error) {
+        res.status(500).json({ message: "Hubo un error al eliminar el usuario", error });
+    }
+}
