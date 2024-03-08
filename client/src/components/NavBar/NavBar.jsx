@@ -40,7 +40,7 @@ function NavBar() {
                 </figure>
 
                 <figure>
-                    <label className="menu__icon" htmlFor="menu__btn" onClick={handleToggleMenu}><i class="fa-solid fa-bars"></i></label>
+                    <label className="menu__icon" htmlFor="menu__btn" onClick={handleToggleMenu}><i className="fa-solid fa-bars"></i></label>
                 </figure>
 
                 {/* <!--Menú--> */}

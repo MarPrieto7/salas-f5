@@ -1,5 +1,6 @@
 import "./RoomCard.css";
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function RoomCard() {
     const [datos, setDatos] = useState([]);
@@ -21,22 +22,19 @@ function RoomCard() {
         fetchData();
     }, []);
 
-    const handleRoomClick = (id) => {
-        window.location.href = `/RoomUnicView/${id}`;
-    };
 
     return (
         <main>
             <section className="room-card-section">
                 {datos && datos.map((item) => (
                     <article key={item.id} className="room-card-article">
-                        <img src={item.urlImagen} alt="Imagen" />
+                        <img src={item.image} alt="Imagen" />
                         <p>Sala: <strong>{item.nombre}</strong></p>
                         <p>Tamaño: {item.tamaño}</p>
                         {item.objeto.map((objeto, index) => (
                             <p key={index}> Características: {objeto}</p>
                         ))}
-                        <button onClick={() => handleRoomClick(item.id)}>Ver Sala</button>
+                        <button> <Link to={`/RoomUnicView/${item.id}`}>Ver Sala</Link></button>
                     </article>
                 ))}
             </section>

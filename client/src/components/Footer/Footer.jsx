@@ -10,7 +10,7 @@ function Footer() {
             <section className="footer-section-1">
                 <article className="footer-item">
                     <button className="footer-btn">
-                        <i class="fa-regular fa-heart"></i>
+                        <i className="fa-regular fa-heart"></i>
                         <p>Donativo 1$ al mes para la comunidad alumni.</p>
                     </button>
                 </article>
