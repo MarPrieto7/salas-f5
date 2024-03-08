@@ -13,10 +13,9 @@ font-weight: bold;
 .room-view-section-3{
     display: flex;
     flex-direction: column;
-}
-.room-view-section-3 {
     font-size: 1.5rem;
     color:#FF4017;
+    padding:2rem;
     }
 
 .room-view-section-4{
@@ -44,4 +43,29 @@ margin-right: 4rem;
 .room-view-section-4 .p-color{
     color:#FF4017;
     font-size: 2.5rem;
+}
+
+@media screen and (max-width:1000px) {
+   
+    .room-view-section-3{
+        font-size: 1rem;
+
+        }
+
+    .room-view-section-4 figure{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    text-align: center;
+    }
+    .room-view-section-4-image {
+        display: flex;
+        justify-content: center;
+    }
+    .image-map{
+        width:25rem;
+    }
+    .room-view-section-4 figure img{
+        margin-right: 0;
+        }
 }

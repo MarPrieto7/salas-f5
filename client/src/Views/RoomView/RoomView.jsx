@@ -24,7 +24,7 @@ function RoomView() {
             <section className="room-view-section-4">
                 <p><strong>¿No sabes que sala escoger?</strong></p>
                 <figure>
-                    <div><img src={Imagemap} className="image-map" alt="Imagen de google map con la indicación de la sede de madrid en la calle Fernando Poo 25" />
+                    <div className="room-view-section-4-image"><img src={Imagemap} className="image-map" alt="Imagen de google map con la indicación de la sede de madrid en la calle Fernando Poo 25" />
                    </div> <div>
                         <p className="p-color"><strong>Visítanos</strong></p>
                         <p>Madrid <br/>
