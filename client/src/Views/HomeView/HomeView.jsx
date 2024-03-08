@@ -1,5 +1,6 @@
 import "./HomeView.css";
 import ImageRoom from '../../assets/image/roomimage.jpg'
+import { Link } from 'react-router-dom'
 
 function HomeView() {
     return (
@@ -19,7 +20,7 @@ function HomeView() {
                     C. Fernando Poo, 25<br/>
                     28045 Madrid<br/>
                     madrid@factoriaf5.org</p>
-                    <button>Ver las salas</button>
+                    <button><Link to="/RoomView">Ver las salas</Link></button>
                     </article>
                     <article>
                 <p><u><strong>Langreo</strong></u><br/>
