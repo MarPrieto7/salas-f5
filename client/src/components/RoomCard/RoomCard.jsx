@@ -31,10 +31,10 @@ function RoomCard() {
                 {datos && datos.map((item) => (
                     <article key={item.id} className="room-card-article">
                         <img src={item.urlImagen} alt="Imagen" />
-                        <p>{item.nombre}</p>
+                        <p>Sala: <strong>{item.nombre}</strong></p>
                         <p>Tamaño: {item.tamaño}</p>
                         {item.objeto.map((objeto, index) => (
-                            <p key={index}> Caracteristicas: {objeto}</p>
+                            <p key={index}> Características: {objeto}</p>
                         ))}
                         <button onClick={() => handleRoomClick(item.id)}>Ver Sala</button>
                     </article>

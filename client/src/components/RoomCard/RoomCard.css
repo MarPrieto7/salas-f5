@@ -29,3 +29,18 @@ margin-top:2rem;
     color:#FF4700 !important;
 }
 
+@media screen and (max-width:1000px){
+    
+    .room-card-section{
+        display: flex;
+        flex-direction: column;
+
+        }
+        .room-card-article button {
+           
+            width: 9rem;
+            font-size: 1.2rem;
+
+        }
+
+}
