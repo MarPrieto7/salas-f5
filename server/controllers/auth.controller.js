@@ -67,7 +67,8 @@ export const getAllUsers = async (req, res) => {
 
 // Controlador para mostrar un único registro por su ID
 export const getUserById = async (req, res) => {
-    const id  = req.params._id;
+    const id  = req.params.id;
+    console.log(id)
     try {
         const user = await User.findById(id);
         if (!user) {
