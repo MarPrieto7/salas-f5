@@ -20,7 +20,7 @@ export const Register = async (req, res) => {
             email: email
         })
         await credentials.save()
-        res.status(200).json({ message: "registro creado", credentials })
+        res.status(200).json({ message: "registro creado" })
     } catch (error) {
         res.status(500).json({ message: " ha habido algun error" })
     }
@@ -31,9 +31,9 @@ export const Login = async (req, res) => {
     try {
         const user = await User.findOne({ username: username })
         if (!user) {
-            return res.status(400).json({ message: " usuario invalido" })
+            return res.status(400).json({ message: " usuario invalido" , error})
         } else {
-            const validPassword = await bcrypt.compare(password, user.password)
+            const validPassword = bcrypt.compare(password, user.password)
             if (!validPassword) {
                 return res.status(400).json({ message: "contraseña incorrecta" })
             }

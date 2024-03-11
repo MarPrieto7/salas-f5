@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './LoginRegisterView.css';
+import {Link} from 'react-router-dom';
+
+
 
 const LoginRegisterView = () => {
     useEffect(() => {
-        const cajaTraseraLogin = document.querySelector(".caja__trasera-login");
-        const cajaTraseraRegister = document.querySelector(".caja__trasera-register");
+        const cajaTraseraLogin = document.querySelector(".article-changes-forms-login");
+        const cajaTraseraRegister = document.querySelector(".article-changes-forms-register");
         const formularioLogin = document.querySelector(".formulario__login");
         const formularioRegister = document.querySelector(".formulario__register");
         const contenedorLoginRegister = document.querySelector(".contenedor__login-register");
@@ -58,53 +61,136 @@ const LoginRegisterView = () => {
 
         window.addEventListener("resize", anchoPage);
 
-        document.getElementById("btn__iniciar-sesion").addEventListener("click", iniciarSesion);
-        document.getElementById("btn__registrarse").addEventListener("click", register);
+        document.getElementById("btn-change-login").addEventListener("click", iniciarSesion);
+        document.getElementById("btn-change-signup").addEventListener("click", register);
+
+
 
         return () => {
             window.removeEventListener("resize", anchoPage);
-            document.getElementById("btn__iniciar-sesion").removeEventListener("click", iniciarSesion);
-            document.getElementById("btn__registrarse").removeEventListener("click", register);
+            document.getElementById("btn-change-login").removeEventListener("click", iniciarSesion);
+            document.getElementById("btn-change-signup").removeEventListener("click", register);
         };
     }, []);
 
+    //UNIR CON EL BACK LOGIN
+    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
+    const [LoginOk, setLogin] = useState(false);
+
+    const store = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch('http://localhost:8000/auth/login',
+            {method:"POST", headers: {'Content-Type': 'application/json'            },
+            body: JSON.stringify({  password: password, username: username })});
+            const data = await response.json();
+            console.log(data);
+            const user = data.token;
+            console.log(user)
+            if (user) {
+                setLogin(true);
+                alert('Bienvenido ' + username);
+            } else {
+                alert('Las credenciales no son válidas');
+            }
+        } catch (error) {
+            console.error('Error al verificar las credenciales', error);
+        }
+    }
+
+    //FIN UNIR CON BACK LOGIN
+    //BACK CON RESGITER
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [RegisterOk, setRegistrado] = useState(false);
+    const [terminosAceptados, setTerminosAceptados] = useState(false);
+
+    const store2 = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch('/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name: name, email: email, password: password, username: username })
+            });
+
+            if (response.ok) {
+                setRegistrado(true);
+                alert('Registro exitoso');
+
+            } else {
+                alert('Error al registrar. Por favor, inténtalo de nuevo.');
+            }
+        } catch (error) {
+            console.error('Error al registrar', error);
+        }
+    }
+
+    const handleTerminosAceptados = () => {
+        setTerminosAceptados(!terminosAceptados);
+    }
+
+
+
     return (
         <main>
-            <section className="contenedor__todo">
-                <article className="caja__trasera">
-                    <div className="caja__trasera-login">
+            <section className="section-forms">
+                <article className="article-changes-forms">
+                    <div className="article-changes-forms-login">
                         <h3>¿Ya tienes una cuenta?</h3>
                         <p>Inicia sesión para entrar en la página</p>
-                        <button id="btn__iniciar-sesion">Iniciar Sesión</button>
+                        <button id="btn-change-login">Iniciar Sesión</button>
                     </div>
-                    <div className="caja__trasera-register">
+                    <div className="article-changes-forms-register">
                         <h3>¿Aún no tienes una cuenta?</h3>
                         <p>Regístrate para que puedas iniciar sesión</p>
-                        <button id="btn__registrarse">Regístrarse</button>
+                        <button id="btn-change-signup">Regístrarse</button>
                     </div>
                 </article>
 
                 {/* Formulario de Login y registro */}
                 <article className="contenedor__login-register">
                     {/* Login */}
-                    <form action="procesar_formulario.php" method="post" className="formulario__login">
-                        <input type="hidden" name="accion" value="iniciar_sesion" />
-                        <h2>Iniciar Sesión</h2>
-                        <input type="text" name="user" placeholder="Usuario" required />
-                        <input type="password" name="password" placeholder="Contraseña" required />
-                        <button type="submit">Entrar</button>
-                    </form>
+                    {!LoginOk ? (
+                        <form onSubmit={store} action="procesar_formulario.php" method="post" className="formulario__login">
+                            <input type="hidden" name="accion" value="iniciar_sesion" />
+                            <h2>Iniciar Sesión</h2>
+                            <input type="username" value={username}
+                                onChange={(e) => setUsername(e.target.value)} name="user" placeholder="Nombre de Usuario" required />
+                            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} name="password" placeholder="Contraseña" required />
+                            <button type="submit">Entrar</button>
+                        </form>
+                    ) : (
+                        <div>
+                            <p className="text-send">Bienvenido</p>
+                            <Link to="/" className="btn-form">Volver a inicio</Link>
+                        </div>
+                    )}
 
                     {/* Register */}
-                    <form action="procesar_formulario.php" method="post" className="formulario__register">
-                        <input type="hidden" name="accion" value="registro" />
-                        <h2>Regístrarse</h2>
-                        <input type="text" name="name" placeholder="Nombre completo" required />
-                        <input type="email" name="email" placeholder="Correo Electrónico" required />
-                        <input type="text" name="user" placeholder="Usuario" required />
-                        <input type="password" name="password" placeholder="Contraseña" required />
-                        <button type="submit">Regístrarse</button>
-                    </form>
+                    {!RegisterOk ? (
+                        <form onSubmit={store2} action="procesar_formulario.php" method="post" className="formulario__register">
+                            <input type="hidden" name="accion" value="registro" />
+                            <h2>Regístrarse</h2>
+                            <input type="text" value={name} onChange={(e) => setName(e.target.value)} name="name" placeholder="Nombre completo" required />
+                            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} name="email" placeholder="Correo Electrónico" required />
+                            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} name="username" placeholder="Usuario" required />
+                            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} name="password" placeholder="Contraseña" required />
+                            <div className='form-terms'>
+                                <input className="form-check-input" type="checkbox" checked={terminosAceptados} onChange={handleTerminosAceptados} />
+                                <label>Acepta los terminos y condiciones de privacidad</label>
+                            </div>
+                            <button type="submit">Regístrarse</button>
+                        </form>
+                    ) : (
+                        <div>
+                            <p className="text-send">Registro completado</p>
+                            <Link to="/" className="btn-form">Volver a inicio</Link>
+                        </div>
+                    )}
                 </article>
             </section>
         </main>
