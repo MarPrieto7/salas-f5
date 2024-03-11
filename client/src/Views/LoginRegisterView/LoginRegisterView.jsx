@@ -109,14 +109,18 @@ const LoginRegisterView = () => {
     const store2 = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('/auth/register', {
-                method: 'POST',
+            const response = await fetch('http://localhost:8000/auth/register', 
+            {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ name: name, email: email, password: password, username: username })
-            });
+                    'Content-Type': 'application/json' },
+                
+                body: JSON.stringify({ name: name, email: email, password: password, username: username })});
 
+            const data = await response.json();
+            console.log(data);
+            const user = data.token;
+            console.log(user)
             if (response.ok) {
                 setRegistrado(true);
                 alert('Registro exitoso');
