@@ -66,7 +66,7 @@ useEffect(() => {
                 </figure>
 
                 <figure>
-                    <label className="menu-icon" onClick={handleMenuIconClick}><i class="fa-solid fa-bars"></i></label>
+                    <label className="menu__icon" htmlFor="menu__btn" onClick={handleToggleMenu}><i className="fa-solid fa-bars"></i></label>
                 </figure>
 
                 {/* <!--Menú--> */}
