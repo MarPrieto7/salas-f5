@@ -117,9 +117,9 @@ const LoginRegisterView = () => {
                 
                 body: JSON.stringify({ name: name, email: email, password: password, username: username })});
 
-            const data = await response.json();
+            const data = response.json();
             console.log(data);
-            const user = data.token;
+            const user = data.token;//no segura de que esto sea aqui
             console.log(user)
             if (response.ok) {
                 setRegistrado(true);
