@@ -24,21 +24,21 @@ function RoomCard() {
 
 
     return (
-        <main>
-            <section className="room-card-section">
+        <section>
+            <article className="room-card-article">
                 {datos && datos.map((item) => (
-                    <article key={item.id} className="room-card-article">
-                        <img src={item.image} alt="Imagen" />
+                    <div key={item.id} className="room-card-div">
+                        <img src={item.image} alt="Imagen de la sala" />
                         <p>Sala: <strong>{item.nombre}</strong></p>
                         <p>Tamaño: {item.tamaño}</p>
                         {item.objeto.map((objeto, index) => (
                             <p key={index}> Características: {objeto}</p>
                         ))}
                         <button> <Link to={`/RoomUnicView/${item.id}`}>Ver Sala</Link></button>
-                    </article>
+                    </div>
                 ))}
-            </section>
-        </main>
+            </article>
+        </section>
     );
 };
 

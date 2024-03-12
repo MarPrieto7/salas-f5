@@ -66,7 +66,7 @@ useEffect(() => {
                 </figure>
 
                 <figure>
-                    <label className="menu__icon" htmlFor="menu__btn" onClick={handleToggleMenu}><i className="fa-solid fa-bars"></i></label>
+                    <label className="menu-icon" onClick={handleMenuIconClick}><i class="fa-solid fa-bars"></i></label>
                 </figure>
 
                 {/* <!--Menú--> */}
@@ -75,7 +75,7 @@ useEffect(() => {
                         <i className="fa-solid fa-x"></i>
                     </label>
                     <ul className="menu">
-                        <li><NavLink to="/" onClick={handleNavLinkClick}>H O M E</NavLink></li>
+                        <li><NavLink to="#" onClick={handleNavLinkClick}>H O M E</NavLink></li>
                         <li><NavLink to="/Products" onClick={handleNavLinkClick}>A P R E N D E</NavLink></li>
 
                         <li>
@@ -103,7 +103,7 @@ useEffect(() => {
 
                         <li><NavLink to="/Contact" onClick={handleNavLinkClick}>B L O G</NavLink></li>
                         <li>
-                            <NavLink to="/Search" onClick={handleNavLinkClick}>
+                            <NavLink to="/" onClick={handleNavLinkClick}>
                                 S E D E S
                             </NavLink>
                             <div className="acordeon">
@@ -112,6 +112,7 @@ useEffect(() => {
                             </div>
                         </li>
                         <li><NavLink to="/WishList" onClick={handleNavLinkClick}>C O N T A C T O</NavLink></li>
+                        <li><a href="/LoginRegisterView"> <i className="fas fa-user"></i> </a></li>
                     </ul>
                 </section>
             </nav>

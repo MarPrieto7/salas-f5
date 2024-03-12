@@ -1,11 +1,11 @@
-.room-card-section{
+.room-card-article{
 display: flex;
 flex-direction: row;
 justify-content: space-around;
 margin-top:2rem;
 
 }
-.room-card-article{
+.room-card-div{
     background-color: #ff4017;
     min-width: 20rem;
     min-height:8rem;
@@ -16,27 +16,34 @@ margin-top:2rem;
     flex-direction: column;
 }
 
-.room-card-article button {
+.room-card-div button {
     background-color: #020100;
-    color:#FFFFFF !important;
     width: 12rem;
     font-size: 1.5rem;
     border-radius: 12px;
     text-decoration: none;
 }
-.room-card-article button:hover{
+.room-card-div button a {
+    color:#FFFFFF;
+}
+
+.room-card-div button:hover{
+    background-color: #FFFFFF ;
+
+}
+.room-card-div button:hover a{
     background-color: #FFFFFF ;
     color:#FF4700 !important;
 }
 
 @media screen and (max-width:1000px){
     
-    .room-card-section{
+    .room-card-article{
         display: flex;
         flex-direction: column;
 
         }
-        .room-card-article button {
+        .room-card-div button {
            
             width: 9rem;
             font-size: 1.2rem;

@@ -1,6 +1,6 @@
 import "./Footer.css";
 import React from "react";
-
+import iconfooter from "../../assets/image/FACTORIA.png"
 
 function Footer() {
 
@@ -11,10 +11,10 @@ function Footer() {
                 <article className="footer-item">
                     <button className="footer-btn">
                         <i className="fa-regular fa-heart"></i>
-                        <p>Donativo 1$ al mes para la comunidad alumni.</p>
+                        <p>¡Haz tu donación!<br/>Donativo 1$ al mes para la comunidad alumni.</p>
                     </button>
                 </article>
-                <figure className="footer-item"><img className="footer-img" src="FACTORIA.png" alt="Imagen del logo de factoria f5" /></figure>
+                <figure className="footer-item"><img className="footer-img" src={iconfooter} alt="Imagen del logo de factoria f5" /></figure>
                 <article className="footer-item rrssLogos">
                     <a href="#"> <i className="fa-brands fa-linkedin-in"></i> </a>
                     <a href="#"> <i className="fa-brands fa-twitter"></i> </a>
@@ -24,7 +24,7 @@ function Footer() {
                 </article>
             </section>
 
-            <section className="other">
+            <section className="others-links">
                 <ul>
                     <li><p>Todos los derechos reservados 2021 |</p></li>
                     <li><p>Aviso legal |</p></li>

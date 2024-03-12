@@ -1,4 +1,4 @@
-import { User } from "../models/authModels";
+import User from "../models/authModels.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -11,7 +11,7 @@ export const Register = async (req, res) => {
             res.status(400).json({ message: "este Usuario ya existe" })
         }
         const salt = await bcrypt.genSalt(10)
-        const hashPassword = await bcrypt.hash(password, salt)
+        const hashPassword =  bcrypt.hash(password, salt)
 
         const credentials = new User({
             name: name,
@@ -20,7 +20,7 @@ export const Register = async (req, res) => {
             email: email
         })
         await credentials.save()
-        res.status(200).json({ message: "registro creado", credentials })
+        res.status(200).json({ message: "registro creado" })
     } catch (error) {
         res.status(500).json({ message: " ha habido algun error" })
     }
@@ -31,9 +31,9 @@ export const Login = async (req, res) => {
     try {
         const user = await User.findOne({ username: username })
         if (!user) {
-            return res.status(400).json({ message: " usuario invalido" })
+            return res.status(400).json({ message: " usuario invalido" , error})
         } else {
-            const validPassword = await bcrypt.compare(password, user.password)
+            const validPassword = bcrypt.compare(password, user.password)
             if (!validPassword) {
                 return res.status(400).json({ message: "contraseña incorrecta" })
             }
@@ -58,16 +58,17 @@ export const Login = async (req, res) => {
 // Controlador para mostrar todos los registros
 export const getAllUsers = async (req, res) => {
     try {
-        const users = await User.find();
+        const users = await User.find({});
         res.status(200).json(users);
     } catch (error) {
-        res.status(500).json({ message: "Hubo un error al obtener los usuarios", error });
+        res.status(500).json({ message: error.message });
     }
 }
 
 // Controlador para mostrar un único registro por su ID
 export const getUserById = async (req, res) => {
-    const { id } = req.params;
+    const id  = req.params.id;
+    console.log(id)
     try {
         const user = await User.findById(id);
         if (!user) {
@@ -81,7 +82,7 @@ export const getUserById = async (req, res) => {
 
 // Controlador para actualizar un registro por su ID
 export const updateUserById = async (req, res) => {
-    const { id } = req.params;
+    const id  = req.params;
     const { name, username, password, email, status } = req.body;
     try {
         const updatedUser = await User.findByIdAndUpdate(id, { name, username, password, email, status }, { new: true });
@@ -96,14 +97,15 @@ export const updateUserById = async (req, res) => {
 
 // Controlador para eliminar un registro por su ID
 export const deleteUserById = async (req, res) => {
-    const { id } = req.params;
+    const id = req.params._id;
+    console.log(id)
     try {
-        const deletedUser = await User.findByIdAndDelete(id);
+        const deletedUser = await User.findByIdAndDelete({_id:id});
         if (!deletedUser) {
-            return res.status(404).json({ message: "Usuario no encontrado" });
+            return res.status(404).json({ message: error.message });
         }
         res.status(200).json({ message: "Usuario eliminado exitosamente", deletedUser });
     } catch (error) {
-        res.status(500).json({ message: "Hubo un error al eliminar el usuario", error });
+        res.status(500).json({ message: error.message });
     }
 }
