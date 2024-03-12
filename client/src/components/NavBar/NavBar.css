@@ -9,7 +9,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px;
   }
   
   .languages {
@@ -19,6 +18,7 @@
   .languages p {
     margin-right: 10px; 
     font-weight: bold;
+    font-family: 'Poppins', sans-serif;
   }
   
   .rrss-logos {
@@ -29,7 +29,7 @@
   .rrssLogos a i {
     font-size: 16px;
     padding: 0px 5px;
-    color: black;
+    color: #000;
   }
   
   .nav-bar {
@@ -37,20 +37,13 @@
     justify-content: space-between;
     align-items: center;
     z-index: 100; 
-    position: sticky;
-    top: -10px;
   }
-  
+
   .nav-bar-logo{
-    width: 120px;
+    width: 100px;
   }
   
-  .menu__btn {
-    display: none; 
-  }
-  
-  
-  .menu__icon {
+  .menu-icon {
    display: none;
   }
   
@@ -70,11 +63,12 @@
   
   .menu li {
     margin-right: 10px; 
+    font-family: 'Poppins', sans-serif;
   }
   
   
   @media screen and (max-width: 840px) {
-    .Yanose {
+    .nav-bar-section {
       flex-direction: column;
       align-items: center;
     }
@@ -88,19 +82,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-  }
-  
-  .logo {
-    margin-right: 20px; /* Ajusta el espacio entre el logo y el menú según tus preferencias */
-  }
-  
-  .menu__btn {
-    display: none; /* Oculta el input del menú por defecto */
-  }
-  
-  .menu__icon {
-    cursor: pointer;
   }
   
   .list {
@@ -108,6 +89,10 @@
     display: flex;
     margin: 0;
     padding: 0;
+  }
+  
+  .x-btn{
+    display: none;
   }
   
   .menu {
@@ -140,13 +125,13 @@
   }
   
   .menu a:hover::after {
-    width: 100%; /* Ancho total de la línea al hacer hover */
-    left: 0; /* Mueve el punto de origen al inicio */
+    width: 100%; 
+    left: 0; 
   }
   
   
   .menu a.active {
-    color:  #212934; 
+    color:  #fe4702; 
   }
   
   .menu li {
@@ -164,20 +149,28 @@
       display: none; 
     }
   
-    .menu__btn {
-      display: block; 
-    }
-  
-    .menu__icon {
+    .menu-icon {
       display: block;
       cursor: pointer;
     }
   
     .menu li {
-      margin-right: 4px; /* Ajusta el espacio entre los elementos del menú en pantallas más pequeñas según tus preferencias */
+      margin-right: 4px; 
     }
+    
   }
   
+  .menu li {
+    position: relative; /* Añade posición relativa al elemento padre */
+  }
+  
+  .menu li:hover .acordeon {
+    display: flex;
+    position: absolute;
+    top: 100%; /* Posición debajo del elemento padre */
+    left: 0;
+    /* margin-top: 20px; */
+  }
   
   .menu li:hover .acordeon {
     display: flex;
@@ -189,7 +182,7 @@
     width: 100%;
     top: 100%;
     left: 0;
-    width: 150px; 
+    width: 170px; 
     background-color: #fff;
     border-top: 3px solid #fe4702; 
     flex-direction: column;
@@ -202,9 +195,42 @@
     cursor: pointer;
     font-size: 13px;
     border-top: 1px solid rgba(163, 155, 155, 0.747);
+    font-family: 'Poppins', sans-serif;
   }
   
   .opcion:hover {
     background-color: #b8b0b0; 
   }
   
+
+  .list-open {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(254, 71, 2, 0.8); /* Fondo semitransparente #fe4702 */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  
+}
+
+.list-open .menu {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+}
+
+.list-open .x-btn {
+    display: block;
+}
+
+.list-open .menu li {
+    margin-right: 0;
+    display: flex;
+}
+
+.list-open .menu a {
+    font-size: 20px; /* Tamaño de fuente deseado */
+}
