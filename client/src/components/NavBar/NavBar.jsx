@@ -1,22 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from 'react-router-dom';
 import './NavBar.css'
 
 function NavBar() {
+    const [acordeonOpen, setAcordeonOpen] = useState(null);
     const [menuOpen, setMenuOpen] = useState(false);
 
-    const handleToggleMenu = () => {
-        setMenuOpen(!menuOpen);
-        if (window.innerWidth <= 840) {
-            // Muestra u oculta el menú en pantalla pequeña
-            document.querySelector('.mobile-menu').style.display = menuOpen ? 'none' : 'flex';
-        }
+
+    const handleAcordeonHover = (index) => {
+        setAcordeonOpen(index);
     };
 
+    const handleAcordeonLeave = () => {
+        setAcordeonOpen(null);
+    };
+
+    const handleMenuIconClick = () => {
+        setMenuOpen(!menuOpen);
+    };
+
+    const handleXBtnClick = () => {
+        setMenuOpen(false);
+    };
 
     const handleNavLinkClick = () => {
-        setMenuOpen(false); // Cierra el menú al hacer clic en un enlace
+        setAcordeonOpen(null);
+        setMenuOpen(false);
+};
+
+const handleResize = () => {
+    if (window.innerWidth > 840) {
+        setMenuOpen(false);
+    }
+};
+
+useEffect(() => {
+    // Agregar un event listener para el cambio de tamaño de la ventana
+    window.addEventListener("resize", handleResize);
+
+    // Limpiar el event listener al desmontar el componente
+    return () => {
+        window.removeEventListener("resize", handleResize);
     };
+}, []);
 
 
     return (
@@ -40,17 +66,18 @@ function NavBar() {
                 </figure>
 
                 <figure>
-                    <label className="menu__icon" htmlFor="menu__btn" onClick={handleToggleMenu}><i class="fa-solid fa-bars"></i></label>
+                    <label className="menu-icon" onClick={handleMenuIconClick}><i class="fa-solid fa-bars"></i></label>
                 </figure>
 
                 {/* <!--Menú--> */}
-                <section className="list mobile-menu">
-                    <label htmlFor="menu__btn" onClick={handleToggleMenu}>
+                <section className={`list ${menuOpen ? 'list-open' : ''}`}>
+                    <label className="x-btn" onClick={handleXBtnClick}>
                         <i className="fa-solid fa-x"></i>
                     </label>
-                    <ul className={`menu ${menuOpen ? 'active' : ''}`}>
-                        <li><NavLink to="/" onClick={handleNavLinkClick}>H O M E</NavLink></li>
+                    <ul className="menu">
+                        <li><NavLink to="#" onClick={handleNavLinkClick}>H O M E</NavLink></li>
                         <li><NavLink to="/Products" onClick={handleNavLinkClick}>A P R E N D E</NavLink></li>
+
                         <li>
                             <NavLink to="/Aboutus" onClick={handleNavLinkClick}>
                                 C O L A B O R A
@@ -73,9 +100,10 @@ function NavBar() {
                                 <div className="opcion">PRENSA</div>
                             </div>
                         </li>
+
                         <li><NavLink to="/Contact" onClick={handleNavLinkClick}>B L O G</NavLink></li>
                         <li>
-                            <NavLink to="/Search" onClick={handleNavLinkClick}>
+                            <NavLink to="/" onClick={handleNavLinkClick}>
                                 S E D E S
                             </NavLink>
                             <div className="acordeon">
@@ -84,6 +112,7 @@ function NavBar() {
                             </div>
                         </li>
                         <li><NavLink to="/WishList" onClick={handleNavLinkClick}>C O N T A C T O</NavLink></li>
+                        <li><a href="/LoginRegisterView"> <i className="fas fa-user"></i> </a></li>
                     </ul>
                 </section>
             </nav>
