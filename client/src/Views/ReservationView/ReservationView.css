@@ -1,0 +1,145 @@
+/* Calendar.css */
+/* Estilos para el contenedor principal */
+.calendar-container {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width: 800px;
+  }
+  
+  /* Estilos para el calendario */
+  .calendar {
+    width: 45%;
+    font-family: Arial, sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilos para el header del calendario */
+  .calendar header {
+    padding: 10px;
+    text-align: center;
+    background-color: #FF4700; /* Cambio de color en el header */
+  }
+  
+  /* Estilos para la sección del calendario */
+  .calendar section {
+    padding: 10px;
+  }
+  
+  /* Estilos para los días de la semana */
+  .calendar .days {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para los días del calendario */
+  .calendar .dates {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+  }
+  
+  .calendar .dates li {
+    width: calc(100% / 7);
+    text-align: center;
+    padding: 5px 0;
+  }
+  
+  .calendar .dates li:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* Estilos para el día seleccionado en el calendario */
+  .react-datepicker__day--selected {
+    background-color: #FF4700 !important;
+  }
+  
+  /* Estilos para la fecha seleccionada */
+  .selected-date {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  /* Estilos para el selector de tiempo */
+  .time-picker {
+    display: flow-root;
+    width: 45%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin-left: 20px; /* Añadir margen a la izquierda */
+  }
+  
+  /* Estilos para el header del selector de tiempo */
+  .time-picker header {
+    padding: 10px;
+    text-align: center;
+    background-color: #FF4700; /* Cambio de color en el header */
+  }
+  
+  /* Estilos para el título del selector de tiempo */
+  .time-picker h2 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para el input de tiempo */
+  .time-picker input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+  /* Estilos para la hora seleccionada */
+  .selected-time {
+    display: flow-root;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  /* Estilos para el selector de sala */
+  .room-selector {
+    width: 45%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin-right: 20px; /* Añadir margen a la derecha */
+  }
+  
+  /* Estilos para el header del selector de sala */
+  .room-selector header {
+    padding: 10px;
+    text-align: center;
+    background-color: #FF4700; /* Cambio de color en el header */
+  }
+  
+  /* Estilos para el título del selector de sala */
+  .room-selector h2 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para el select de sala */
+  .room-selector select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+  /* Estilos para la sala seleccionada */
+  .selected-room {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
