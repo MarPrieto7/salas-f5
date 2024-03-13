@@ -24,7 +24,7 @@ function App() {
           <Route path="/differentpath" element={<AdminReservationView />} />
           <Route path="/LoginRegisterView" element={<LoginRegisterView />} />
           <Route path="/ReservationView" element={<ReservationView />} />
-          <Route path="/RoomUnicView" element={<RoomUnicView />} />
+          <Route path="/RoomUnicView/:id" element={<RoomUnicView />} />
           <Route path="/RoomView" element={<RoomView />} />
           <Route path="/UserReservationView" element={<UserReservationView />} />
           <Route path="/ContactView" element={<ContactView />} />
