@@ -82,7 +82,7 @@ export const getUserById = async (req, res) => {
 
 // Controlador para actualizar un registro por su ID
 export const updateUserById = async (req, res) => {
-    const id  = req.params.id;
+    const { id } = req.params.id;
     const { name, username, password, email, status } = req.body;
     try {
         const updatedUser = await User.findByIdAndUpdate(id, { name, username, password, email, status }, { new: true });
