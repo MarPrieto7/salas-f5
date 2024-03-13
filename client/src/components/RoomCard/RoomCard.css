@@ -3,20 +3,22 @@ display: flex;
 flex-direction: row;
 justify-content: space-around;
 margin-top:2rem;
-
+flex-wrap: wrap;
 }
 .room-card-div{
-    background-color: #ff4017;
-    min-width: 20rem;
+    background-color: #FF4700;
+    width: 20rem;
     min-height:8rem;
     margin:2rem;
-    align-items: center;
+    align-items:normal ;
     color:#FFFFFF;
     display: flex;
     flex-direction: column;
+    padding: 2rem;
 }
 
 .room-card-div button {
+    margin-top:1rem;
     background-color: #020100;
     width: 12rem;
     font-size: 1.5rem;
@@ -38,11 +40,7 @@ margin-top:2rem;
 
 @media screen and (max-width:1000px){
     
-    .room-card-article{
-        display: flex;
-        flex-direction: column;
-
-        }
+    
         .room-card-div button {
            
             width: 9rem;

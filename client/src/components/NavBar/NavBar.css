@@ -119,7 +119,7 @@
 }
 
 .menu a:hover {
-  color: #fe4702; 
+  color: #FF4700; 
 }
 
 .menu a::after {
@@ -129,7 +129,7 @@
   bottom: -8px;
   height: 3px; 
   width: 0;
-  background-color: #fe4702; 
+  background-color: #FF4700; 
   transition: width 0.5s ease, left 1.5s ease; 
 }
 
@@ -140,7 +140,7 @@
 
 
 .menu a.active {
-  color:  #fe4702; 
+  color:  #FF4700; 
 }
 
 .menu li {
@@ -193,7 +193,7 @@
   left: 0;
   width: 170px; 
   background-color: #fff;
-  border-top: 3px solid #fe4702; 
+  border-top: 3px solid #FF4700; 
   flex-direction: column;
   z-index: 1; 
 }
@@ -218,7 +218,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(254, 71, 2, 0.8); /* Fondo semitransparente #fe4702 */
+  background-color: #FF4700; /* Fondo semitransparente #fe4702 */
   justify-content: center;
   align-items: center;
   flex-direction: column;

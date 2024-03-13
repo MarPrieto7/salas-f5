@@ -6,7 +6,7 @@ router.post("/register", Register)
 router.post("/login", Login)
 router.get('/users', getAllUsers)
 router.get('/:id', getUserById)
-router.put('/', updateUserById)
+router.put('/:id', updateUserById)
 router.delete('/:_id', deleteUserById)
 
 
