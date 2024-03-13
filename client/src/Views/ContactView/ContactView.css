@@ -1,0 +1,198 @@
+/* ContactView.css */
+
+/* Agrega estilos para el formulario */
+
+.contact-form input {
+  color: #000000;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0 10px;
+  margin-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.contact-form textarea {
+  color: #000000;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Estilos adicionales según tus necesidades */
+.contact-form h2 {
+  text-align: center;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content-wrap {
+  display: flex;
+  justify-content: space-around;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.orange-rectangle {
+  background-color: #ff4700;
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.orange-rectangle h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.ubicacion {
+  width: 300px;
+  margin-bottom: 40px;
+  margin-right: 50%;
+}
+
+.encabezado-ubicacion {
+  font-size: 24px;
+}
+
+.ubicacion h4 {
+  margin-right: 0;
+}
+
+.contact-form-container {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.comentario-formulario {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.contact-form section {
+  width: 100%;
+  height: 120px;
+}
+
+
+.boton-contacto {
+  width: auto;
+  /* Ajusta el ancho automáticamente según el contenido */
+  height: 30px;
+  /* Ajusta la altura según tus preferencias */
+  background-color: #000000;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.boton-contacto-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+  /* Ajusta el margen superior según tus necesidades */
+}
+
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.checkbox-container input {
+  margin-right: 5px;
+  transform: scale(0.4);
+  /* Adjust the scale factor as needed */
+}
+
+.checkbox-container label {
+  white-space: nowrap;
+}
+
+textarea {
+  height: 12rem;
+  /* Puedes ajustar este valor según tu preferencia */
+  /* O puedes utilizar la propiedad 'rows' en el HTML para ajustar el número de filas directamente */
+  /* rows: 6; */
+  max-width: 40rem;
+  max-height: 12rem;
+
+}
+
+/* Estilos para alinear a la derecha en pantallas grandes */
+@media (min-width: 768px) {
+  .contact-form {
+    float: right;
+    margin-right: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 14px; /* Reducir el tamaño de fuente para pantallas más pequeñas */
+  }
+
+  .contact-container {
+    display: flex;
+    flex-wrap: wrap; /* Los elementos se envuelven automáticamente si no caben en una línea */
+  }
+
+  .contactImage {
+    max-width: 100%; 
+    height: auto; /* Ajustar la imagen al ancho de su contenedor */
+  }
+
+  .orange-rectangle {
+    flex: 1; /* Los elementos ocupan el mismo espacio en la línea */
+    max-width: 100%; 
+    height: auto; /* Ajustar la altura automáticamente */
+  }
+
+  .ubicacion 
+  .content-wrap
+  .encabezado-ubicacion {
+    display: flex;
+    flex-direction: column; /* Cambiar la dirección del flujo a columna para que los elementos se apilen verticalmente */
+  }
+
+  .ubicacion p {
+    flex-basis: 100%; /* Hacer que los párrafos ocupen todo el ancho disponible */
+    margin-bottom: 15px; /* Agregar un margen inferior a los párrafos para separarlos */
+  }
+
+  .checkbox-container {
+    display: flex;
+    flex-direction: column; /* Cambiar la dirección del flujo a columna para apilar los elementos verticalmente */
+    align-items: flex-start; /* Alinear los elementos al principio del contenedor */
+    margin-bottom: 15px; /* Agregar espacio entre el contenedor de checkbox y otros elementos */
+  }
+
+  .confirmacion {
+    margin-top: 5px; /* Añadir un margen superior a la confirmación para separarla del checkbox */
+  }
+
+  .boton-contacto-container {
+    margin-top: 10px; /* Añadir un margen superior para separar el botón de otros elementos */
+    align-self: flex-start; /* Alinear el botón al principio del contenedor */
+  }
+}
