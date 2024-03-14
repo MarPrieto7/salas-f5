@@ -1,20 +1,15 @@
 .room-view-section-1{
-    background-color: #FF4017;
+    background-color: #FF4700;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.room-view-section-1 p{
-font-size: 2rem;
-color:#FFFFFF;
-text-align: center;
-font-weight: bold;
-}
+
 .room-view-section-3{
     display: flex;
     flex-direction: column;
     font-size: 1.5rem;
-    color:#FF4017;
+    color:#FF4700;
     padding:2rem;
     }
 
@@ -34,14 +29,17 @@ text-align: center;
 }
 .room-view-section-4 figure img{
 margin-right: 4rem;
-
 }
+.room-card-image{
+height: 14rem;
+}
+
 .image-map{
     width:40rem;
 }
 
 .room-view-section-4 .p-color{
-    color:#FF4017;
+    color:#FF4700;
     font-size: 2.5rem;
 }
 

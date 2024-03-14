@@ -1,66 +1,97 @@
 .footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #FF4700;
+  min-height: 25vh;
+  margin-bottom: 0;
+  margin-top: 2rem;
+}
+
+.footer-section-1 {
+  max-width: 80%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  max-height: 80%;
+}
+
+.footer-item {
+  margin: 10px;
+  height: 8rem;
+  align-items: center;
+  display: flex;
+}
+
+.footer-item .rrssLogos a i {
+
+  color: #FFFFFF;
+}
+
+.footer-btn {
+  color: #000;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 4%;
+  box-shadow: 5px 10px 0px rgba(0, 0, 0, 0.2);
+  color: #FF4700;
+  height: 7rem;
+}
+
+.footer-img {
+  height: 6rem;
+}
+
+.rrssLogos {
+  display: flex;
+  justify-content: center;
+}
+
+.fa-brands {
+  font-size: 20px;
+  margin: 0 10px;
+}
+
+.others-links {
+  width: 100%;
+  font-size: 13px;
+}
+
+.others-links ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+.others-links li {
+  margin: 0 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.others-links li:hover {
+  color: #000;
+}
+@media screen and (max-width:850px) {
+  
+  .footer-section-1{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background-color: #fe4702
+    padding: 15px;
   }
-
-  .footer-section-1 {
-    max-width: 80%;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
-
   .footer-item {
     margin: 10px;
+    height: 5rem;
+
   }
 
-  .footer-btn {
-    color: #000;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    border-radius: 4%;
-  }
-
-  .footer-img {
-    height: 300px;
-  }
-
-  .rrssLogos {
-    display: flex;
-    justify-content: center;
-  }
-
-  .fa-brands {
-    font-size: 20px;
-    margin: 0 10px;
-  }
-
-  .other {
-    width: 100%;
-    font-size: 13px;
-  }
-
-  .other ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
-  }
-
-  .other li {
-    margin: 0 5px;
-    cursor: pointer;
-    color: white;
-  }
-
-  .other li:hover{
-    color: #000;
-  }
+}

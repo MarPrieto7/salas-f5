@@ -1,12 +1,75 @@
-.room-view-article-1{
-    background-color: #FF4017;
+.room-container {
+    margin: 0 auto;
+    padding: 20px;
+    flex-direction: row;
+}
+
+.h-roomunic{
+    background-color: #FF4700;
     display: flex;
-    flex-direction: column;
+    height: 100px;
+    justify-content: center;
     align-items: center;
 }
-.room-view-article-1 p{
-font-size: 2rem;
-color:#FFFFFF;
-text-align: center;
-font-weight: bold;
+
+.h-roomunic p{
+    font-size: 2rem;
+    color:#FFFFFF;
+    text-align: center;
+    font-weight: bold;
+    }
+
+.room-details{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+.room-details {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.room-images { 
+    flex: 20% 0 0;
+    grid-column: span 3; 
+}
+
+.room-images img {
+    width: 45rem;
+    height: 100%; 
+    object-fit: cover;
+}
+
+.room-info {
+    grid-column: span 2;
+    flex: 1; 
+}
+
+.room-info h2{
+    color: #FF4700;
+}
+
+button {
+    background-color: #020100;
+    color:#FFFFFF !important;
+    width: 12rem;
+    font-size: 1.5rem;
+    border-radius: 12px;
+    text-decoration: none;
+}
+button a {
+   
+    color:#FFFFFF !important;
+    text-decoration: none;
+}
+
+button:hover{
+    background-color: #FFFFFF ;
+    color:#FF4700 !important;
+}
+button a:hover{
+    background-color: #FFFFFF ;
+    color:#FF4700 !important;
 }
