@@ -78,26 +78,27 @@ const LoginRegisterView = () => {
     const [username, setUsername] = useState('');
     const [LoginOk, setLogin] = useState(false);
 
-    const store = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await fetch('http://localhost:8000/auth/login',
-            {method:"POST", headers: {'Content-Type': 'application/json'            },
-            body: JSON.stringify({  password: password, username: username })});
-            const data = await response.json();
-            console.log(data);
-            const user = data.token;
-            console.log(user)
-            if (user) {
-                setLogin(true);
-                alert('Bienvenido ' + username);
-            } else {
-                alert('Las credenciales no son válidas');
-            }
-        } catch (error) {
-            console.error('Error al verificar las credenciales', error);
+const store = async (e) => {
+    e.preventDefault();
+    try {
+        const response = await fetch('http://localhost:8000/auth/login', {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ password: password, username: username })
+        });
+        const data = await response.json();
+        const userRole = data.role; // Suponiendo que el rol se devuelve en la respuesta
+
+        if (userRole === 'admin') {
+            history.push('/differentpath'); // Redirigir a una página para administradores
+        } else {
+            setLogin(true);
+            alert('Bienvenido ' + username);
         }
+    } catch (error) {
+        console.error('Error al verificar las credenciales', error);
     }
+}
 
     //FIN UNIR CON BACK LOGIN
     //BACK CON RESGITER

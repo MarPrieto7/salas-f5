@@ -1,0 +1,82 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    padding: 2rem;
+  }
+   tr {
+    border-bottom: 1px solid #FF4700;
+  }
+  
+  td, th {
+    text-align: center;
+  }
+  
+  thead th {
+    font-size: 1.2rem; 
+  }
+  
+  .table-primary tr th {
+    background-color: #FF4700;
+    color: #ffffff;
+  }
+  .h2-table-create{
+    background-color: #FF4700;
+    color:#ffffff;
+    padding: 5px;
+    margin-bottom: 1rem;
+  }
+
+  .form-create-room{
+    max-width: 80%;
+  }
+
+  .form-create-room input{
+    width: 100%;
+  }
+
+  .section-1, .section-2{
+    margin:4rem;
+  }
+  .form-create-room button {
+    margin-top:1rem;
+    background-color: #020100;
+    width: 12rem;
+    font-size: 1.3rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color:#ffffff;
+}
+.form-create-room button:hover {
+  margin-top:1rem;
+  background-color: #ffffff;
+  width: 12rem;
+  font-size: 1.5rem;
+  border-radius: 12px;
+  text-decoration: none;
+  color:#FF4700;
+}
+ 
+  @media screen and (max-width: 500px) {
+    .table-responsive {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+    
+      table {
+        width: 100%;
+      }
+    
+      th, td {
+        padding: 10px;
+        text-align: center;
+        display: block;
+        border: none;
+      }
+    
+      th {
+        font-size: 1rem; 
+        background-color: #FF4700; 
+        color: #ffffff; 
+      }
+  }
