@@ -1,11 +1,21 @@
 import "./HomeView.css";
-import ImageRoom from '../../assets/image/roomimage.jpg'
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 
 function HomeView() {
+    const [imageURL, setImageURL] = useState('');
+
+    useEffect(() => {
+        fetch('http://localhost:8000/rooms/65e987129419f2137c385a75')
+            .then(response => response.json())
+            .then(data => setImageURL(data.image))
+            .catch(error => console.error(error));
+    }, []);
+    console.log(imageURL)
     return (
         <main>
-            <img src={ImageRoom} className="home-image" alt="Imagen de una sala con mesas y sillas"/>
+            <figure> <img src={imageURL} className="home-image" alt="Imagen de una sala con mesas y sillas"/></figure>
+           
             <section className="home-section">
                 <article>
                 <p><u><strong>Barcelona</strong></u><br/>

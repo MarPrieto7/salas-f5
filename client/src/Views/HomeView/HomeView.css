@@ -41,7 +41,13 @@
 }
 .home-image{
     width: 100%;
-    height: 35rem;
+    height: 35rem; 
+    object-fit: cover;
+
+}
+main figure{
+       display: flex;
+    align-items: center; 
 }
 
 @media screen and (max-width:1000px) {
