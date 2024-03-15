@@ -1,7 +1,5 @@
 import Room from "../models/roomsModels.js";
 
-
-
 export const RegisterRoom = async (req, res) => {
     const { name, image, map, description, size } = req.body;
     try {

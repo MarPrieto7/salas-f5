@@ -51,7 +51,7 @@
     color: #FF4700;
 }
 
-button {
+.room-info button {
     background-color: #020100;
     color:#FFFFFF !important;
     width: 12rem;
@@ -59,17 +59,17 @@ button {
     border-radius: 12px;
     text-decoration: none;
 }
-button a {
+.room-info button a {
    
     color:#FFFFFF !important;
     text-decoration: none;
 }
 
-button:hover{
+.room-info button:hover{
     background-color: #FFFFFF ;
     color:#FF4700 !important;
 }
-button a:hover{
+.room-info button a:hover{
     background-color: #FFFFFF ;
     color:#FF4700 !important;
 }
