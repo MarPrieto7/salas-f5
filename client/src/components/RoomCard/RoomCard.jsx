@@ -8,7 +8,7 @@ function RoomCard() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("/salas.json");
+                const response = await fetch("http://localhost:8000/rooms/room");
                 if (!response.ok) {
                     throw new Error('Error al obtener los datos');
                 }
@@ -26,20 +26,20 @@ function RoomCard() {
     return (
         <section>
             <article className="room-card-article">
-                {datos && datos.map((item) => (
-                    <div key={item.id} className="room-card-div">
-                        <img src={item.image} alt="Imagen de la sala" />
-                        <p>Sala: <strong>{item.nombre}</strong></p>
-                        <p>Tamaño: {item.tamaño}</p>
-                        {item.objeto.map((objeto, index) => (
-                            <p key={index}> Características: {objeto}</p>
-                        ))}
-                        <button> <Link to={`/RoomUnicView/${item.id}`}>Ver Sala</Link></button>
+                {datos && datos.map((room) => (
+                    <div key={room._id} className="room-card-div">
+                        <img src={room.image} alt="Imagen de la sala" className="room-card-image"/>
+                        <p>Sala: <strong>{room.name}</strong></p>
+                        <p>Tamaño: {room.size}</p>
+                        <p>Características: {room.description.join(', ')}</p>
+                        <button><Link to={`/RoomUnicView/${room._id}`}>Ver Sala</Link></button>
                     </div>
                 ))}
             </article>
         </section>
+
     );
 };
+
 
 export default RoomCard;
