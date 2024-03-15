@@ -1,4 +1,3 @@
-// Calendar.js
 import React, { useState } from 'react';
 import './ReservationView.css';
 import DatePicker from 'react-datepicker';
@@ -9,6 +8,7 @@ const ReservationView = () => {
   const [selectedDateString, setSelectedDateString] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
   const [selectedRoom, setSelectedRoom] = useState('');
+  const [roomName, setRoomName] = useState('');
 
   const getDaysInMonth = (year, month) => {
     const date = new Date(year, month, 1);
@@ -24,7 +24,7 @@ const ReservationView = () => {
 
   const formatDate = (date) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return date.toLocaleDateString('en-US', options);
+    return date.toLocaleDateString('es-ES', options);
   };
 
   const handleDateChange = (date) => {
@@ -38,13 +38,44 @@ const ReservationView = () => {
 
   const handleRoomChange = (event) => {
     setSelectedRoom(event.target.value);
+    // Aquí actualizamos el nombre de la sala seleccionada
+    if (event.target.value === 'Sala Hedy Lamarr') {
+      setRoomName('¡Has reservado tu Sala Conferencias!');
+    } else if (event.target.value === 'Sala Mary Lee') {
+      setRoomName('¡Has reservado tu Sala Mary Lee!');
+    } else if (event.target.value === 'Sala Only') {
+      setRoomName('¡Has reservado tu Sala Only!');
+    } else {
+      setRoomName('');
+    }
   };
 
   return (
     <main>
-      <h1>Reserva de Sala</h1>
-      <section className="calendar-container">
-        <article className="calendar">
+      <h1 className='title-main'>Reserva tu Sala</h1><br></br>
+      <section className="main-section">
+        <aside>
+          <h2>Seleccione tipo de sala</h2>
+          <select value={selectedRoom} onChange={handleRoomChange}>
+            <option value="">Seleccione su sala</option>
+            <option value="Sala Hedy Lamarr">Sala Hedy Lamarr</option>
+            <option value="Sala Mary Lee">Sala Mary Lee</option>
+            <option value="Sala Only">Sala Only</option>
+          </select>
+          {/* Añadir espacio entre los títulos */}
+            <div style={{ marginBottom: '20px' }}></div>
+          <h2>Seleccione su hora</h2>
+          <input 
+            type="time" 
+            value={selectedTime} 
+            onChange={handleTimeChange} 
+            min="09:00" 
+            max="21:00" 
+          />        
+          </aside>
+        <article>
+          {/* Añadir espacio entre los títulos */}
+          <div style={{ marginBottom: '20px' }}></div>
           <header>
             <DatePicker
               selected={selectedDate}
@@ -71,42 +102,17 @@ const ReservationView = () => {
               ))}
             </ul>
           </section>
-          <div className="selected-date">
-            Fecha Seleccionada: {selectedDateString}
+
+          <div className="selected-details">
+            {roomName && (
+              <div>
+                <p>¡Has reservado tu {selectedRoom}!</p>
+                <p>{selectedDateString}</p>
+                <p>{selectedTime}</p>
+              </div>
+            )}
           </div>
         </article>
-        <article className="time-picker">
-          <header>
-            <h2>Horario</h2>
-          </header>
-          <input type="time" value={selectedTime} onChange={handleTimeChange} />
-          <div className="selected-time">
-            Hora Seleccionada: {selectedTime}
-          </div>
-        </article>
-        <article className="room-selector">
-          <header>
-            <h2>Sala</h2>
-            <select value={selectedRoom} onChange={handleRoomChange}>
-              <option value="">Seleccione su sala</option>
-              <option value="Sala Hedy Lamarr">Sala Hedy Lamarr</option>
-              <option value="Sala Mary Lee">Sala Mary Lee</option>
-              <option value="Sala Only">Sala Only</option>
-            </select>
-            <div className="selected-room">
-              Tipo de Sala Seleccionada: {selectedRoom}
-            </div>
-          </header>
-        </article>
-        <div className="selected-details">
-          {selectedDateString && selectedTime && selectedRoom && (
-            <div>
-              <p>Día Seleccionado: {selectedDateString}</p>
-              <p>Hora Seleccionada: {selectedTime}</p>
-              <p>Tipo de Sala Seleccionada: {selectedRoom}</p>
-            </div>
-          )}
-        </div>
       </section>
     </main>
   );
