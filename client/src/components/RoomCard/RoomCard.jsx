@@ -9,6 +9,7 @@ function RoomCard() {
         const fetchData = async () => {
             try {
                 const response = await fetch("http://localhost:8000/rooms/room");
+                const response = await fetch("http://localhost:8000/rooms/room");
                 if (!response.ok) {
                     throw new Error('Error al obtener los datos');
                 }
@@ -37,7 +38,10 @@ function RoomCard() {
                 ))}
             </article>
         </section>
+            </article>
+        </section>
     );
 };
+
 
 export default RoomCard;
