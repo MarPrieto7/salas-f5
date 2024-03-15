@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 function RoomTable() {
 
+    //Función para pintar la tabla
     const [datos, setDatos] = useState([]);
 
     useEffect(() => {
@@ -23,6 +24,7 @@ function RoomTable() {
         fetchData();
     }, []);
 
+    //función para crear nuevas salas
     const [name, setName] = useState('')
     const [size, setSize] = useState('')
     const [description, setDescription] = useState('')
@@ -43,7 +45,7 @@ function RoomTable() {
                 throw new Error('Error al guardar los datos');
             }
             const newData = await response.json();
-            setDatos([...datos, newData]); 
+            setDatos([...datos, newData]);
             setName('');
             setSize('');
             setDescription('');
@@ -54,26 +56,35 @@ function RoomTable() {
         }
     };
 
+    //función desplegable
+    const [isFormVisible, setIsFormVisible] = useState(false);
+    const toggleFormVisibility = () => {
+        setIsFormVisible(!isFormVisible);
+    };
+
     return (
         <>
-            <section className='section-1'>
-                <h2 className="h2-table-create">Agregar nuevas salas</h2>
-                
-                <form onSubmit={store} className="form-create-room">
-                    <input type="text" value={name}
-                        onChange={(e) => setName(e.target.value)} placeholder="Nombre de la sala"/><br/>
-                    <input type="text"value={size}
-                        onChange={(e) => setSize(e.target.value)} placeholder="Tamaño"/><br/>
-                    <input type="text"value={description}
-                        onChange={(e) => setDescription(e.target.value)} placeholder="Descripción de la sala"/><br/>
-                    <input type="text"value={image}
-                        onChange={(e) => setImage(e.target.value)} placeholder="Url de la imagen de la sala"/><br/>
-                <input type="text"value={map}
-                        onChange={(e) => setMap(e.target.value)} placeholder="Url de la imagen del mapa"/><br/>
-                <button type='submit' className='btn btn-primary'>Añadir sala</button>
-                </form>
-            </section>
+
             <section className='section-2'>
+                <h2 onClick={toggleFormVisibility} className='btn-h2'>Agregar nuevas salas <i class="fas fa-plus"></i></h2>
+
+                {isFormVisible && (
+                    <form onSubmit={store} className="form-create-room">
+                        <input type="text" value={name}
+                            onChange={(e) => setName(e.target.value)} placeholder="Nombre de la sala" /><br />
+                        <input type="text" value={size}
+                            onChange={(e) => setSize(e.target.value)} placeholder="Tamaño" /><br />
+                        <input type="text" value={description}
+                            onChange={(e) => setDescription(e.target.value)} placeholder="Descripción de la sala" /><br />
+                        <input type="text" value={image}
+                            onChange={(e) => setImage(e.target.value)} placeholder="Url de la imagen de la sala" /><br />
+                        <input type="text" value={map}
+                            onChange={(e) => setMap(e.target.value)} placeholder="Url de la imagen del mapa" /><br />
+                        <button type='submit' className='btn btn-primary'>Añadir sala</button>
+                    </form>
+                )}
+            </section>
+            <section className='section-3'>
                 <article className='row'>
                     <div className='col'>
                         <table className='table'>
