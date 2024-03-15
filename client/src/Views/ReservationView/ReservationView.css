@@ -1,145 +1,189 @@
-/* Calendar.css */
-/* Estilos para el contenedor principal */
-.calendar-container {
-    display: flex;
-    justify-content: space-between;
-    margin: auto;
-    width: 800px;
+.main-section {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  width: 800px;
+  border: 2px solid #FF4700; 
+  border-radius: 20px;
+  padding: 20px; 
+}
+
+.title-main {
+  color: #FF4700;
+  text-align: center;
+  margin-bottom: 20px; 
+}
+
+
+.main-section h2 {
+  text-align: center; 
+  color: #FF4700; 
+  margin-bottom: 10px; 
+}
+
+.selected-details {
+  color: #FF4700;
+  margin-top: 20px; 
+  padding: 10px; 
+  border: 1px solid #FF4700; 
+  border-radius: 5px; 
+}
+
+.selected-details p {
+  margin: 5px 0; 
+  font-weight: bold;
+}
+
+
+.time-picker input[type="time"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+
+.time-picker input[type="time"]::before {
+  content: "Desde las 09:00 hasta las 21:00";
+  display: block;
+  font-size: 12px;
+  margin-top: 5px;
+  color: #666; 
+}
+
+
+
+.react-datepicker__input-container input {
+  border: 1px solid #FF4700;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+  text-align: justify;
+}
+
+.calendar {
+  width: 45%;
+  font-family: Arial, sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.calendar header {
+  padding: 10px;
+  text-align: center;
+  background-color: #FF4700; 
+}
+
+
+.calendar section {
+  padding: 10px;
+}
+
+
+.days {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.dates {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.dates li {
+  width: calc(100% / 7);
+  text-align: center;
+  padding: 5px 0;
+}
+
+.dates li:hover {
+  background-color: #f0f0f0;
+}
+
+
+.react-datepicker__day--selected {
+  background-color: #FF4700 !important;
+}
+
+
+.time-picker {
+  width: 45%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.time-picker header {
+  padding: 10px;
+  text-align: center;
+  background-color: #FF4700; 
+}
+
+
+.time-picker h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+
+.selected-time {
+  display: flow-root;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+
+.room-selector header {
+  padding: 10px;
+  text-align: center;
+  background-color: #FF4700; 
+}
+
+
+.room-selector h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color:#FF4700;
+}
+
+
+.room-selector select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+
+
+/* Media query para pantallas con un ancho máximo de 1000px */
+@media screen and (max-width: 1000px) {
+  .main-section {
+    flex-direction: column; 
+    max-width: 89%; 
+    padding: 1rem;
   }
+
   
-  /* Estilos para el calendario */
-  .calendar {
-    width: 45%;
-    font-family: Arial, sans-serif;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  .title-main,
+  .main-section h2 {
+    text-align: center; 
   }
-  
-  /* Estilos para el header del calendario */
-  .calendar header {
-    padding: 10px;
-    text-align: center;
-    background-color: #FF4700; /* Cambio de color en el header */
-  }
-  
-  /* Estilos para la sección del calendario */
-  .calendar section {
-    padding: 10px;
-  }
-  
-  /* Estilos para los días de la semana */
-  .calendar .days {
-    display: flex;
-    justify-content: space-around;
-    list-style: none;
-    margin-bottom: 10px;
-  }
-  
-  /* Estilos para los días del calendario */
-  .calendar .dates {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-  }
-  
-  .calendar .dates li {
-    width: calc(100% / 7);
-    text-align: center;
-    padding: 5px 0;
-  }
-  
-  .calendar .dates li:hover {
-    background-color: #f0f0f0;
-  }
-  
-  /* Estilos para el día seleccionado en el calendario */
-  .react-datepicker__day--selected {
-    background-color: #FF4700 !important;
-  }
-  
-  /* Estilos para la fecha seleccionada */
-  .selected-date {
-    text-align: center;
-    margin-top: 10px;
-    font-weight: bold;
-  }
-  
-  /* Estilos para el selector de tiempo */
-  .time-picker {
-    display: flow-root;
-    width: 45%;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    margin-left: 20px; /* Añadir margen a la izquierda */
-  }
-  
-  /* Estilos para el header del selector de tiempo */
-  .time-picker header {
-    padding: 10px;
-    text-align: center;
-    background-color: #FF4700; /* Cambio de color en el header */
-  }
-  
-  /* Estilos para el título del selector de tiempo */
-  .time-picker h2 {
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  
-  /* Estilos para el input de tiempo */
-  .time-picker input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-  }
-  
-  /* Estilos para la hora seleccionada */
-  .selected-time {
-    display: flow-root;
-    text-align: center;
-    margin-top: 10px;
-    font-weight: bold;
-  }
-  
-  /* Estilos para el selector de sala */
+
+  .time-picker,
   .room-selector {
-    width: 45%;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    margin-right: 20px; /* Añadir margen a la derecha */
+    width: 100%; 
+    margin-bottom: 20px; 
   }
-  
-  /* Estilos para el header del selector de sala */
-  .room-selector header {
-    padding: 10px;
-    text-align: center;
-    background-color: #FF4700; /* Cambio de color en el header */
-  }
-  
-  /* Estilos para el título del selector de sala */
-  .room-selector h2 {
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  
-  /* Estilos para el select de sala */
-  .room-selector select {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-  }
-  
-  /* Estilos para la sala seleccionada */
-  .selected-room {
-    text-align: center;
-    margin-top: 10px;
-    font-weight: bold;
-  }
-  
+}
