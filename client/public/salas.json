@@ -1,0 +1,33 @@
+[
+   { "id":1,
+    "nombre": "Mary Lee",
+    "tamaño": "30m",
+    "objeto":["grande", "proyector", "luz natural"],
+    "image": "https://drive.google.com/file/d/1cwd-PtNZbo00MUupIueRsmD9xXkFTQeI/view?usp=sharing",
+    "map":"https://drive.google.com/file/d/1VkFE7oaJ1b7ocBB1iZj6V2ECwkn-N4hW/view?usp=sharing"
+   },
+   {
+
+    "id":2,
+    "nombre": "Hedy Lamarr",
+    "tamaño": "30m",
+    "objeto":["grande", "proyector", "luz natural"],
+    "image": "https://drive.google.com/file/d/1cx2slHANzWYIsuTe3qQVfrj-tQsW7gHV/view?usp=sharing",
+    "map":"."
+   },
+   {
+    "id":3,
+    "nombre": "Sala Only 1",
+    "tamaño": "1m",
+    "objeto":["pequeña","mesa","silla","enchufe"],
+    "image": "https://drive.google.com/file/d/1d0269rY5Tqf_O0_HfiRl7kwes9J614dG/view?usp=sharing",
+    "map":"URL"
+   },
+   {"id": 4,
+   "nombre":"Sala Only 2",
+   "tamaño":"1m",
+   "image":"URL",
+   "objeto":["pequeña","mesa","silla","enchufe"]
+}
+
+]

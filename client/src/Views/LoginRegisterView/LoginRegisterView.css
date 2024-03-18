@@ -1,17 +1,7 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    font-family: 'Roboto', sans-serif;
-}
+.main-login-register{
+    display: flex;
+    align-items: center;
 
-
-main{
-    width: 100%;
-    padding: 20px;
-    margin: auto;
-    margin-top: 100px;
 }
 .form-terms{
     display:flex;
@@ -27,6 +17,8 @@ main{
     max-width: 800px;
     margin: auto;
     position: relative;
+min-height:auto;
+
 }
 
 .carticle-changes-forms{
@@ -36,7 +28,7 @@ main{
     justify-content: center;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    background-color: #fe4702;
+    background-color: #FF4700;
 
 }
 
@@ -110,7 +102,7 @@ main{
     justify-content: center;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    background-color: #fe4702;
+    background-color: #FF4700;
 
 }
 
@@ -119,11 +111,11 @@ main{
     font-size: 30px;
     text-align: center;
     margin-bottom: 20px;
-    color: #fe4702;
+    color: #FF4700;
 }
 
 .contenedor__login-register form input{
-    width: 100%;
+    width: 85%;
     margin-top: 20px;
     padding: 10px;
     border: none;
@@ -143,7 +135,17 @@ main{
     color: white;
     outline: none;
 }
-
+.form-div-respond{
+    width: 100%;
+    padding: 80px 20px;
+    background: white;
+    position: absolute;
+    border-radius: 20px;
+    border: 1px solid #fe4702;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
 
 .formulario__login{
     opacity: 1;
@@ -156,10 +158,6 @@ main{
 
 
 @media screen and (max-width: 850px){
-
-    main{
-        margin-top: 50px;
-    }
 
     .article-changes-forms{
         max-width: 350px;

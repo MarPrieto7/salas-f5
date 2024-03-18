@@ -1,0 +1,51 @@
+.room-card-article{
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+margin-top:2rem;
+flex-wrap: wrap;
+}
+.room-card-div{
+    background-color: #FF4700;
+    width: 20rem;
+    min-height:8rem;
+    margin:2rem;
+    align-items:normal ;
+    color:#FFFFFF;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.room-card-div button {
+    margin-top:1rem;
+    background-color: #020100;
+    width: 12rem;
+    font-size: 1.5rem;
+    border-radius: 12px;
+    text-decoration: none;
+}
+.room-card-div button a {
+    color:#FFFFFF;
+}
+
+.room-card-div button:hover{
+    background-color: #FFFFFF ;
+
+}
+.room-card-div button:hover a{
+    background-color: #FFFFFF ;
+    color:#FF4700 !important;
+}
+
+@media screen and (max-width:1000px){
+    
+    
+        .room-card-div button {
+           
+            width: 9rem;
+            font-size: 1.2rem;
+
+        }
+
+}

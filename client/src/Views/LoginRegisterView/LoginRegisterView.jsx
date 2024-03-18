@@ -78,26 +78,27 @@ const LoginRegisterView = () => {
     const [username, setUsername] = useState('');
     const [LoginOk, setLogin] = useState(false);
 
-    const store = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await fetch('http://localhost:8000/auth/login',
-            {method:"POST", headers: {'Content-Type': 'application/json'            },
-            body: JSON.stringify({  password: password, username: username })});
-            const data = await response.json();
-            console.log(data);
-            const user = data.token;
-            console.log(user)
-            if (user) {
-                setLogin(true);
-                alert('Bienvenido ' + username);
-            } else {
-                alert('Las credenciales no son válidas');
-            }
-        } catch (error) {
-            console.error('Error al verificar las credenciales', error);
+const store = async (e) => {
+    e.preventDefault();
+    try {
+        const response = await fetch('http://localhost:8000/auth/login', {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ password: password, username: username })
+        });
+        const data = await response.json();
+        const userRole = data.role; // Suponiendo que el rol se devuelve en la respuesta
+
+        if (userRole === 'admin') {
+            history.push('/differentpath'); // Redirigir a una página para administradores
+        } else {
+            setLogin(true);
+            alert('Bienvenido ' + username);
         }
+    } catch (error) {
+        console.error('Error al verificar las credenciales', error);
     }
+}
 
     //FIN UNIR CON BACK LOGIN
     //BACK CON RESGITER
@@ -140,7 +141,7 @@ const LoginRegisterView = () => {
 
 
     return (
-        <main>
+        <main className='main-login-register'>
             <section className="section-forms">
                 <article className="article-changes-forms">
                     <div className="article-changes-forms-login">
@@ -168,9 +169,9 @@ const LoginRegisterView = () => {
                             <button type="submit">Entrar</button>
                         </form>
                     ) : (
-                        <div>
-                            <p className="text-send">Bienvenido</p>
-                            <Link to="/" className="btn-form">Volver a inicio</Link>
+                        <div className='form-div-respond'>
+                            <p className="text-send">Bienvenido</p><br/>
+                            <button><Link to="/ReservationView" className="btn-form">Gestiona tus salas</Link></button>
                         </div>
                     )}
 
@@ -190,9 +191,9 @@ const LoginRegisterView = () => {
                             <button type="submit">Regístrarse</button>
                         </form>
                     ) : (
-                        <div>
+                        <div className='form-div-respond'>
                             <p className="text-send">Registro completado</p>
-                            <Link to="/" className="btn-form">Volver a inicio</Link>
+                            <Link id="btn-change-login" className="btn-form">Volver a inicio</Link>
                         </div>
                     )}
                 </article>
