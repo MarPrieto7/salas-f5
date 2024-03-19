@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './LoginRegisterView.css';
 import {Link} from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 
 
 const LoginRegisterView = () => {
@@ -73,59 +73,60 @@ const LoginRegisterView = () => {
         };
     }, []);
 
-    //UNIR CON EL BACK LOGIN
+    const navigate = useNavigate();
+
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
     const [LoginOk, setLogin] = useState(false);
-
-const store = async (e) => {
-    e.preventDefault();
-    try {
-        const response = await fetch('http://localhost:8000/auth/login', {
-            method: "POST",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ password: password, username: username })
-        });
-        const data = await response.json();
-        const userRole = data.role; // Suponiendo que el rol se devuelve en la respuesta
-
-        if (userRole === 'admin') {
-            history.push('/differentpath'); // Redirigir a una página para administradores
-        } else {
-            setLogin(true);
-            alert('Bienvenido ' + username);
-        }
-    } catch (error) {
-        console.error('Error al verificar las credenciales', error);
-    }
-}
-
-    //FIN UNIR CON BACK LOGIN
-    //BACK CON RESGITER
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
     const [RegisterOk, setRegistrado] = useState(false);
     const [terminosAceptados, setTerminosAceptados] = useState(false);
+
+    const store = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch('http://localhost:8000/auth/login', {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ password: password, username: username })
+            });
+            const data = await response.json();
+    
+            if (response.ok) {
+                if (data.token) {
+                    const isAdmin = data.role === 'admin'; // Verificar si el usuario es administrador
+    
+                    if (isAdmin) {
+                        navigate('/differentpath');
+                    } else {
+                        setLogin(true);
+                        alert('Bienvenido ' + username);
+                    }
+                } else {
+                    alert('Credenciales incorrectas. Por favor, verifica tus datos.');
+                }
+            } else {
+                alert('Error al iniciar sesión. Por favor, inténtalo de nuevo.');
+            }
+        } catch (error) {
+            console.error('Error al verificar las credenciales', error);
+        }
+    }
 
     const store2 = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:8000/auth/register', 
-            {
+            const response = await fetch('http://localhost:8000/auth/register', {
                 method: "POST",
-                headers: {
-                    'Content-Type': 'application/json' },
-                
-                body: JSON.stringify({ name: name, email: email, password: password, username: username })});
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: name, email: email, password: password, username: username })
+            });
 
-            const data = response.json();
-            console.log(data);
-            const user = data.token;//no segura de que esto sea aqui
-            console.log(user)
             if (response.ok) {
                 setRegistrado(true);
                 alert('Registro exitoso');
-
+                navigate('/LoginRegisterView');
             } else {
                 alert('Error al registrar. Por favor, inténtalo de nuevo.');
             }
@@ -193,7 +194,7 @@ const store = async (e) => {
                     ) : (
                         <div className='form-div-respond'>
                             <p className="text-send">Registro completado</p>
-                            <Link id="btn-change-login" className="btn-form">Volver a inicio</Link>
+                            <Link id="btn-change-login" className="btn-form">Inicia sesión</Link>
                         </div>
                     )}
                 </article>
