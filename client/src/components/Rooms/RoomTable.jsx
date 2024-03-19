@@ -2,7 +2,7 @@ import "./RoomTable.css";
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-function RoomTable() {
+function EditRooms() {
 
     //Función para pintar la tabla
     const [datos, setDatos] = useState([]);
@@ -62,6 +62,38 @@ function RoomTable() {
         setIsFormVisible(!isFormVisible);
     };
 
+
+//eliminar una sala
+const deleteBlog = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:8000/rooms/${id}`, {
+        method: 'DELETE',
+      });
+  
+      if (!response.ok) {
+        throw new Error('Error al eliminar la sala');
+      }
+  
+      // Actualizar la lista de salas después de eliminar
+      const updatedData = await fetchData();
+      setDatos(updatedData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const fetchData = async () => {
+    try {
+        const response = await fetch("http://localhost:8000/rooms/room");
+        if (!response.ok) {
+            throw new Error('Error al obtener los datos');
+        }
+        const data = await response.json();
+        setDatos(data);
+    } catch (error) {
+        console.error(error);
+    }
+};
+
     return (
         <>
 
@@ -100,14 +132,14 @@ function RoomTable() {
                             </thead>
                             <tbody>
                                 {datos.map((id) => (
-                                    <tr key={id.id}>
+                                    <tr key={id._id}>
                                         <td> {id.name} </td>
                                         <td className='table-responsive'> {id.size} </td>
                                         <td className='table-responsive'> {id.description} </td>
                                         <td className='table-responsive'> <a href={id.image}> Link de la imagen</a> </td>
-                                        <td>
-                                            <Link to={`/edit/${id.id}`} className='btn btn-info'><i className="fas fa-edit"></i></Link>
-                                            {/* <button onClick={ ()=> deleteBlog(id.id)} className='btn btn-danger'><i className="fas fa-trash-alt"></i></button> */}
+                                        <td className="btn-table">
+                                            <Link to={`/EditRooms/${id._id}`} className='btn btn-info'><i className="fas fa-edit"></i></Link>
+                                            <button onClick={ ()=> deleteBlog(id._id)} className='btn btn-danger'><i className="fas fa-trash-alt"></i></button>
                                         </td>
 
 
@@ -127,4 +159,5 @@ function RoomTable() {
     )
 
 }
-export default RoomTable;
+export default EditRooms;
+

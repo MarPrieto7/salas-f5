@@ -6,54 +6,66 @@ import jwt from "jsonwebtoken";
 export const Register = async (req, res) => {
     const { name, username, password, email, status } = req.body;
     try {
-        const existingUsername = await User.findOne({ username: username })
+        const existingUsername = await User.findOne({ username: username });
         if (existingUsername) {
-            res.status(400).json({ message: "este Usuario ya existe" })
+            return res.status(400).json({ message: "Este usuario ya existe" });
         }
-        const salt = await bcrypt.genSalt(10)
-        const hashPassword =  bcrypt.hash(password, salt)
 
-        const credentials = new User({
+        const salt = await bcrypt.genSalt(10);
+        const hashPassword = await bcrypt.hash(password, salt);
+
+        const newUser = new User({
             name: name,
             username: username,
             password: hashPassword,
-            email: email
-        })
-        await credentials.save()
-        res.status(200).json({ message: "registro creado" })
+            email: email,
+            status: "user"
+        });
+
+        await newUser.save();
+        res.status(200).json({ message: "Registro creado exitosamente" });
     } catch (error) {
-        res.status(500).json({ message: " ha habido algun error" })
+        res.status(500).json({ message: "Ha ocurrido un error al registrar el usuario", error });
     }
 }
 
+
 export const Login = async (req, res) => {
-    const { username, password } = req.body
     try {
-        const user = await User.findOne({ username: username })
-        if (!user) {
-            return res.status(400).json({ message: " usuario invalido" , error})
+      const { username, password } = req.body;
+      const existingUser = await User.findOne({ username });
+  
+      if (!existingUser) {
+        return res.status(400).json({ message: "Usuario o contraseña incorrecta" });
+      } else {
+        const isPasswordCorrect = await bcrypt.compare(
+          password,
+          existingUser.password
+        );
+        if (!isPasswordCorrect) {
+          return res.status(400).json({ message: "Contraseña incorrecta" });
         } else {
-            const validPassword = bcrypt.compare(password, user.password)
-            if (!validPassword) {
-                return res.status(400).json({ message: "contraseña incorrecta" })
-            }
+          if (existingUser.active === 0) {
+            return res.status(400).json({
+              message: "El usuario no está validado,porfavor revisa tu email.",
+              active: existingUser.active,
+            });
+          }
         }
-        //Generamos un token tras el login
-        const token = jwt.sign({
-            username: username,
-            role: user.role
-
-        }, "codesecret")
-
-        await res.header({
-            //le damos un nombre a ese header
-            "auth": token
-        })
-        res.status(200).json({ message: "Bienvenido ${user.username}!", token })
+      }
+  
+      const token = jwt.sign(
+        { userId: existingUser._id, username: existingUser.name },
+        "codigosecreto" // Reemplaza con tu secreto para el token
+      );
+  
+  
+      res.status(200).json({ token, active: existingUser.active });
+      console.log(token);
     } catch (error) {
-        res.status(500).json({ message: "El login ha ido mal", error })
+      res.status(500).json({ message: "Error al iniciar sesión" });
     }
-}    
+  };
 
 // Controlador para mostrar todos los registros
 export const getAllUsers = async (req, res) => {
