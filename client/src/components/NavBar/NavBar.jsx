@@ -112,7 +112,7 @@ useEffect(() => {
                                 <div className="opcion">BARCELONA</div>
                             </div>
                         </li>
-                        <li><NavLink to="/WishList" onClick={handleNavLinkClick}>C O N T A C T O</NavLink></li>
+                        <li><NavLink to="/ContactView" onClick={handleNavLinkClick}>C O N T A C T O</NavLink></li>
                         <li><a href="/LoginRegisterView"> <i className="fas fa-user"></i> </a></li>
                     </ul>
                 </section>
