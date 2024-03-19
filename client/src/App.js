@@ -9,6 +9,8 @@ import RoomUnicView from './Views/RoomUnicView/RoomUnicView.jsx';
 import RoomView from './Views/RoomView/RoomView.jsx';
 import UserReservationView from './Views/UserReservationView/UserReservationView.jsx';
 import ContactView from './Views/ContactView/ContactView.jsx'
+import EditRooms from './Views/EditRooms/EditRooms.jsx'
+
 
 
 function App() {
@@ -28,6 +30,7 @@ function App() {
           <Route path="/RoomView" element={<RoomView />} />
           <Route path="/UserReservationView" element={<UserReservationView />} />
           <Route path="/ContactView" element={<ContactView />} />
+          <Route path="/EditRooms/:id" element={<EditRooms />} />
         </Routes>
         <Footer />
       </BrowserRouter>
