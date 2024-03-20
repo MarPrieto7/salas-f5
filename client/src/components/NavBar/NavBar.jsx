@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from 'react-router-dom';
 import './NavBar.css'
+import logo from '../../assets/image/logo.png'
 
 function NavBar() {
     const [acordeonOpen, setAcordeonOpen] = useState(null);
     const [menuOpen, setMenuOpen] = useState(false);
+    const [isNavSticky, setIsNavSticky] = useState(false);
 
 
     const handleAcordeonHover = (index) => {
@@ -34,19 +36,29 @@ const handleResize = () => {
     }
 };
 
+const handleScroll = () => {
+    if (window.scrollY > 0) {
+        setIsNavSticky(true);
+    } else {
+        setIsNavSticky(false);
+    }
+};
+
 useEffect(() => {
     // Agregar un event listener para el cambio de tamaño de la ventana
     window.addEventListener("resize", handleResize);
+    window.addEventListener("scroll", handleScroll);
 
     // Limpiar el event listener al desmontar el componente
     return () => {
         window.removeEventListener("resize", handleResize);
+        window.removeEventListener("scroll", handleScroll);
     };
 }, []);
 
 
     return (
-        <header className="header">
+        <header className={`header ${isNavSticky ? 'sticky' : ''}`}>
             <section className="nav-bar-section">
                 <article className="languages">
                     <p>ES</p>
@@ -55,14 +67,14 @@ useEffect(() => {
                 <article className="rrss-logos">
                     <a href="#"> <i className="fa-brands fa-linkedin-in"></i> </a>
                     <a href="#"> <i className="fa-brands fa-twitter"></i> </a>
-                    <a href="#"> <i className="fa-brands fa-instagram"></i></a>
+                    <a href="#"> <i className="fa-brands fa-instagram"></i> </a>
                     <a href="#"> <i className="fa-brands fa-youtube"></i> </a>
                     <a href="#"> <i className="fa-brands fa-facebook"></i> </a>
                 </article>
             </section>
-            <nav className="nav-bar">
+            <nav className={`nav-bar ${isNavSticky ? 'sticky' : ''}`}>
                 <figure className="logo">
-                    <NavLink to="/"><img className="nav-bar-logo" src="https://cdn.discordapp.com/attachments/1213083227359543316/1213083365931225098/factoria-logo.png?ex=65f42eec&is=65e1b9ec&hm=602cc61cb3d8457c4abdf18cbd22a75f77ccf8f4984dce42feed0697dd3ba6e2&" alt="logo factoria" /></NavLink>
+                    <NavLink to="/"><img className="nav-bar-logo" src={logo} alt="logo factoria" /></NavLink>
                 </figure>
 
                 <figure>
@@ -109,6 +121,7 @@ useEffect(() => {
                             <div className="acordeon">
                                 <div className="opcion">MADRID</div>
                                 <div className="opcion">BARCELONA</div>
+                                <div className="opcion">LANGREO</div>
                             </div>
                         </li>
                         <li><NavLink to="/WishList" onClick={handleNavLinkClick}>C O N T A C T O</NavLink></li>
