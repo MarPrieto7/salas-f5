@@ -74,6 +74,30 @@ const ReservationView = () => {
     }
   };
   
+// Para pintar en la tabla de reservas
+  const [datos, setDatos] = useState([]);
+
+
+  useEffect(() => {
+      const fetchData = async () => {
+          try {
+              const response = await fetch("http://localhost:8000/rooms/reservation");
+              if (!response.ok) {
+                  throw new Error('Error al obtener los datos');
+              }
+              const data = await response.json();
+              setDatos(data);
+          } catch (error) {
+              console.error(error);
+          }
+      };
+
+
+      fetchData();
+  }, []);
+
+
+
 
   return (
     <main>
