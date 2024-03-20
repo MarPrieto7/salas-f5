@@ -10,6 +10,7 @@ const ReservationView = () => {
   const [selectedTime, setSelectedTime] = useState('');
   const [selectedRoom, setSelectedRoom] = useState('');
   const [roomName, setRoomName] = useState('');
+  const [reservationStatus, setReservationStatus] = useState('');
 
   const getDaysInMonth = (year, month) => {
     const date = new Date(year, month, 1);
@@ -39,43 +40,41 @@ const ReservationView = () => {
 
   const handleRoomChange = (event) => {
     setSelectedRoom(event.target.value);
-    // Aquí actualizamos el nombre de la sala seleccionada
     if (event.target.value === 'Sala Hedy Lamarr') {
-      setRoomName('¡Has reservado tu Sala Conferencias!');
+      setRoomName('Has seleccionado la Sala Conferencias');
     } else if (event.target.value === 'Sala Mary Lee') {
-      setRoomName('¡Has reservado tu Sala Mary Lee!');
+      setRoomName('Has seleccionado la Sala Mary Lee');
     } else if (event.target.value === 'Sala Only') {
-      setRoomName('¡Has reservado tu Sala Only!');
+      setRoomName('Has seleccionado la Sala Only');
     } else {
       setRoomName('');
     }
   };
 
-
-
-
-  const [datos, setDatos] = useState([]);
-
-  useEffect(() => {
-      const fetchData = async () => {
-          try {
-              const response = await fetch("http://localhost:8000/rooms/reservation");
-              if (!response.ok) {
-                  throw new Error('Error al obtener los datos');
-              }
-              const data = await response.json();
-              setDatos(data);
-          } catch (error) {
-              console.error(error);
-          }
-      };
-
-      fetchData();
-  }, []);
-
-
-
+  const handleReservationSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('http://localhost:8000/reserve', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({    
+          room: selectedRoom,
+          hour: selectedTime,
+          date: selectedDate, 
+          user: 'MarUser'  })
+      });
+      if (response.ok) {
+        setReservationStatus('¡Reserva exitosa!');
+      } else {
+        throw new Error('Error al crear reserva');
+      }
+    } catch (error) {
+      console.error('Error al crear reserva:', error);
+      setReservationStatus('Error al crear reserva');
+    }
+  };
   
+
   return (
     <main>
       <h1 className='title-main'>Reserva tu Sala</h1><br></br>
@@ -88,8 +87,7 @@ const ReservationView = () => {
             <option value="Sala Mary Lee">Sala Mary Lee</option>
             <option value="Sala Only">Sala Only</option>
           </select>
-
-            <div style={{ marginBottom: '20px' }}></div>
+          <div style={{ marginBottom: '20px' }}></div>
           <h2>Seleccione su hora</h2>
           <input 
             type="time" 
@@ -97,10 +95,11 @@ const ReservationView = () => {
             onChange={handleTimeChange} 
             min="09:00" 
             max="21:00" 
-          />        
-          </aside>
+          />
+          <button onClick={handleReservationSubmit}>Reservar</button>
+          <p>{reservationStatus}</p>
+        </aside>
         <article>
-
           <div style={{ marginBottom: '20px' }}></div>
           <header>
             <DatePicker
@@ -128,11 +127,10 @@ const ReservationView = () => {
               ))}
             </ul>
           </section>
-
           <div className="selected-details">
             {roomName && (
               <div>
-                <p>¡Has reservado tu {selectedRoom}!</p>
+                <p>{roomName}</p>
                 <p>{selectedDateString}</p>
                 <p>{selectedTime}</p>
               </div>

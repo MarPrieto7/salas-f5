@@ -15,6 +15,7 @@
   align-items: center;
   gap: 15px;
   max-height: 80%;
+  padding: 20px;
 }
 
 .footer-item {
@@ -43,6 +44,10 @@
   height: 7rem;
 }
 
+.footer-btn:hover{
+  transform: translatey(-10px);
+}
+
 .footer-img {
   height: 6rem;
 }
@@ -60,6 +65,7 @@
 .others-links {
   width: 100%;
   font-size: 13px;
+  padding: 30px;
 }
 
 .others-links ul {
