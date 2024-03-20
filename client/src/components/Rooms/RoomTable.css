@@ -88,6 +88,25 @@
   height: 0;
 }
 
+ .btn-danger{
+  color: #FFFFFF;
+    background-color: #FF4700;
+    border-radius: 5px;
+    padding: 8px;
+    border: none;
+}
+.btn-info{
+  color: #FFFFFF;
+    background-color: #FF4700;
+    border-radius: 5px;
+    padding: 6px;
+    border: none;
+}
+.btn-table{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
 
  
   @media screen and (max-width: 500px) {

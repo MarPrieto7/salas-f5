@@ -27,9 +27,7 @@ function AdminReservationView() {
     return (
         <main>
             <section className='section-1'>
-                <p> esta funcionando
-                    
-                </p>
+                
                 <table className='table'>
                     <thead className='table-primary'>
                     <tr>
@@ -47,7 +45,7 @@ function AdminReservationView() {
                     <tbody>
                     {datos.map((id) => (
                     <tr key={id.id}>
-                        <td>  {id.name} </td>
+                        <td>  {id.username} </td>
                         <td className='table-responsive'> {id.room} </td>
                         <td className='table-responsive'> {id.date} </td>
                         <td className='table-responsive'> {id.hour}  </td>
