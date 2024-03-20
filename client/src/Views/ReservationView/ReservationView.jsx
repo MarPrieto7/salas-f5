@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ReservationView.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+
 
 const ReservationView = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -50,6 +51,31 @@ const ReservationView = () => {
     }
   };
 
+
+
+
+  const [datos, setDatos] = useState([]);
+
+  useEffect(() => {
+      const fetchData = async () => {
+          try {
+              const response = await fetch("http://localhost:8000/rooms/reservation");
+              if (!response.ok) {
+                  throw new Error('Error al obtener los datos');
+              }
+              const data = await response.json();
+              setDatos(data);
+          } catch (error) {
+              console.error(error);
+          }
+      };
+
+      fetchData();
+  }, []);
+
+
+
+  
   return (
     <main>
       <h1 className='title-main'>Reserva tu Sala</h1><br></br>
@@ -62,7 +88,7 @@ const ReservationView = () => {
             <option value="Sala Mary Lee">Sala Mary Lee</option>
             <option value="Sala Only">Sala Only</option>
           </select>
-          {/* Añadir espacio entre los títulos */}
+
             <div style={{ marginBottom: '20px' }}></div>
           <h2>Seleccione su hora</h2>
           <input 
@@ -74,7 +100,7 @@ const ReservationView = () => {
           />        
           </aside>
         <article>
-          {/* Añadir espacio entre los títulos */}
+
           <div style={{ marginBottom: '20px' }}></div>
           <header>
             <DatePicker
@@ -113,6 +139,33 @@ const ReservationView = () => {
             )}
           </div>
         </article>
+      </section>
+
+      <section>
+        <table className='table'>
+                  <thead className='table-primary'>
+                    <tr>
+                        <th className='table-responsive'> Sala
+                        </th>
+                        <th className='table-responsive'> Fecha
+                        </th>
+                        <th className='table-responsive'> Horas
+                        </th>
+                        <th className='table-responsive'>Editar</th>
+                    </tr>
+                  </thead>
+                    <tbody>
+                    {datos.map((id) => (
+                    <tr key={id.id}>
+                        <td className='table-responsive'> {id.room} </td>
+                        <td className='table-responsive'> {id.date} </td>
+                        <td className='table-responsive'> {id.hour}  </td>
+                        <td className='table-responsive'>  <i className="fas fa-edit"></i> </td>
+                    </tr>
+                    ))}
+                    </tbody>
+        </table>
+
       </section>
     </main>
   );

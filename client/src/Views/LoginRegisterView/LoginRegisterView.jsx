@@ -71,6 +71,8 @@ const LoginRegisterView = () => {
             document.getElementById("btn-change-login").removeEventListener("click", iniciarSesion);
             document.getElementById("btn-change-signup").removeEventListener("click", register);
         };
+
+
     }, []);
 
     const navigate = useNavigate();
@@ -82,6 +84,12 @@ const LoginRegisterView = () => {
     const [email, setEmail] = useState('');
     const [RegisterOk, setRegistrado] = useState(false);
     const [terminosAceptados, setTerminosAceptados] = useState(false);
+    const [role, setRole] = useState('');
+
+ 
+
+
+
 
     const store = async (e) => {
         e.preventDefault();
@@ -89,23 +97,39 @@ const LoginRegisterView = () => {
             const response = await fetch('http://localhost:8000/auth/login', {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ password: password, username: username })
+                body: JSON.stringify({ password: password, username: username, role: role})
             });
             const data = await response.json();
-    
+
+            
+
             if (response.ok) {
                 if (data.token) {
-                    const isAdmin = data.role === 'admin'; // Verificar si el usuario es administrador
-    
-                    if (isAdmin) {
-                        navigate('/differentpath');
-                    } else {
-                        setLogin(true);
-                        alert('Bienvenido ' + username);
-                    }
+                    setRole(data.role); // Establecer el role devuelto por el backend
+                    setLogin(true);
+                    alert('Bienvenido ' + username);
                 } else {
                     alert('Credenciales incorrectas. Por favor, verifica tus datos.');
                 }
+
+                console.log(data);
+
+
+    
+            // if (response.ok) {
+            //     if (data.token) {
+            //         const isAdmin = data.role === 'admin'; // Verificar si el usuario es administrador
+    
+            //         if (isAdmin) {
+            //             navigate('/differentpath');
+            //         } else {
+            //             localStorage.setItem('user', JSON.stringify({ username: username, role: role}));
+            //             setLogin(true);
+            //             alert('Bienvenido ' + username);
+            //         }
+            //     } else {
+            //         alert('Credenciales incorrectas. Por favor, verifica tus datos.');
+            //     }
             } else {
                 alert('Error al iniciar sesión. Por favor, inténtalo de nuevo.');
             }
@@ -113,6 +137,8 @@ const LoginRegisterView = () => {
             console.error('Error al verificar las credenciales', error);
         }
     }
+
+
 
     const store2 = async (e) => {
         e.preventDefault();
@@ -171,8 +197,10 @@ const LoginRegisterView = () => {
                         </form>
                     ) : (
                         <div className='form-div-respond'>
-                            <p className="text-send">Bienvenido</p><br/>
-                            <button><Link to="/ReservationView" className="btn-form">Gestiona tus salas</Link></button>
+                            <p className="text-send">Bienvenido. Gestiona tus salas</p><br/>
+                            <button><Link to="/ReservationView" className="btn-form">Usuario</Link></button>
+                            <button><Link to="/ReservationView" className="btn-form">Profesor</Link></button>
+                            <button><Link to="/differentpath" className="btn-form">Admin</Link></button>
                         </div>
                     )}
 
@@ -189,7 +217,7 @@ const LoginRegisterView = () => {
                                 <input className="form-check-input" type="checkbox" checked={terminosAceptados} onChange={handleTerminosAceptados} />
                                 <label>Acepta los terminos y condiciones de privacidad</label>
                             </div>
-                            <button type="submit">Regístrarse</button>
+                            <button type="submit">Registrarse</button>
                         </form>
                     ) : (
                         <div className='form-div-respond'>
