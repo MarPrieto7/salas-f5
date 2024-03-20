@@ -1,6 +1,7 @@
 // ContactForm.js
 
 import React, { useState } from 'react';
+import contactImage from '../../assets/image/imagen-contacto-factoria.png'
 import './ContactView.css';
 
 const ContactForm = () => {
@@ -75,14 +76,15 @@ const ContactForm = () => {
 
   return (
     <main className="contact-container">
-      <img src="contactImage" alt="Imagen de contacto" />
+      <img src={contactImage} alt="Imagen de contacto" />
 
-      <main className="orange-rectangle">
+      <section className="orange-rectangle">
         <h2>¡Queremos conocerte!</h2>
-      </main>
+      </section>
 
-      <aside className="content-wrap">
-        <main className="ubicacion">
+      <section className="content-wrap">
+        
+        <aside className="ubicacion">
           <div className="encabezado-ubicacion">
             <h3>¡Aquí estamos!</h3>
           </div>
@@ -104,14 +106,22 @@ const ContactForm = () => {
             <br></br>
             asturias@factoriaf5.org
           </p>
-          <p>
+          <p className= "siguenos-contactview">
             Síguenos en:
             <br></br>
-            <img></img>
+          
           </p>
-        </main>
 
-        <main className="contact-form-container">
+          <article className="rrss-logos">
+                    <a href="#"> <i className="fa-brands fa-linkedin-in"></i> </a>
+                    <a href="#"> <i className="fa-brands fa-twitter"></i> </a>
+                    <a href="#"> <i className="fa-brands fa-instagram"></i></a>
+                    <a href="#"> <i className="fa-brands fa-youtube"></i> </a>
+                    <a href="#"> <i className="fa-brands fa-facebook"></i> </a>
+                </article>
+        </aside>
+
+        <article className="contact-form-container">
           <p className="comentario-formulario">
             Si necesitas más información, rellena el siguiente formulario de contacto y te responderemos lo antes posible.
           </p>
@@ -195,7 +205,7 @@ const ContactForm = () => {
                   checked={formData.confirmacion}
                   onChange={(e) => setFormData({ ...formData, confirmacion: e.target.checked })}
                 />
-                <label htmlFor="confirmacion">He leído y acepto la Política de privacidad.</label>
+                <label className= "confirmacion-contactView" htmlFor="confirmacion">He leído y acepto la Política de privacidad.</label>
               </div>
 
               <section className="boton-contacto-container">
@@ -205,8 +215,9 @@ const ContactForm = () => {
               </section>
             </article>
           </form>
-        </main>
-      </aside>
+
+        </article>
+      </section>
     </main>
   );
 };

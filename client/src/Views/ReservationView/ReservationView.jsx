@@ -21,16 +21,22 @@ const ReservationView = () => {
     return days;
   };
 
-  const daysInMonth = getDaysInMonth(selectedDate.getFullYear(), selectedDate.getMonth());
-
   const formatDate = (date) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return date.toLocaleDateString('es-ES', options);
   };
 
   const handleDateChange = (date) => {
-    setSelectedDate(date);
-    setSelectedDateString(formatDate(date));
+    const currentDate = new Date();
+    const futureDate = new Date();
+    futureDate.setMonth(futureDate.getMonth() + 4);
+    
+    if (date >= currentDate && date <= futureDate) {
+      setSelectedDate(date);
+      setSelectedDateString(formatDate(date));
+    } else {
+      alert('Solo puedes reservar para fechas de hoy hasta 4 meses en adelante');
+    }
   };
 
   const handleTimeChange = (event) => {
@@ -52,6 +58,8 @@ const ReservationView = () => {
 
   const handleReservationSubmit = async (e) => {
     e.preventDefault();
+    
+    // Realizar la solicitud de reserva al servidor
     try {
       const response = await fetch('http://localhost:8000/reserve', {
         method: 'POST',
@@ -60,8 +68,10 @@ const ReservationView = () => {
           room: selectedRoom,
           hour: selectedTime,
           date: selectedDate, 
-          user: 'MarUser'  })
+          user: 'MarUser'  
+        })
       });
+      
       if (response.ok) {
         setReservationStatus('¡Reserva exitosa!');
       } else {
@@ -72,7 +82,8 @@ const ReservationView = () => {
       setReservationStatus('Error al crear reserva');
     }
   };
-  
+
+  const daysInMonth = getDaysInMonth(selectedDate.getFullYear(), selectedDate.getMonth());
 
   return (
     <main>

@@ -136,8 +136,8 @@ min-height:auto;
     outline: none;
 }
 .form-div-respond{
-    width: 100%;
-    padding: 80px 20px;
+    width: 90%;
+    padding: 80px 15px;
     background: white;
     position: absolute;
     border-radius: 20px;
@@ -145,7 +145,35 @@ min-height:auto;
     align-items: center;
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
+
+.form-div-respond button {
+    display: flex;
+    margin-top: 10px; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    border: none; 
+    cursor: pointer; 
+}
+
+.form-div-respond button:nth-of-type(1) {
+    background-color: #FF4700;
+    color: white; 
+}
+
+
+.form-div-respond button:nth-of-type(2) {
+    background-color: #FF4700;
+    color: white; 
+}
+
+
+.form-div-respond button:nth-of-type(3) {
+    background-color: #ebb8a4;
+    color: white; 
+}
+
 
 .formulario__login{
     opacity: 1;

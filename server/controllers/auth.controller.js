@@ -54,17 +54,29 @@ export const Login = async (req, res) => {
         }
       }
   
+
+
+
       const token = jwt.sign(
-        { userId: existingUser._id, username: existingUser.name },
+        { userId: existingUser._id, username: existingUser.name, role: existingUser.role }, // Incluir el role en el token
         "codigosecreto" // Reemplaza con tu secreto para el token
-      );
+    );
+
+    res.status(200).json({ token, role: existingUser.role }); // Devolver el role junto con el token
+} catch (error) {
+    res.status(500).json({ message: "Error al iniciar sesión" });
+}  
+    //   const token = jwt.sign(
+    //     { userId: existingUser._id, username: existingUser.name },
+    //     "codigosecreto" // Reemplaza con tu secreto para el token
+    //   );
   
   
-      res.status(200).json({ token, active: existingUser.active });
-      console.log(token);
-    } catch (error) {
-      res.status(500).json({ message: "Error al iniciar sesión" });
-    }
+    //   res.status(200).json({ token, active: existingUser.active });
+    //   console.log(token);
+    // } catch (error) {
+    //   res.status(500).json({ message: "Error al iniciar sesión" });
+    // }
   };
 
 // Controlador para mostrar todos los registros
