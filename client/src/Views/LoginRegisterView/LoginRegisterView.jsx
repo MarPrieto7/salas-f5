@@ -96,48 +96,6 @@ const LoginRegisterView = () => {
     const [terminosAceptados, setTerminosAceptados] = useState(false);
 
 
-    // const store = async (e) => {
-    //     e.preventDefault();
-    //     try {
-    //         const response = await fetch('http://localhost:8000/auth/login', {
-    //             method: "POST",
-    //             headers: { 'Content-Type': 'application/json' },
-    //             body: JSON.stringify({ password: password, username: username })
-    //         });
-    //         const data = await response.json();
-   
-    //         if (response.ok) {
-    //             if (data.token) {
-    //                 const isAdmin = data.role === 'admin'; // Verificar si el usuario es administrador
-   
-    //                 if (isAdmin) {
-    //                     navigate('/differentpath');
-    //                 } else {
-    //                     setLogin(true);
-    //                     alert('Bienvenido ' + username);
-    //                 }
-    //             } else {
-    //                 alert('Credenciales incorrectas. Por favor, verifica tus datos.');
-    //             }
-    //         } else {
-    //             alert('Error al iniciar sesión. Por favor, inténtalo de nuevo.');
-    //         }
-    //     } catch (error) {
-    //         console.error('Error al verificar las credenciales', error);
-    //     }
-    // }
-
-
-
-
-
-
-
-
-
-
-
-
     const store = async (e) => {
         e.preventDefault();
         try {
@@ -150,7 +108,9 @@ const LoginRegisterView = () => {
    
             if (response.ok) {
                 if (data.token) {
-                    const isAdmin = data.role === 'admin'; // Verificar si el usuario es administrador
+                    const isAdmin = data.role === 'admin'; 
+                    const isUser = data.role === 'user';
+                    const isProfessor = data.role === 'professor';
    
                     // Almacenar información del usuario en localStorage
                     localStorage.setItem('username', username);
@@ -159,10 +119,12 @@ const LoginRegisterView = () => {
                     if (isAdmin) {
                         // Redirigir a la página correspondiente al rol
                         navigate('/differentpath');
-                    } else {
-                        setLogin(true);
-                        alert('Bienvenido ' + username);
-                    }
+                    } else if (isUser) {
+                        navigate('/UserReservationView');
+                    } 
+                      else {
+                            navigate('/ReservationView');
+                        }
                 } else {
                     alert('Credenciales incorrectas. Por favor, verifica tus datos.');
                 }
@@ -173,24 +135,6 @@ const LoginRegisterView = () => {
             console.error('Error al verificar las credenciales', error);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     const store2 = async (e) => {

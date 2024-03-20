@@ -35,68 +35,6 @@ export const Register = async (req, res) => {
 }
 
 
-
-
-// export const Login = async (req, res) => {
-//     try {
-//       const { username, password } = req.body;
-//       const existingUser = await User.findOne({ username });
- 
-//       if (!existingUser) {
-//         return res.status(400).json({ message: "Usuario o contraseña incorrecta" });
-//       } else {
-//         const isPasswordCorrect = await bcrypt.compare(
-//           password,
-//           existingUser.password
-//         );
-//         if (!isPasswordCorrect) {
-//           return res.status(400).json({ message: "Contraseña incorrecta" });
-//         } else {
-//           if (existingUser.active === 0) {
-//             return res.status(400).json({
-//               message: "El usuario no está validado,porfavor revisa tu email.",
-//               active: existingUser.active,
-//             });
-//           }
-//         }
-//       }
- 
-//       const token = jwt.sign(
-//         { userId: existingUser._id, username: existingUser.name },
-//         "codigosecreto" // Reemplaza con tu secreto para el token
-//       );
- 
- 
-//       res.status(200).json({ token, active: existingUser.active });
-//       console.log(token);
-//     } catch (error) {
-//       res.status(500).json({ message: "Error al iniciar sesión" });
-//     }
-//   };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   export const Login = async (req, res) => {
     try {
         const { username, password } = req.body;
@@ -132,31 +70,6 @@ export const Register = async (req, res) => {
         res.status(500).json({ message: "Error al iniciar sesión" });
     }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
