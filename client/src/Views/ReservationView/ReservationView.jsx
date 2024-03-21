@@ -86,11 +86,31 @@ const ReservationView = () => {
 
   const daysInMonth = getDaysInMonth(selectedDate.getFullYear(), selectedDate.getMonth());
 
+
+  const [datos, setDatos] = useState([]);
+
+
+  useEffect(() => {
+      const fetchData = async () => {
+          try {
+              const response = await fetch("http://localhost:8000/reserve/");
+              if (!response.ok) {
+                  throw new Error('Error al obtener los datos');
+              }
+              const data = await response.json();
+              setDatos(data);
+          } catch (error) {
+              console.error(error);
+          }
+      };
+
+
+      fetchData();
+  }, []);
+
   return (
     <main>
-      <section className="main-section">
-      <h1 className='title-main'>Reservas</h1><br></br>
-      </section>
+      
       <h1 className='title-main'>Reserva tu Sala</h1><br></br>
       <section className="main-section">
         <aside>
@@ -152,8 +172,9 @@ const ReservationView = () => {
           </div>
         </article>
       </section>
-
-      <section>
+<h1 className='title-main'>Reservas</h1><br/><br/>
+      <section className="main-section">
+         
         <table className='table'>
                   <thead className='table-primary'>
                     <tr>

@@ -60,6 +60,7 @@ function NavBar() {
     const handleLogout = () => {
         // Limpiar la información de autenticación del usuario
         localStorage.removeItem('username');
+        localStorage.removeItem('role');
         setIsLoggedIn(false); // Actualizar el estado de loggeado
     };
 

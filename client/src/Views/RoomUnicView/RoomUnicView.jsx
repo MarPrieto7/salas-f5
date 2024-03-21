@@ -40,6 +40,7 @@ function RoomUnicView() {
     const handleReservation = () => {
         if (isLoggedIn) {
             // Si el usuario está loggeado, redirige a la ruta de reservas
+            
             window.location.href = '/ReservationView';
         } else {
             // Si el usuario no está loggeado, redirige a la ruta de inicio de sesión/registro
