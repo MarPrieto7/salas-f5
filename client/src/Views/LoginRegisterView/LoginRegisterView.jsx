@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 
+
+
 const LoginRegisterView = () => {
     useEffect(() => {
         const cajaTraseraLogin = document.querySelector(".article-changes-forms-login");
@@ -11,6 +13,7 @@ const LoginRegisterView = () => {
         const formularioLogin = document.querySelector(".formulario__login");
         const formularioRegister = document.querySelector(".formulario__register");
         const contenedorLoginRegister = document.querySelector(".contenedor__login-register");
+
 
         const anchoPage = () => {
             if (window.innerWidth > 850) {
@@ -25,6 +28,7 @@ const LoginRegisterView = () => {
                 formularioRegister.style.display = "none";
             }
         }
+
 
         const iniciarSesion = () => {
             if (window.innerWidth > 850) {
@@ -41,6 +45,7 @@ const LoginRegisterView = () => {
                 cajaTraseraLogin.style.display = "none";
             }
         }
+
 
         const register = () => {
             if (window.innerWidth > 850) {
@@ -59,10 +64,15 @@ const LoginRegisterView = () => {
             }
         }
 
+
         window.addEventListener("resize", anchoPage);
+
 
         document.getElementById("btn-change-login").addEventListener("click", iniciarSesion);
         document.getElementById("btn-change-signup").addEventListener("click", register);
+
+
+
 
 
 
@@ -71,11 +81,11 @@ const LoginRegisterView = () => {
             document.getElementById("btn-change-login").removeEventListener("click", iniciarSesion);
             document.getElementById("btn-change-signup").removeEventListener("click", register);
         };
-
-
     }, []);
 
+
     const navigate = useNavigate();
+
 
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
@@ -84,11 +94,6 @@ const LoginRegisterView = () => {
     const [email, setEmail] = useState('');
     const [RegisterOk, setRegistrado] = useState(false);
     const [terminosAceptados, setTerminosAceptados] = useState(false);
-    const [role, setRole] = useState('');
-
- 
-
-
 
 
     const store = async (e) => {
@@ -97,39 +102,32 @@ const LoginRegisterView = () => {
             const response = await fetch('http://localhost:8000/auth/login', {
                 method: "POST",
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ password: password, username: username, role: role})
+                body: JSON.stringify({ password: password, username: username })
             });
             const data = await response.json();
-
-            
-
+   
             if (response.ok) {
                 if (data.token) {
-                    setRole(data.role); // Establecer el role devuelto por el backend
-                    setLogin(true);
-                    alert('Bienvenido ' + username);
+                    const isAdmin = data.role === 'admin'; 
+                    const isUser = data.role === 'user';
+                    const isProfessor = data.role === 'professor';
+   
+                    // Almacenar información del usuario en localStorage
+                    localStorage.setItem('username', username);
+                    localStorage.setItem('role', data.role);
+   
+                    if (isAdmin) {
+                        // Redirigir a la página correspondiente al rol
+                        navigate('/differentpath');
+                    } else if (isUser) {
+                        navigate('/UserReservationView');
+                    } 
+                      else {
+                            navigate('/ReservationView');
+                        }
                 } else {
                     alert('Credenciales incorrectas. Por favor, verifica tus datos.');
                 }
-
-                console.log(data);
-
-
-    
-            // if (response.ok) {
-            //     if (data.token) {
-            //         const isAdmin = data.role === 'admin'; // Verificar si el usuario es administrador
-    
-            //         if (isAdmin) {
-            //             navigate('/differentpath');
-            //         } else {
-            //             localStorage.setItem('user', JSON.stringify({ username: username, role: role}));
-            //             setLogin(true);
-            //             alert('Bienvenido ' + username);
-            //         }
-            //     } else {
-            //         alert('Credenciales incorrectas. Por favor, verifica tus datos.');
-            //     }
             } else {
                 alert('Error al iniciar sesión. Por favor, inténtalo de nuevo.');
             }
@@ -137,7 +135,6 @@ const LoginRegisterView = () => {
             console.error('Error al verificar las credenciales', error);
         }
     }
-
 
 
     const store2 = async (e) => {
@@ -148,6 +145,7 @@ const LoginRegisterView = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name: name, email: email, password: password, username: username })
             });
+
 
             if (response.ok) {
                 setRegistrado(true);
@@ -161,9 +159,13 @@ const LoginRegisterView = () => {
         }
     }
 
+
     const handleTerminosAceptados = () => {
         setTerminosAceptados(!terminosAceptados);
     }
+
+
+
 
 
 
@@ -183,6 +185,7 @@ const LoginRegisterView = () => {
                     </div>
                 </article>
 
+
                 {/* Formulario de Login y registro */}
                 <article className="contenedor__login-register">
                     {/* Login */}
@@ -197,12 +200,11 @@ const LoginRegisterView = () => {
                         </form>
                     ) : (
                         <div className='form-div-respond'>
-                            <p className="text-send">Bienvenido. Gestiona tus salas</p><br/>
-                            <button><Link to="/ReservationView" className="btn-form">Usuario</Link></button>
-                            <button><Link to="/ReservationView" className="btn-form">Profesor</Link></button>
-                            <button><Link to="/differentpath" className="btn-form">Admin</Link></button>
+                            <p className="text-send">Bienvenido</p><br/>
+                            <button><Link to="/ReservationView" className="btn-form">Gestiona tus salas</Link></button>
                         </div>
                     )}
+
 
                     {/* Register */}
                     {!RegisterOk ? (
@@ -217,7 +219,7 @@ const LoginRegisterView = () => {
                                 <input className="form-check-input" type="checkbox" checked={terminosAceptados} onChange={handleTerminosAceptados} />
                                 <label>Acepta los terminos y condiciones de privacidad</label>
                             </div>
-                            <button type="submit">Registrarse</button>
+                            <button type="submit">Regístrarse</button>
                         </form>
                     ) : (
                         <div className='form-div-respond'>
@@ -230,5 +232,6 @@ const LoginRegisterView = () => {
         </main>
     );
 }
+
 
 export default LoginRegisterView;

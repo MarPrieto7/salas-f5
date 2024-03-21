@@ -87,6 +87,9 @@ const ReservationView = () => {
 
   return (
     <main>
+      <section className="main-section">
+      <h1 className='title-main'>Reservas</h1><br></br>
+      </section>
       <h1 className='title-main'>Reserva tu Sala</h1><br></br>
       <section className="main-section">
         <aside>

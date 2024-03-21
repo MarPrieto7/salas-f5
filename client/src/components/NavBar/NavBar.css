@@ -3,6 +3,7 @@
   flex-direction: column;
   margin-top: 0;
   padding: 4rem;
+background-color: #fff;
 }
 
 .nav-bar-section {
@@ -19,6 +20,10 @@
   margin-right: 10px; 
   font-weight: bold;
   font-family: 'Poppins', sans-serif;
+}
+
+.iconos{
+  display: flex;
 }
 
 .rrss-logos {
@@ -265,3 +270,4 @@
 .list-open .menu a:hover { 
   color: #220f52;
 }
+

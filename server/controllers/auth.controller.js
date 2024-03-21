@@ -3,6 +3,8 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 
+
+
 export const Register = async (req, res) => {
     const { name, username, password, email, status } = req.body;
     try {
@@ -11,8 +13,10 @@ export const Register = async (req, res) => {
             return res.status(400).json({ message: "Este usuario ya existe" });
         }
 
+
         const salt = await bcrypt.genSalt(10);
         const hashPassword = await bcrypt.hash(password, salt);
+
 
         const newUser = new User({
             name: name,
@@ -22,6 +26,7 @@ export const Register = async (req, res) => {
             status: "user"
         });
 
+
         await newUser.save();
         res.status(200).json({ message: "Registro creado exitosamente" });
     } catch (error) {
@@ -30,54 +35,43 @@ export const Register = async (req, res) => {
 }
 
 
-export const Login = async (req, res) => {
+  export const Login = async (req, res) => {
     try {
-      const { username, password } = req.body;
-      const existingUser = await User.findOne({ username });
-  
-      if (!existingUser) {
-        return res.status(400).json({ message: "Usuario o contraseña incorrecta" });
-      } else {
-        const isPasswordCorrect = await bcrypt.compare(
-          password,
-          existingUser.password
-        );
-        if (!isPasswordCorrect) {
-          return res.status(400).json({ message: "Contraseña incorrecta" });
+        const { username, password } = req.body;
+        const existingUser = await User.findOne({ username });
+
+
+        if (!existingUser) {
+            return res.status(400).json({ message: "Usuario o contraseña incorrecta" });
         } else {
-          if (existingUser.active === 0) {
-            return res.status(400).json({
-              message: "El usuario no está validado,porfavor revisa tu email.",
-              active: existingUser.active,
-            });
-          }
+            const isPasswordCorrect = await bcrypt.compare(password, existingUser.password);
+            if (!isPasswordCorrect) {
+                return res.status(400).json({ message: "Contraseña incorrecta" });
+            } else {
+                if (existingUser.active === 0) {
+                    return res.status(400).json({
+                        message: "El usuario no está validado, por favor revisa tu email.",
+                        active: existingUser.active,
+                    });
+                }
+
+
+                // Obtener y devolver el rol del usuario junto con el token
+                const token = jwt.sign(
+                    { userId: existingUser._id, username: existingUser.name },
+                    "codigosecreto"
+                );
+
+
+                res.status(200).json({ token, role: existingUser.role });
+            }
         }
-      }
-  
+    } catch (error) {
+        res.status(500).json({ message: "Error al iniciar sesión" });
+    }
+};
 
 
-
-      const token = jwt.sign(
-        { userId: existingUser._id, username: existingUser.name, role: existingUser.role }, // Incluir el role en el token
-        "codigosecreto" // Reemplaza con tu secreto para el token
-    );
-
-    res.status(200).json({ token, role: existingUser.role }); // Devolver el role junto con el token
-} catch (error) {
-    res.status(500).json({ message: "Error al iniciar sesión" });
-}  
-    //   const token = jwt.sign(
-    //     { userId: existingUser._id, username: existingUser.name },
-    //     "codigosecreto" // Reemplaza con tu secreto para el token
-    //   );
-  
-  
-    //   res.status(200).json({ token, active: existingUser.active });
-    //   console.log(token);
-    // } catch (error) {
-    //   res.status(500).json({ message: "Error al iniciar sesión" });
-    // }
-  };
 
 // Controlador para mostrar todos los registros
 export const getAllUsers = async (req, res) => {
@@ -88,6 +82,7 @@ export const getAllUsers = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 }
+
 
 // Controlador para mostrar un único registro por su ID
 export const getUserById = async (req, res) => {
@@ -118,6 +113,7 @@ export const updateUserById = async (req, res) => {
         res.status(500).json({ message: "Hubo un error al actualizar el usuario", error });
     }
 }
+
 
 // Controlador para eliminar un registro por su ID
 export const deleteUserById = async (req, res) => {

@@ -1,41 +1,42 @@
+
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-function EditRoom() {
+function EditReserve() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [room, setRoom] = useState({});
+  const [reserve, setReserve] = useState({});
 
   useEffect(() => {
-    const fetchRoom = async () => {
+    const fetchReserve = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/rooms/room/${id}`);
+        const response = await fetch(`http://localhost:8000/reserve/${id}`);
         if (!response.ok) {
           throw new Error('Error al obtener los datos');
         }
         const data = await response.json();
-        setRoom(data);
+        setReserve(data);
       } catch (error) {
         console.error(error);
       }
     };
 
-    fetchRoom();
+    fetchReserve();
   }, [id]);
 
   const handleChange = (e) => {
-    setRoom({ ...room, [e.target.name]: e.target.value });
+    setReserve({ ...reserve, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:8000/rooms/${id}`, {
+      const response = await fetch(`http://localhost:8000/reserve/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(room),
+        body: JSON.stringify(reserve),
       });
       if (!response.ok) {
         throw new Error('Error al actualizar los datos');
@@ -49,46 +50,38 @@ function EditRoom() {
 
   return (
     <div>
-      <h2>Editar Sala</h2>
+      <h2>Editar Reserva</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          name="name"
-          value={room.name || ''}
+          name="user"
+          value={reserve.user || ''}
           onChange={handleChange}
-          placeholder="Nombre de la sala"
+          placeholder="Nombre del usuario"
         />
         <br />
         <input
           type="text"
-          name="size"
-          value={room.size || ''}
+          name="date"
+          value={reserve.date || ''}
           onChange={handleChange}
-          placeholder="Tamaño"
+          placeholder="Fecha"
         />
         <br />
         <input
           type="text"
-          name="description"
-          value={room.description || ''}
+          name="hour"
+          value={reserve.hour || ''}
           onChange={handleChange}
-          placeholder="Descripción de la sala"
+          placeholder="Hora"
         />
         <br />
         <input
           type="text"
-          name="image"
-          value={room.image || ''}
+          name="room"
+          value={reserve.room || ''}
           onChange={handleChange}
-          placeholder="Url de la imagen de la sala"
-        />
-        <br />
-        <input
-          type="text"
-          name="map"
-          value={room.map || ''}
-          onChange={handleChange}
-          placeholder="Url de la imagen del mapa"
+          placeholder="sala"
         />
         <br />
         <button type="submit" className="btn btn-primary">
@@ -99,4 +92,4 @@ function EditRoom() {
   );
 }
 
-export default EditRoom;
+export default EditReserve;
