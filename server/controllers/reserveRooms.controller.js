@@ -59,3 +59,30 @@ export const getAllReservations = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+//controlador para Actualizar reservas por Id
+
+
+export const updateReservationById = async (req, res) => {
+  const { id } = req.params;
+  const { user, date, hour, room } = req.body;
+
+  try {
+    let newReservation = {
+      user,
+      date,
+      hour,
+      room
+    };
+
+    const updatedReservation = await Reservation.findByIdAndUpdate(id, newReservation, { new: true });
+
+    if (!updatedReservation) {
+      return res.status(404).json({ message: "Reserva no encontrada" });
+    }
+
+    res.status(200).json({ message: "Reserva actualizada exitosamente", updatedReservation });
+  } catch (error) {
+    res.status(500).json({ message: "Hubo un error al actualizar la reserva", error });
+  }
+};
