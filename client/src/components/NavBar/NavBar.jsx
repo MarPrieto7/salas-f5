@@ -9,7 +9,7 @@ function NavBar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isNavSticky, setIsNavSticky] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Nuevo estado para controlar si el usuario está loggeado
-    
+
 
     useEffect(() => {
         // Aquí puedes implementar la lógica real para verificar si el usuario está loggeado, utilizando localStorage, cookies, o cualquier otra forma de autenticación que estés utilizando
@@ -83,17 +83,17 @@ function NavBar() {
                     <p>CA</p>
                 </article>
                 <section className="iconos">
-                  <article className="rrss-logos">
-                    <a href="#"> <i className="fa-brands fa-linkedin-in"></i> </a>
-                    <a href="#"> <i className="fa-brands fa-twitter"></i> </a>
-                    <a href="#"> <i className="fa-brands fa-instagram"></i> </a>
-                    <a href="#"> <i className="fa-brands fa-youtube"></i> </a>
-                    <a href="#"> <i className="fa-brands fa-facebook"></i> </a>
-                </article>
-                <article>   <DarkModeButton /> </article>  
+                    <article className="rrss-logos">
+                        <a href="#"> <i className="fa-brands fa-linkedin-in"></i> </a>
+                        <a href="#"> <i className="fa-brands fa-twitter"></i> </a>
+                        <a href="#"> <i className="fa-brands fa-instagram"></i> </a>
+                        <a href="#"> <i className="fa-brands fa-youtube"></i> </a>
+                        <a href="#"> <i className="fa-brands fa-facebook"></i> </a>
+                    </article>
+                    <article>   <DarkModeButton /> </article>
                 </section>
-                
-                
+
+
             </section>
             <nav className={`nav-bar ${isNavSticky ? 'sticky' : ''}`}>
                 <figure className="logo">
@@ -160,12 +160,12 @@ function NavBar() {
                             )}
                         </li>
                         <li>
-    {isLoggedIn && ( // Mostrar el ícono de logout solo cuando el usuario está loggeado
-        <NavLink to="/" onClick={handleLogout}> {/* Agregar la función de logout al hacer clic */}
-            <i className="fa-solid fa-arrow-right-from-bracket"></i>
-        </NavLink>
-    )}
-</li>
+                            {isLoggedIn && ( // Mostrar el ícono de logout solo cuando el usuario está loggeado
+                                <NavLink to="/" onClick={handleLogout}> {/* Agregar la función de logout al hacer clic */}
+                                    <i className="fa-solid fa-arrow-right-from-bracket"></i>
+                                </NavLink>
+                            )}
+                        </li>
                     </ul>
                 </section>
             </nav>
