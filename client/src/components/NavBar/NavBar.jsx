@@ -139,6 +139,11 @@ function NavBar() {
 
                         <li><NavLink to="/Contact" onClick={handleNavLinkClick}>B L O G</NavLink></li>
                         <li>
+                        <NavLink to="/ContactView" onClick={handleNavLinkClick}>
+                            CONTACTO
+                            </NavLink>
+                            </li>
+                        <li>
                             <NavLink to="/" onClick={handleNavLinkClick}>
                                 S E D E S
                             </NavLink>
