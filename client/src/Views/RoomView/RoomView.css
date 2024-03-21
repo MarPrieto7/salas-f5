@@ -27,6 +27,10 @@
     padding: 2rem;
 }
 
+.room-view-section-4 div{
+    margin-left: 2rem;
+}
+
 .room-view-section-4 figure{
     display: flex;
     flex-direction: row;

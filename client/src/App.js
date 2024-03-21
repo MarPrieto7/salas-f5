@@ -10,7 +10,7 @@ import RoomView from './Views/RoomView/RoomView.jsx';
 import UserReservationView from './Views/UserReservationView/UserReservationView.jsx';
 import ContactView from './Views/ContactView/ContactView.jsx'
 import EditRooms from './Views/EditRooms/EditRooms.jsx'
-
+import EditReserve from './Views/EditReserve/EditReserve.jsx'
 
 
 function App() {
@@ -31,6 +31,7 @@ function App() {
           <Route path="/UserReservationView" element={<UserReservationView />} />
           <Route path="/ContactView" element={<ContactView />} />
           <Route path="/EditRooms/:id" element={<EditRooms />} />
+          <Route path="/EditReserve/:id" element={<EditReserve />} />
         </Routes>
         <Footer />
       </BrowserRouter>

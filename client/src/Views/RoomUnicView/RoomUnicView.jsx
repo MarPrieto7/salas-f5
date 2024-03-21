@@ -5,6 +5,8 @@ import './RoomUnicView.css';
 function RoomUnicView() {
     const { id } = useParams();
     const [room, setRoom] = useState(null);
+    const [modalImage, setModalImage] = useState(null);
+    const [isLoggedIn, setIsLoggedIn] = useState(false); // Nuevo estado para controlar si el usuario está loggeado
 
     useEffect(() => {
         const fetchRoom = async () => {
@@ -23,16 +25,34 @@ function RoomUnicView() {
         fetchRoom();
     }, [id]);
 
+    // Simula la lógica para determinar si el usuario está loggeado
+    useEffect(() => {
+        // Aquí puedes implementar la lógica real para verificar si el usuario está loggeado, utilizando localStorage, cookies, o cualquier otra forma de autenticación que estés utilizando
+        const userLoggedIn = localStorage.getItem('username'); // Suponiendo que has almacenado el nombre de usuario en localStorage al loggearse
+
+        if (userLoggedIn) {
+            setIsLoggedIn(true);
+        } else {
+            setIsLoggedIn(false);
+        }
+    }, []);
+
     const handleReservation = () => {
-        // Simula la lógica para determinar si el usuario está registrado
-        const isUserLoggedIn = true; // Supongamos que el usuario está registrado
-        if (isUserLoggedIn) {
-            // Redirige a la ruta de calendario
+        if (isLoggedIn) {
+            // Si el usuario está loggeado, redirige a la ruta de reservas
             window.location.href = '/ReservationView';
         } else {
-            // Si el usuario no está registrado, puedes redirigirlo directamente a la ruta de inicio de sesión
+            // Si el usuario no está loggeado, redirige a la ruta de inicio de sesión/registro
             window.location.href = '/LoginRegisterView';
         }
+    };
+
+    const openModal = (image) => {
+        setModalImage(image);
+    };
+
+    const closeModal = () => {
+        setModalImage(null);
     };
 
     if (!room) {
@@ -46,17 +66,32 @@ function RoomUnicView() {
             </section>
             <section className="room-details">
                 <div className="room-images">
-                    <img src={room.image} alt="Imagen de la sala"/>
-                    <img src={room.map} alt="Mapa de la sala"/>
+                    <img 
+                        src={room.image} 
+                        alt="Imagen de la sala"
+                        onMouseEnter={() => openModal(room.image)}
+                        onMouseLeave={closeModal}
+                    />
+                    <img 
+                        src={room.map} 
+                        alt="Mapa de la sala"
+                        onMouseEnter={() => openModal(room.map)}
+                        onMouseLeave={closeModal}
+                    />
+                    {modalImage && (
+                        <div className="modal" onMouseLeave={closeModal}>
+                            <img src={modalImage} alt="Imagen modal" />
+                        </div>
+                    )}
                 </div>
-                <div className="room-info">
+                <section className="room-info">
                     <h2>Caracteristicas</h2>
                     <ul>
                         <li><p><strong>Tamaño:</strong> {room.size}</p></li>
                         <li><p><strong>Descripción:</strong> {room.description.join(', ')}</p></li>
                     </ul>
                     <button onClick={handleReservation}>Reserva ya!</button>
-                </div>
+                </section>
             </section>
         </main>
     );
