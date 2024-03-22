@@ -57,13 +57,9 @@ function RoomUnicView() {
                      navigate('/differentpath');
                 } else if (isUser) {
                        navigate('/UserReservationView');
-                } else if (isProfessor) {
-        
-                    navigate('/ProfessorReservationView');
-                } else {
-                 
-                    navigate('/DefaultReservationView');
-                }
+                } else  {
+                    navigate('/ReservationView');
+                } 
             } else {
         
                 window.location.href = '/LoginRegisterView';
