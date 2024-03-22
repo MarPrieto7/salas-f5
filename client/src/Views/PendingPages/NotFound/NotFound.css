@@ -1,0 +1,90 @@
+.message-container {
+    background-color: #FF4700;
+    width: 70rem;
+    height: 4rem;
+    margin-left: 1rem;
+    display: flex; /* Alinea los elementos en la misma línea horizontal */
+    align-items: center; /* Centra verticalmente */
+}
+
+.notification-message {
+    margin-left: 5rem;
+    font-size: 2.5rem;
+    font-weight: normal;
+    font-family: 'Poppins', sans-serif;
+    color: black;
+    text-align: center;
+}
+
+.error-container {
+    margin-left: 8rem;
+    width: 50rem;
+    display: flex; /* Alinea los elementos en la misma línea horizontal */
+    align-items: center; /* Centra verticalmente */
+}
+
+.error-404 {
+    color: grey;
+    font-size: 15rem;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    margin-left: 5rem;
+}
+
+.useful-links {
+    width: 20rem;
+    margin-left: 1rem;
+    display: flex; /* Alinea los elementos en la misma línea horizontal */
+    flex-direction: column; /* Apila los elementos verticalmente */
+}
+
+.list-of-links {
+    list-style-type: none; /* Quita los puntos de la lista */
+    padding: 0; /* Elimina el relleno predeterminado de la lista */
+    justify-content: center;
+    text-align: center;
+}
+
+.search-box {
+   
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 2rem;
+    box-sizing: border-box; /* Incluye el relleno en el ancho total */
+}
+
+.search-box h2 {
+    margin-bottom: 1rem; /* Añade espacio entre el título y el párrafo */
+}
+
+.search-box p {
+    margin-bottom: 1rem; /* Añade espacio entre el párrafo y el input */
+}
+
+.search-input-container {
+    display: flex; /* Alinea los elementos en la misma línea horizontal */
+}
+
+.search-input {
+    flex: 1; /* El input ocupa todo el espacio restante */
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 0.5rem; /* Añade espacio entre el input y el botón */
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}

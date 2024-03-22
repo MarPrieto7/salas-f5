@@ -23,7 +23,7 @@ function HomeView() {
                     08005 Barcelona<br/>
                     info@factoriaf5.org
                 </p>
-                <button>Ver las salas</button>
+                <button><Link to="/OnWorks">Ver las salas</Link></button>
                     </article>
                     <article>
                 <p><u><strong>Madrid</strong></u><br/>
@@ -37,7 +37,7 @@ function HomeView() {
                     Calle Hornos Altos, s/n<br/>
                     33949 Asturias<br/>
                     asturias@factoriaf5.org</p>
-                    <button>Ver las salas</button>
+                    <button><Link to="/OnWorks">Ver las salas</Link></button>
                     </article>
             </section>
         </main>
