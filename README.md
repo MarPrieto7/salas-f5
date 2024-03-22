@@ -40,7 +40,7 @@ Teniendo en cuenta la anterior información se podría navegar por todas las pá
 
 ### Desarrolladores:
 - Natalia [Linkedin](https://www.linkedin.com/in/natalia-de-bustos-garc%C3%ADa-5ba965298/)
-- Mar [Linkedin]()
+- Mar [Linkedin](https://www.linkedin.com/in/mar-prieto-garcia/)
 - Fiorella [Linkedin]()
 - Eme [Linkedin]()
 
@@ -69,3 +69,12 @@ Teniendo en cuenta la anterior información se podría navegar por todas las pá
 Este proyecto está bajo la Licencia [CCO](LICENSE).
 
 Las fuentes utilizadas en este proyecto estan sujetas a licencia SIL con Copyright &copy; 2014, Indian Type Foundry (info@indiantypefoundry.com)
+
+## Test 
+
+Se han hecho varios test para el frontend para DarkMode, Footer, RoomCard, con resultado Passed. 
+![imagen de test de DarkModeButton](./client/public/images/DarkModeButton.png )
+![imagen de test de Footer y RoomCard](./client/public/images/Footer%20and%20RoomCard.png )
+
+Tambien se ha realizado test para el backend para el controlador AuthController.
+![imagen del test de backend](./client/public/images/AuthController.png)

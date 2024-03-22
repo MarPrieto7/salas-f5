@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './RoomUnicView.css';
+import { useNavigate } from 'react-router-dom';
 
 function RoomUnicView() {
     const { id } = useParams();
     const [room, setRoom] = useState(null);
     const [modalImage, setModalImage] = useState(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Nuevo estado para controlar si el usuario está loggeado
+
+
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         const fetchRoom = async () => {
@@ -27,8 +32,8 @@ function RoomUnicView() {
 
     // Simula la lógica para determinar si el usuario está loggeado
     useEffect(() => {
-        // Aquí puedes implementar la lógica real para verificar si el usuario está loggeado, utilizando localStorage, cookies, o cualquier otra forma de autenticación que estés utilizando
-        const userLoggedIn = localStorage.getItem('username'); // Suponiendo que has almacenado el nombre de usuario en localStorage al loggearse
+  
+        const userLoggedIn = localStorage.getItem('username'); 
 
         if (userLoggedIn) {
             setIsLoggedIn(true);
@@ -39,11 +44,30 @@ function RoomUnicView() {
 
     const handleReservation = () => {
         if (isLoggedIn) {
-            // Si el usuario está loggeado, redirige a la ruta de reservas
-            
-            window.location.href = '/ReservationView';
+
+      const role = localStorage.getItem('role');
+
+
+            if (role) {
+                const isAdmin = role === 'admin';
+                const isUser = role === 'user';
+                const isProfessor = role === 'professor';
+    
+                if (isAdmin) {
+                     navigate('/differentpath');
+                } else if (isUser) {
+                       navigate('/UserReservationView');
+                } else  {
+                    navigate('/ReservationView');
+                } 
+            } else {
+        
+                window.location.href = '/LoginRegisterView';
+            }
+
+
         } else {
-            // Si el usuario no está loggeado, redirige a la ruta de inicio de sesión/registro
+         
             window.location.href = '/LoginRegisterView';
         }
     };
@@ -90,6 +114,8 @@ function RoomUnicView() {
                     <ul>
                         <li><p><strong>Tamaño:</strong> {room.size}</p></li>
                         <li><p><strong>Descripción:</strong> {room.description.join(', ')}</p></li>
+                        <li><p><strong>Horario:</strong> {room.hour}</p></li>
+                        <li><p><strong>Cerrado:</strong> {room.close}</p></li>
                     </ul>
                     <button onClick={handleReservation}>Reserva ya!</button>
                 </section>
