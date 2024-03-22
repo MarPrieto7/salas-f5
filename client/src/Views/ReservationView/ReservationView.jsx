@@ -50,6 +50,8 @@ const ReservationView = () => {
       setRoomName('Has seleccionado la Sala Conferencias');
     } else if (event.target.value === 'Sala Mary Lee') {
       setRoomName('Has seleccionado la Sala Mary Lee');
+    } else if (event.target.value === 'Sala Conferencia') {
+      setRoomName('Has seleccionado la Sala Conferencia');
     } else if (event.target.value === 'Sala Only') {
       setRoomName('Has seleccionado la Sala Only');
     } else {
@@ -75,6 +77,7 @@ const ReservationView = () => {
       return;
     }
 
+    const username = localStorage.getItem('username');
     // Realizar la solicitud de reserva al servidor
     try {
       const response = await fetch('http://localhost:8000/reserve', {
@@ -84,12 +87,13 @@ const ReservationView = () => {
           room: selectedRoom,
           hour: selectedTime,
           date: selectedDate, 
-          user: 'MarUser'  
+          user: username  
         })
       });
 
       if (response.ok) {
         setReservationStatus('¡Reserva exitosa!');
+        fetchData(); // Actualizar los datos después de hacer la reserva
       } else {
         throw new Error('Error al crear reserva');
       }
@@ -98,24 +102,40 @@ const ReservationView = () => {
       setReservationStatus('Error al crear reserva');
     }
   };
+
+  const deleteReservation = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:8000/reserve/${id}`, {
+        method: 'DELETE',
+      });
   
+      if (!response.ok) {
+        throw new Error('Error al eliminar la reserva');
+      }
+  
+      // Actualizar la lista de reservas después de eliminar
+      fetchData();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const fetchData = async () => {
+    try {
+        const response = await fetch("http://localhost:8000/reserve");
+        if (!response.ok) {
+            throw new Error('Error al obtener los datos');
+        }
+        const data = await response.json();
+        setDatos(data.filter(reservation => reservation.user === localStorage.getItem('username')));
+    } catch (error) {
+        console.error(error);
+    }
+};
 
   const daysInMonth = getDaysInMonth(selectedDate.getFullYear(), selectedDate.getMonth());
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("http://localhost:8000/reserve/");
-        if (!response.ok) {
-          throw new Error('Error al obtener los datos');
-        }
-        const data = await response.json();
-        setDatos(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
     fetchData();
   }, []);
 
@@ -129,6 +149,7 @@ const ReservationView = () => {
             <option value="">Seleccione su sala</option>
             <option value="Sala Hedy Lamarr">Sala Hedy Lamarr</option>
             <option value="Sala Mary Lee">Sala Mary Lee</option>
+            <option value="Sala Conferencia">Sala Conferencia</option>
             <option value="Sala Only">Sala Only</option>
           </select>
           <div style={{ marginBottom: '20px' }}></div>
@@ -173,6 +194,7 @@ const ReservationView = () => {
           </section>
           <div className="selected-details">
             {roomName && (
+          
               <div>
                 <p>{roomName}</p>
                 <p>{selectedDateString}</p>
@@ -204,7 +226,7 @@ const ReservationView = () => {
                   <i className="fas fa-edit"></i>
                 </td>
                 <td className='table-responsive'>
-                  <i className="fa-solid fa-trash-can" ></i>
+                  <button onClick={() => deleteReservation(reservation._id)} className='btn btn-danger'><i className="fas fa-trash-alt"></i></button>
                 </td>
               </tr>
             ))}
@@ -216,4 +238,3 @@ const ReservationView = () => {
 };
 
 export default ReservationView;
-

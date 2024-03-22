@@ -63,7 +63,7 @@
 }
 
 .others-links {
-  width: 100%;
+  width: 90vw;
   font-size: 13px;
   padding: 30px;
 }
@@ -97,6 +97,10 @@
   .footer-item {
     margin: 10px;
     height: 5rem;
+
+  }
+  .others-links {
+    width: 81vw;
 
   }
 
