@@ -4,6 +4,7 @@
   margin-top: 0;
   padding: 4rem;
 background-color: #fff;
+
 }
 
 .nav-bar-section {
@@ -168,6 +169,10 @@ background-color: #fff;
 
 .menu li {
   margin-right: 18px; 
+}
+
+.nav-bar{
+  width: 90vw;
 }
 
 
