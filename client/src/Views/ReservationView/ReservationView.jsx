@@ -47,7 +47,7 @@ const ReservationView = () => {
   const handleRoomChange = (event) => {
     setSelectedRoom(event.target.value);
     if (event.target.value === 'Sala Hedy Lamarr') {
-      setRoomName('Has seleccionado la Sala Conferencias');
+      setRoomName('Has seleccionado la Sala Hedy Lamarr');
     } else if (event.target.value === 'Sala Mary Lee') {
       setRoomName('Has seleccionado la Sala Mary Lee');
     } else if (event.target.value === 'Sala Conferencia') {
