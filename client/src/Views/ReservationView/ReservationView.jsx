@@ -3,7 +3,6 @@ import './ReservationView.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-
 const ReservationView = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedDateString, setSelectedDateString] = useState('');
@@ -11,6 +10,7 @@ const ReservationView = () => {
   const [selectedRoom, setSelectedRoom] = useState('');
   const [roomName, setRoomName] = useState('');
   const [reservationStatus, setReservationStatus] = useState('');
+  const [datos, setDatos] = useState([]);
 
   const getDaysInMonth = (year, month) => {
     const date = new Date(year, month, 1);
@@ -30,13 +30,13 @@ const ReservationView = () => {
   const handleDateChange = (date) => {
     const currentDate = new Date();
     const futureDate = new Date();
-    futureDate.setMonth(futureDate.getMonth() + 4);
-    
+    futureDate.setDate(futureDate.getDate() + 14); // Añade dos semanas a la fecha actual
+
     if (date >= currentDate && date <= futureDate) {
       setSelectedDate(date);
       setSelectedDateString(formatDate(date));
     } else {
-      alert('Solo puedes reservar para fechas de hoy hasta 4 meses en adelante');
+      alert('Solo puedes reservar para fechas de hoy hasta dos semanas en adelante');
     }
   };
 
@@ -47,9 +47,11 @@ const ReservationView = () => {
   const handleRoomChange = (event) => {
     setSelectedRoom(event.target.value);
     if (event.target.value === 'Sala Hedy Lamarr') {
-      setRoomName('Has seleccionado la Sala Conferencias');
+      setRoomName('Has seleccionado la Sala Hedy Lamarr');
     } else if (event.target.value === 'Sala Mary Lee') {
       setRoomName('Has seleccionado la Sala Mary Lee');
+    } else if (event.target.value === 'Sala Conferencia') {
+      setRoomName('Has seleccionado la Sala Conferencia');
     } else if (event.target.value === 'Sala Only') {
       setRoomName('Has seleccionado la Sala Only');
     } else {
@@ -59,7 +61,23 @@ const ReservationView = () => {
 
   const handleReservationSubmit = async (e) => {
     e.preventDefault();
-    
+
+    // Obtener la fecha y hora actual y la fecha y hora límite para reservar
+    const currentDate = new Date();
+    const minDateTime = new Date(currentDate.getTime() + (24 * 60 * 60 * 1000)); // Añade 24 horas
+
+    // Establecer la fecha y hora seleccionada
+    const selectedDateTime = new Date(selectedDate);
+    selectedDateTime.setHours(parseInt(selectedTime.split(':')[0], 10));
+    selectedDateTime.setMinutes(parseInt(selectedTime.split(':')[1], 10));
+
+    // Verificar si la fecha y hora seleccionadas son válidas para reservar
+    if (selectedDateTime < minDateTime) {
+      alert('Debes reservar al menos 24 horas antes.');
+      return;
+    }
+
+    const username = localStorage.getItem('username');
     // Realizar la solicitud de reserva al servidor
     try {
       const response = await fetch('http://localhost:8000/reserve', {
@@ -69,12 +87,13 @@ const ReservationView = () => {
           room: selectedRoom,
           hour: selectedTime,
           date: selectedDate, 
-          user: 'MarUser'  
+          user: username  
         })
       });
-      
+
       if (response.ok) {
         setReservationStatus('¡Reserva exitosa!');
+        fetchData(); // Actualizar los datos después de hacer la reserva
       } else {
         throw new Error('Error al crear reserva');
       }
@@ -84,33 +103,44 @@ const ReservationView = () => {
     }
   };
 
+  const deleteReservation = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:8000/reserve/${id}`, {
+        method: 'DELETE',
+      });
+  
+      if (!response.ok) {
+        throw new Error('Error al eliminar la reserva');
+      }
+  
+      // Actualizar la lista de reservas después de eliminar
+      fetchData();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const fetchData = async () => {
+    try {
+        const response = await fetch("http://localhost:8000/reserve");
+        if (!response.ok) {
+            throw new Error('Error al obtener los datos');
+        }
+        const data = await response.json();
+        setDatos(data.filter(reservation => reservation.user === localStorage.getItem('username')));
+    } catch (error) {
+        console.error(error);
+    }
+};
+
   const daysInMonth = getDaysInMonth(selectedDate.getFullYear(), selectedDate.getMonth());
 
-
-  const [datos, setDatos] = useState([]);
-
-
   useEffect(() => {
-      const fetchData = async () => {
-          try {
-              const response = await fetch("http://localhost:8000/reserve/");
-              if (!response.ok) {
-                  throw new Error('Error al obtener los datos');
-              }
-              const data = await response.json();
-              setDatos(data);
-          } catch (error) {
-              console.error(error);
-          }
-      };
-
-
-      fetchData();
+    fetchData();
   }, []);
 
   return (
     <main>
-      
       <h1 className='title-main'>Reserva tu Sala</h1><br></br>
       <section className="main-section">
         <aside>
@@ -119,6 +149,7 @@ const ReservationView = () => {
             <option value="">Seleccione su sala</option>
             <option value="Sala Hedy Lamarr">Sala Hedy Lamarr</option>
             <option value="Sala Mary Lee">Sala Mary Lee</option>
+            <option value="Sala Conferencia">Sala Conferencia</option>
             <option value="Sala Only">Sala Only</option>
           </select>
           <div style={{ marginBottom: '20px' }}></div>
@@ -163,6 +194,7 @@ const ReservationView = () => {
           </section>
           <div className="selected-details">
             {roomName && (
+          
               <div>
                 <p>{roomName}</p>
                 <p>{selectedDateString}</p>
@@ -172,36 +204,37 @@ const ReservationView = () => {
           </div>
         </article>
       </section>
-<h1 className='title-main'>Reservas</h1><br/><br/>
+      <h1 className='title-main'>Reservas</h1><br/><br/>
       <section className="main-section">
-         
         <table className='table'>
-                  <thead className='table-primary'>
-                    <tr>
-                        <th className='table-responsive'> Sala
-                        </th>
-                        <th className='table-responsive'> Fecha
-                        </th>
-                        <th className='table-responsive'> Horas
-                        </th>
-                        <th className='table-responsive'>Editar</th>
-                    </tr>
-                  </thead>
-                    <tbody>
-                    {datos.map((id) => (
-                    <tr key={id.id}>
-                        <td className='table-responsive'> {id.room} </td>
-                        <td className='table-responsive'> {id.date} </td>
-                        <td className='table-responsive'> {id.hour}  </td>
-                        <td className='table-responsive'>  <i className="fas fa-edit"></i> </td>
-                    </tr>
-                    ))}
-                    </tbody>
+          <thead className='table-primary'>
+            <tr>
+              <th className='table-responsive'> Sala </th>
+              <th className='table-responsive'> Fecha </th>
+              <th className='table-responsive'> Horas </th>
+              <th className='table-responsive'> Editar </th>
+              <th className='table-responsive'> Eliminar </th>
+            </tr>
+          </thead>
+          <tbody>
+            {datos.map((reservation) => (
+              <tr key={reservation.id}>
+                <td className='table-responsive'>{reservation.room}</td>
+                <td className='table-responsive'>{reservation.date}</td>
+                <td className='table-responsive'>{reservation.hour}</td>
+                <td className='table-responsive'>
+                  <i className="fas fa-edit"></i>
+                </td>
+                <td className='table-responsive'>
+                  <button onClick={() => deleteReservation(reservation._id)} className='btn btn-danger'><i className="fas fa-trash-alt"></i></button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
-
       </section>
     </main>
   );
-}
+};
 
 export default ReservationView;

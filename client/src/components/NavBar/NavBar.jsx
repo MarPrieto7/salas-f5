@@ -80,8 +80,7 @@ function NavBar() {
         <header className={`header ${isNavSticky ? 'sticky' : ''}`}>
             <section className="nav-bar-section">
                 <article className="languages">
-                    <p>ES</p>
-                    <p>CA</p>
+                  <DarkModeButton /> 
                 </article>
                 <section className="iconos">
                     <article className="rrss-logos">
@@ -91,7 +90,7 @@ function NavBar() {
                         <a href="#"> <i className="fa-brands fa-youtube"></i> </a>
                         <a href="#"> <i className="fa-brands fa-facebook"></i> </a>
                     </article>
-                    <article>   <DarkModeButton /> </article>
+                   
                 </section>
 
 
