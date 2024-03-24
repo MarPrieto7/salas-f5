@@ -11,6 +11,8 @@ import UserReservationView from './Views/UserReservationView/UserReservationView
 import ContactView from './Views/ContactView/ContactView.jsx'
 import EditRooms from './Views/EditRooms/EditRooms.jsx'
 import EditReserve from './Views/EditReserve/EditReserve.jsx'
+import NotFound from './Views/PendingPages/NotFound/NotFound.jsx'
+import OnWorks from './Views/PendingPages/OnWorks/OnWorks.jsx'
 
 
 function App() {
@@ -31,7 +33,9 @@ function App() {
           <Route path="/UserReservationView" element={<UserReservationView />} />
           <Route path="/ContactView" element={<ContactView />} />
           <Route path="/EditRooms/:id" element={<EditRooms />} />
-          <Route path="/EditReserve/:id" element={<EditReserve />} />
+          <Route path="/EditReserve/:id" element={<EditReserve />} /> 
+          <Route path="/NotFound" element={<NotFound />} />
+          <Route path="/OnWorks" element={<OnWorks />} />
         </Routes>
         <Footer />
       </BrowserRouter>
