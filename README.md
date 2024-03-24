@@ -1,6 +1,6 @@
-# We Are juniors
+# Salas Factoria F5
 
-Proyecto innovador de **We are Juniors**, enfocado en presentar y dar a conocer a los Junior de nuestro país a las empresas.
+Proyecto innovador de **Salas Factoria F5**, enfocado en presentar y dar a conocer las salas de las que dispone facotira F5 en su sede de Madrid y su gestión.
 
 ![imagen del logo](./client/src/assets/image/FACTORIA.png )
 
@@ -21,7 +21,7 @@ Al instalarse el proyecto en la consola se deben tener en cuenta las siguientes 
 - Se debe instalar Node.js en el ordenador: ```npm install```
 - Dentro de la carpeta **client** debemos escribir en la terminal:
 ```npm run dev```
-- Dentro de la carpeta **back** debemos escribir en la terminal: ```nodemon app```
+- Dentro de la carpeta **server** debemos escribir en la terminal: ```nodemon app```
 - Ambos códigos deben estar en diferentes terminales corriendo para poder ser usado el proyecto.
 
 Para comenzar el proyecto tuvimos que instalar:
@@ -30,7 +30,7 @@ Para comenzar el proyecto tuvimos que instalar:
 
 Y las librerías:
 - Bootstrap
-- Axios
+
 
 ## Uso
 

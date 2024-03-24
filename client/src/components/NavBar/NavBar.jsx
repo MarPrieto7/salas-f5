@@ -110,11 +110,11 @@ function NavBar() {
                         <i className="fa-solid fa-x"></i>
                     </label>
                     <ul className="menu">
-                        <li><NavLink to="#" onClick={handleNavLinkClick}>H O M E</NavLink></li>
-                        <li><NavLink to="/Products" onClick={handleNavLinkClick}>A P R E N D E</NavLink></li>
+                        <li><NavLink  to="/OnWorks" onClick={handleNavLinkClick}>H O M E</NavLink></li>
+                        <li><NavLink  to="/OnWorks" onClick={handleNavLinkClick}>A P R E N D E</NavLink></li>
 
                         <li>
-                            <NavLink to="/Aboutus" onClick={handleNavLinkClick}>
+                            <NavLink  to="/OnWorks" onClick={handleNavLinkClick}>
                                 C O L A B O R A
                             </NavLink>
                             <article className="acordeon">
@@ -125,7 +125,7 @@ function NavBar() {
                         </li>
 
                         <li>
-                            <NavLink to="/Aboutus" onClick={handleNavLinkClick}>
+                            <NavLink  to="/OnWorks" onClick={handleNavLinkClick}>
                                 S O M O S
                             </NavLink>
                             <div className="acordeon">
@@ -136,7 +136,7 @@ function NavBar() {
                             </div>
                         </li>
 
-                        <li><NavLink to="/Contact" onClick={handleNavLinkClick}>B L O G</NavLink></li>
+                        <li><NavLink  to="/OnWorks" onClick={handleNavLinkClick}>B L O G</NavLink></li>
                         <li>
                         <NavLink to="/ContactView" onClick={handleNavLinkClick}>
                             CONTACTO
