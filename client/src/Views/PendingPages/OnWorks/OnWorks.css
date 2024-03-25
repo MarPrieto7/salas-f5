@@ -22,3 +22,26 @@
 .worker-image {
     width: 28rem; 
 }
+
+@media (max-width: 768px) {
+    .notification-image-container {
+        flex-direction: column;
+        align-items: center;
+        display: flex;
+    }
+
+    .notification-onworks {
+        font-size: 1.5rem; /* Tamaño de fuente más pequeño */
+        width: auto; /* Ancho automático */
+        margin-bottom: 1rem; /* Espacio entre el texto y el contenedor */
+    }
+
+    .image-container {
+        width: 100%; /* Ancho completo */
+    }
+
+    .worker-image {
+        width: 80%; /* Reducir el tamaño de la imagen */
+        max-width: 28rem; /* Ancho máximo */
+    }
+}

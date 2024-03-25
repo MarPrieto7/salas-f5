@@ -88,3 +88,44 @@
 .search-button:hover {
     background-color: #0056b3;
 }
+
+
+@media (max-width: 768px) {
+    .message-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .notification-message {
+        margin-left: 0; 
+        text-align: left; 
+        margin-top: 1rem; 
+    }
+
+    .error-container {
+        width: auto; 
+        margin-left: 1rem; 
+    }
+
+    .error-404 {
+        font-size: 8rem; 
+        margin-left: 0; 
+    }
+
+    .useful-links {
+        margin-top: 2rem; 
+        margin-left: 0; 
+    }
+
+    .list-of-links {
+        text-align: left; 
+    }
+
+    .search-box {
+        padding: 1rem; 
+    }
+
+    .search-button {
+        margin-left: 0; 
+    }
+}
