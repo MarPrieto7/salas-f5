@@ -12,13 +12,22 @@ const UserReservationView = () => {
   const [reservationStatus, setReservationStatus] = useState('');
   const [datos, setDatos] = useState([]);
 
-  const getDaysInMonth = (year, month) => {
-    const date = new Date(year, month, 1);
+ const getDaysInMonth = (year, month) => {
+    const firstDayOfMonth = new Date(year, month, 1);
+    const firstDayOfWeek = firstDayOfMonth.getDay();
     const days = [];
-    while (date.getMonth() === month) {
-      days.push(new Date(date));
-      date.setDate(date.getDate() + 1);
+
+    for (let i = firstDayOfWeek; i > 0; i--) {
+      const prevDay = new Date(year, month, 1 - i);
+      days.push(prevDay);
     }
+
+    const lastDayOfMonth = new Date(year, month + 1, 0).getDate();
+    for (let i = 1; i <= lastDayOfMonth; i++) {
+      const currentDay = new Date(year, month, i);
+      days.push(currentDay);
+    }
+
     return days;
   };
 
