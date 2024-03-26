@@ -1,6 +1,15 @@
 import "./RoomView.css";
 import RoomCard from '../../components/RoomCard/RoomCard.jsx'
+import React,{useState} from "react";
+
 function RoomView() {
+
+    const [filterName, setFilterName] = useState("");
+
+    const handleFilterNameChange = (event) => {
+        setFilterName(event.target.value);
+    };
+
     return (
         <main>
 
@@ -8,7 +17,16 @@ function RoomView() {
                 <p>Madrid <br/> Nuestras salas</p>
             </section>
             <section className="room-view-section-2">
-                <RoomCard/>
+
+                <input
+                    type="text"
+                    placeholder="Buscar por nombre de sala"
+                    value={filterName}
+                    onChange={handleFilterNameChange}
+                />
+
+                <RoomCard filterName={filterName} />
+
             </section>
             <section className="room-view-section-3">
 

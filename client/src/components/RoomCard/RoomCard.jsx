@@ -2,18 +2,18 @@ import "./RoomCard.css";
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-function RoomCard() {
-    const [datos, setDatos] = useState([]);
+function RoomCard({ filterName }) {
+    const [data, setData] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await fetch("http://localhost:8000/rooms/room");
                 if (!response.ok) {
-                    throw new Error('Error al obtener los datos');
+                    throw new Error('Error fetching data');
                 }
                 const data = await response.json();
-                setDatos(data);
+                setData(data);
             } catch (error) {
                 console.error(error);
             }
@@ -22,24 +22,23 @@ function RoomCard() {
         fetchData();
     }, []);
 
+    const filteredRooms = data.filter(room => room.name.toLowerCase().includes(filterName.toLowerCase()));
 
     return (
         <section>
             <article className="room-card-article">
-                {datos && datos.map((room) => (
+                {filteredRooms.map((room) => (
                     <div key={room._id} className="room-card-div">
-                        <img src={room.image} alt="Imagen de la sala" className="room-card-image"/>
+                        <img src={room.image} alt="Room image" className="room-card-image"/>
                         <p>Sala: <strong>{room.name}</strong></p>
                         <p>Tamaño: {room.size}</p>
                         <p>Características: {room.description.join(', ')}</p>
-                        <button><Link to={`/RoomUnicView/${room._id}`}>Ver Sala</Link></button>
+                        <button><Link to={`/RoomUnicView/${room._id}`}>View Room</Link></button>
                     </div>
                 ))}
             </article>
         </section>
-
     );
-};
-
+}
 
 export default RoomCard;
