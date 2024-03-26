@@ -98,7 +98,7 @@ const deleteBlog = async (id) => {
         <>
 
             <section className='section-2'>
-                <h2 onClick={toggleFormVisibility} className='btn-h2'>Agregar nuevas salas <i class="fas fa-plus"></i></h2>
+                <h2 onClick={toggleFormVisibility} className='btn-h2'>Agregar nuevas salas <i className="fas fa-plus"></i></h2>
 
                 {isFormVisible && (
                     <form onSubmit={store} className="form-create-room">

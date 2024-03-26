@@ -12,8 +12,8 @@ function NavBar() {
 
 
     useEffect(() => {
-        // Aquí puedes implementar la lógica real para verificar si el usuario está loggeado, utilizando localStorage, cookies, o cualquier otra forma de autenticación que estés utilizando
-        const userLoggedIn = localStorage.getItem('username'); // Suponiendo que has almacenado el nombre de usuario en localStorage al loggearse
+        
+        const userLoggedIn = localStorage.getItem('username'); 
 
         if (userLoggedIn) {
             setIsLoggedIn(true);
@@ -71,8 +71,12 @@ function NavBar() {
 
         // Limpiar el event listener al desmontar el componente
         return () => {
+            try {
             window.removeEventListener("resize", handleResize);
             window.removeEventListener("scroll", handleScroll);
+        } catch (error) {
+            console.log(error)
+        }
         };
     }, []);
 
@@ -101,7 +105,7 @@ function NavBar() {
                 </figure>
 
                 <figure>
-                    <label className="menu-icon" onClick={handleMenuIconClick}><i class="fa-solid fa-bars"></i></label>
+                    <label className="menu-icon" onClick={handleMenuIconClick}><i className="fa-solid fa-bars"></i></label>
                 </figure>
 
                 {/* <!--Menú--> */}

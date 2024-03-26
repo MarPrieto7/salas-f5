@@ -52,6 +52,8 @@
     padding: 10px;
     border-radius: 8px;
     margin-top: 1rem;
+    margin-left: 2rem;
+    border:2px solid #FF4700;
 }
 .btn.btn-secondary:hover {
     background-color: #FFFFFF;

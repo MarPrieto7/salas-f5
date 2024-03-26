@@ -31,8 +31,8 @@ const DarkModeButton = () => {
   return (
     <div className='dark-mode'>
         <button className={`switch ${isDarkMode ? 'active' : ''}`} onClick={handleToggleDarkMode}>
-    <span><i class="fa-solid fa-sun"></i></span>
-      <span><i class="fa-solid fa-moon"></i></span>
+    <span><i className="fa-solid fa-sun"></i></span>
+      <span><i className="fa-solid fa-moon"></i></span>
     </button>
     </div>
   

@@ -32,13 +32,13 @@ function NotFound() {
                             </ul>
 
                         </div>
-                        <div class="search-box">
+                        <div className="search-box">
                             <h2>Busque en nuestra web</h2>
                             <br />
                             <p>¿No encuentra lo que busca? Inténtelo con una nueva búsqueda</p>
                             <br />
-                            <input type="text" class="search-input" placeholder="Buscar..." />
-                            <button class="search-button">Buscar</button>
+                            <input type="text" className="search-input" placeholder="Buscar..." />
+                            <button className="search-button">Buscar</button>
                         </div>
                     </figure>
                 </section>
