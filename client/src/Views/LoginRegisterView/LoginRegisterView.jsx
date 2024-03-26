@@ -64,23 +64,21 @@ const LoginRegisterView = () => {
             }
         }
 
-
         window.addEventListener("resize", anchoPage);
-
 
         document.getElementById("btn-change-login").addEventListener("click", iniciarSesion);
         document.getElementById("btn-change-signup").addEventListener("click", register);
 
-
-
-
-
-
-        return () => {
-            window.removeEventListener("resize", anchoPage);
-            document.getElementById("btn-change-login").removeEventListener("click", iniciarSesion);
-            document.getElementById("btn-change-signup").removeEventListener("click", register);
-        };
+         return () => {
+            try {
+                window.removeEventListener("resize", anchoPage);
+                document.getElementById("btn-change-login").removeEventListener("click", iniciarSesion);
+                document.getElementById("btn-change-signup").removeEventListener("click", register);
+   
+            } catch (error) {
+                console.log(error)
+            }
+         };
     }, []);
 
 

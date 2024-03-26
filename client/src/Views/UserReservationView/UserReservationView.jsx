@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Link } from "react-router-dom";
 
-const UserReservationView = () => {
+const ReservationView = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedDateString, setSelectedDateString] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
@@ -12,8 +12,9 @@ const UserReservationView = () => {
   const [roomName, setRoomName] = useState('');
   const [reservationStatus, setReservationStatus] = useState('');
   const [datos, setDatos] = useState([]);
+  const [selectedDuration, setSelectedDuration] = useState('');
 
- const getDaysInMonth = (year, month) => {
+  const getDaysInMonth = (year, month) => {
     const firstDayOfMonth = new Date(year, month, 1);
     const firstDayOfWeek = firstDayOfMonth.getDay();
     const days = [];
@@ -58,14 +59,20 @@ const UserReservationView = () => {
   const handleRoomChange = (event) => {
     setSelectedRoom(event.target.value);
     if (event.target.value === 'Sala Hedy Lamarr') {
-      setRoomName('Has seleccionado la Sala Conferencias');
+      setRoomName('Has seleccionado la Sala Hedy Lamarr');
     } else if (event.target.value === 'Sala Mary Lee') {
       setRoomName('Has seleccionado la Sala Mary Lee');
+    } else if (event.target.value === 'Sala Conferencia') {
+      setRoomName('Has seleccionado la Sala Conferencia');
     } else if (event.target.value === 'Sala Only') {
       setRoomName('Has seleccionado la Sala Only');
     } else {
       setRoomName('');
     }
+  };
+
+  const handleDurationChange = (event) => {
+    setSelectedDuration(event.target.value);
   };
 
   const handleReservationSubmit = async (e) => {
@@ -92,11 +99,12 @@ const UserReservationView = () => {
       const response = await fetch('http://localhost:8000/reserve', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({    
+        body: JSON.stringify({
           room: selectedRoom,
           hour: selectedTime,
-          date: selectedDate, 
-          user: username  
+          duration: selectedDuration,
+          date: selectedDate,
+          user: username
         })
       });
 
@@ -117,11 +125,11 @@ const UserReservationView = () => {
       const response = await fetch(`http://localhost:8000/reserve/${id}`, {
         method: 'DELETE',
       });
-  
+
       if (!response.ok) {
         throw new Error('Error al eliminar la reserva');
       }
-  
+
       // Actualizar la lista de reservas después de eliminar
       fetchData();
     } catch (error) {
@@ -131,16 +139,16 @@ const UserReservationView = () => {
 
   const fetchData = async () => {
     try {
-        const response = await fetch("http://localhost:8000/reserve");
-        if (!response.ok) {
-            throw new Error('Error al obtener los datos');
-        }
-        const data = await response.json();
-        setDatos(data.filter(reservation => reservation.user === localStorage.getItem('username')));
+      const response = await fetch("http://localhost:8000/reserve");
+      if (!response.ok) {
+        throw new Error('Error al obtener los datos');
+      }
+      const data = await response.json();
+      setDatos(data.filter(reservation => reservation.user === localStorage.getItem('username')));
     } catch (error) {
-        console.error(error);
+      console.error(error);
     }
-};
+  };
 
   const daysInMonth = getDaysInMonth(selectedDate.getFullYear(), selectedDate.getMonth());
 
@@ -158,17 +166,25 @@ const UserReservationView = () => {
             <option value="">Seleccione su sala</option>
             <option value="Sala Hedy Lamarr">Sala Hedy Lamarr</option>
             <option value="Sala Mary Lee">Sala Mary Lee</option>
+            <option value="Sala Conferencia">Sala Conferencia</option>
             <option value="Sala Only">Sala Only</option>
           </select>
           <div style={{ marginBottom: '20px' }}></div>
           <h2>Seleccione su hora</h2>
-          <input 
-            type="time" 
-            value={selectedTime} 
-            onChange={handleTimeChange} 
-            min="09:00" 
-            max="21:00" 
+          <input
+            type="time"
+            value={selectedTime}
+            onChange={handleTimeChange}
+            min="09:00"
+            max="21:00"
           />
+          <h2>Seleccione la duración</h2>
+          <select value={selectedDuration} onChange={handleDurationChange}>
+            <option value="0">1 hora</option>
+            <option value="1">1:30 horas</option>
+            <option value="2">2 horas</option>
+
+          </select>
           <button onClick={handleReservationSubmit}>Reservar</button>
           <p>{reservationStatus}</p>
         </aside>
@@ -202,17 +218,18 @@ const UserReservationView = () => {
           </section>
           <div className="selected-details">
             {roomName && (
-          
+
               <div>
                 <p>{roomName}</p>
                 <p>{selectedDateString}</p>
                 <p>{selectedTime}</p>
+                <p>{selectedDuration}</p>
               </div>
             )}
           </div>
         </article>
       </section>
-      <h1 className='title-main'>Reservas</h1><br/><br/>
+      <h1 className='title-main'>Reservas</h1><br /><br />
       <section className="main-section">
         <table className='table'>
           <thead className='table-primary'>
@@ -220,6 +237,7 @@ const UserReservationView = () => {
               <th className='table-responsive'> Sala </th>
               <th className='table-responsive'> Fecha </th>
               <th className='table-responsive'> Horas </th>
+              <th className='table-responsive'> Duracion </th>
               <th className='table-responsive'> Editar </th>
               <th className='table-responsive'> Eliminar </th>
             </tr>
@@ -230,8 +248,9 @@ const UserReservationView = () => {
                 <td className='table-responsive'>{reservation.room}</td>
                 <td className='table-responsive'>{reservation.date}</td>
                 <td className='table-responsive'>{reservation.hour}</td>
+                <td className='table-responsive'>{reservation.duration} h</td>
                 <td className='table-responsive'>
-                <Link to={`/EditReserve/${reservation._id}`} className='btn btn-info'><i className="fas fa-edit"></i></Link>
+                  <Link to={`/EditReserve/${reservation._id}`} className='btn btn-info'><i className="fas fa-edit"></i></Link>
                 </td>
                 <td className='table-responsive'>
                   <button onClick={() => deleteReservation(reservation._id)} className='btn btn-danger'><i className="fas fa-trash-alt"></i></button>
@@ -245,4 +264,4 @@ const UserReservationView = () => {
   );
 };
 
-export default UserReservationView;
+export default ReservationView;

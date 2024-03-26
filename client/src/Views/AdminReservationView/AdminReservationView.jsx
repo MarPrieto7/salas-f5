@@ -194,15 +194,15 @@ function AdminReservationView() {
                         </tr>
                     </thead>
                     <tbody>
-                        {datos.map((id) => (
-                            <tr key={id.id}>
-                                <td>  {id.user} </td>
-                                <td className='table-responsive'> {id.room} </td>
-                                <td className='table-responsive'> {id.date} </td>
-                                <td className='table-responsive'> {id.hour}  </td>
+                        {datos.map((item) => (
+                            <tr key={item.id}>
+                                <td>  {item.user} </td>
+                                <td className='table-responsive'> {item.room} </td>
+                                <td className='table-responsive'> {item.date} </td>
+                                <td className='table-responsive'> {item.hour}  </td>
                                 <td className='table-responsive'>
-                                    <Link to={`/EditReserve/${id._id}`} className='btn btn-info'><i className="fas fa-edit"></i></Link>
-                                    <button onClick={() => deleteBlog(id._id)} className='btn btn-danger'><i className="fas fa-trash-alt"></i></button>
+                                    <Link to={`/EditReserve/${item._id}`} className='btn btn-info'><i className="fas fa-edit"></i></Link>
+                                    <button onClick={() => deleteBlog(item._id)} className='btn btn-danger'><i className="fas fa-trash-alt"></i></button>
                                 </td>
                             </tr>
                         ))}
