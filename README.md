@@ -76,5 +76,5 @@ Se han hecho varios test para el frontend para DarkMode, Footer, RoomCard, con r
 ![imagen de test de DarkModeButton](./client/public/images/DarkModeButton.png )
 ![imagen de test de Footer y RoomCard](./client/public/images/Footer%20and%20RoomCard.png )
 
-Tambien se ha realizado test para el backend para el controlador AuthController.
-![imagen del test de backend](./client/public/images/AuthController.png)
+Tambien se ha realizado test para el backend para el controlador AuthController y RommController.
+![imagen del test de backend](./client/public/images/testbackend.png)
