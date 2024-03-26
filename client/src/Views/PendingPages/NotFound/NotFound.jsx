@@ -3,7 +3,7 @@ import './NotFound.css';
 
 
 function NotFound() {
-    {/*meter useEfect (hooks)*/ }
+    
 
     return (
         <section>

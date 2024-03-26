@@ -1,29 +1,27 @@
 .main-edit-reserve{
     display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    height: 100vh; /* Ocupa toda la altura de la pantalla */
-    /* background-color: yellow; */
+    justify-content: center; 
+    align-items: center; 
 }
 .section-edit-h2 {
     color: #FF4700;
     font-family: 'Poppins', sans-serif;
-    font-size: 2.5rem; /* Ajustar el tamaño del texto */
-    margin-bottom: 1rem; /* Agregar espacio debajo del encabezado */
+    font-size: 2.5rem; 
+    margin-bottom: 1rem; 
 }
 
 .section-Edit-Reserve {
-    /* background-color: green; */
+   
     height: 20rem;
-    width: 70%; /* Ajustar el ancho del contenedor */
-    max-width: 400px; /* Establecer un ancho máximo */
-    padding: 2rem; /* Agregar relleno al contenedor */
-    border-radius: 10px; /* Agregar bordes redondeados */
+    width: 70%; 
+    max-width: 400px; 
+    padding: 2rem;
+    border-radius: 10px; 
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Centrar verticalmente */
-    box-shadow: 0px 0px 10px #FF4700; /* Agregar sombra */
+    justify-content: center; 
+    box-shadow: 0px 0px 10px #FF4700; 
    
 }
 

@@ -1,15 +1,11 @@
 
-/* ContactView.css */
-
-/* Agrega estilos para el formulario */
-
 .contact-form input {
   color: #000000;
-  height: 2.5rem; /* Convertido a rem */
+  height: 2.5rem; 
   border: 1px solid #ccc;
   border-radius: 8px;
-  padding: 0 1rem; /* Convertido a rem */
-  margin-bottom: 1.5rem; /* Convertido a rem */
+  padding: 0 1rem;
+  margin-bottom: 1.5rem; 
   width: 100%;
   box-sizing: border-box;
 }
@@ -17,21 +13,21 @@
 .contact-container img {
   max-width: 100%;
   height: auto;
-  margin-left: auto; /* Alinear al centro */
-  margin-right: auto; /* Alinear al centro */
+  margin-left: auto; 
+  margin-right: auto; 
 }
 
 .contact-form textarea {
   color: #000000;
   border: 1px solid #ccc;
   border-radius: 8px;
-  padding: 1rem; /* Convertido a rem */
-  margin-bottom: 1.5rem; /* Convertido a rem */
+  padding: 1rem; 
+  margin-bottom: 1.5rem; 
   width: 100%;
   box-sizing: border-box;
 }
 
-/* Estilos adicionales según tus necesidades */
+
 .contact-form h2 {
   text-align: center;
 }
@@ -45,14 +41,14 @@
 .content-wrap {
   display: flex;
   justify-content: space-around;
-  max-width: 75rem; /* Convertido a rem */
+  max-width: 75rem; 
   width: 100%;
 }
 
 .orange-rectangle {
   background-color: #ff4700;
-  padding: 1.25rem; /* Convertido a rem */
-  margin-bottom: 1.25rem; /* Convertido a rem */
+  padding: 1.25rem;
+  margin-bottom: 1.25rem; 
   max-width: 100%;
   width: 97%;
   
@@ -68,8 +64,8 @@
 }
 
 .ubicacion {
-  width: 18.75rem; /* Convertido a rem */
-  margin-bottom: 2.5rem; /* Convertido a rem */
+  width: 18.75rem; 
+  margin-bottom: 2.5rem;
   margin-right: 50%;
 }
 
@@ -85,25 +81,24 @@
 
 .contact-form-container {
   width: 100%;
-  margin-bottom: 1.25rem; /* Convertido a rem */
+  margin-bottom: 1.25rem; 
 }
 
 .comentario-formulario {
-  margin-top: 0.3125rem; /* Convertido a rem */
-  margin-right: 1.875rem; /* Convertido a rem */
-  margin-left: auto; /* Alinear al centro */
-  width: calc(100% - 1.875rem); /* Ancho máximo menos los márgenes */
+  margin-top: 0.3125rem;
+  margin-right: 1.875rem; 
+  margin-left: auto; 
+  width: calc(100% - 1.875rem); 
 }
 
 .contact-form section {
   width: 100%;
-  height: 7.5rem; /* Convertido a rem */
+  height: 7.5rem; 
 }
 
 .boton-contacto {
   width: auto;
-  /* Ajusta el ancho automáticamente según el contenido */
-  height: 2.5rem; /* Convertido a rem */
+   height: 2.5rem; 
   background-color: #000000;
   color: white;
   border-radius: 8px;
@@ -118,21 +113,19 @@
 .boton-contacto-container {
   display: flex;
   justify-content: flex-start;
-  margin-top: 1.25rem; /* Convertido a rem */
-  /* Ajusta el margen superior según tus necesidades */
+  margin-top: 1.25rem; 
 }
 
 
 .checkbox-container {
   display: flex;
   align-items: center;
-  margin-bottom: 1.25rem; /* Convertido a rem */
+  margin-bottom: 1.25rem; 
 }
 
 .checkbox-container input {
-  margin-right: 0.3125rem; /* Convertido a rem */
+  margin-right: 0.3125rem; 
   transform: scale(0.4);
-  /* Adjust the scale factor as needed */
 }
 
 .checkbox-container label {
@@ -141,23 +134,19 @@
 
 textarea {
   height: 12rem;
-  /* Puedes ajustar este valor según tu preferencia */
-  /* O puedes utilizar la propiedad 'rows' en el HTML para ajustar el número de filas directamente */
-  /* rows: 6; */
   max-width: 40rem;
   max-height: 12rem;
 }
 
 .siguenos-contactview {
-  margin-top: 0.9375rem; /* Convertido a rem */
-  margin-bottom: 1.5625rem; /* Convertido a rem */
+  margin-top: 0.9375rem; 
+  margin-bottom: 1.5625rem; 
 }
 
-/* Estilos para alinear a la derecha en pantallas grandes */
-@media screen and (max-width: 62.5rem) { /* Convertido a rem */
+@media screen and (max-width: 62.5rem) { 
   .contact-form {
     float: none;
-    margin: 0 auto 1.25rem auto; /* Convertido a rem */
+    margin: 0 auto 1.25rem auto; 
   }
 
   .contact-container,
@@ -165,57 +154,52 @@ textarea {
   .content-wrap,
   .encabezado-ubicacion {
     display: block;
-    font-size: 0.875rem; /* Convertido a rem */
-    margin-left: 1.875rem; /* Convertido a rem */
-    margin-right: 1.875rem; /* Convertido a rem */
+    font-size: 0.875rem; 
+    margin-left: 1.875rem; 
+    margin-right: 1.875rem; 
     overflow-x: hidden;
   }
 
   .contactImage,
   .orange-rectangle {
    max-width: 100%;
-     /*height: auto;
-    
-    width: 100%;
-    margin-left: auto; /* Alinear al centro */
-    /*margin-right: auto; /* Alinear al centro */
   }
 
   .ubicacion p {
-    margin-bottom: 1.25rem; /* Convertido a rem */
+    margin-bottom: 1.25rem; 
   }
 
   .checkbox-container,
   .boton-contacto-container {
-    margin-bottom: 1.25rem; /* Convertido a rem */
+    margin-bottom: 1.25rem; 
   }
 
   .confirmacion-contactView {
-    margin-top: 0.3125rem; /* Convertido a rem */
-    margin-right: 1.875rem; /* Convertido a rem */
-    margin-left: auto; /* Alinear al centro */
-    width: calc(100% - 3.75rem); /* Ancho máximo menos los márgenes (Convertido a rem) */
+    margin-top: 0.3125rem; 
+    margin-right: 1.875rem; 
+    margin-left: auto; 
+    width: calc(100% - 3.75rem); 
   }
 
   .boton-contacto-container {
-    margin-top: 1.25rem; /* Convertido a rem */
+    margin-top: 1.25rem; 
   }
 
   .contact-container img {
     max-width: 100%;
     height: auto;
-    margin-left: auto; /* Alinear al centro */
-    margin-right: auto; /* Alinear al centro */
+    margin-left: auto; 
+    margin-right: auto; 
   }
 
   .comentario-formulario {
-    font-size: 0.875rem; /* Tamaño de fuente para pantallas móviles (Convertido a rem) */
-    margin: 0 1.875rem 1.25rem; /* Márgenes izquierdo y derecho con un margen inferior (Convertido a rem) */
+    font-size: 0.875rem; 
+    margin: 0 1.875rem 1.25rem; 
   }
 
   .contact-form input,
   .contact-form textarea {
-    width: calc(100% - 1.875rem); /* Ancho máximo menos los márgenes (Convertido a rem) */
-    margin-bottom: 1.25rem; /* Agregar espacio entre los campos (Convertido a rem) */
+    width: calc(100% - 1.875rem); 
+    margin-bottom: 1.25rem; 
   }
 }

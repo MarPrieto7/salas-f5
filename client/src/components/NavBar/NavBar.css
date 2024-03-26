@@ -198,15 +198,15 @@ background-color: #fff;
 }
 
 .menu li {
-  position: relative; /* Añade posición relativa al elemento padre */
+  position: relative; 
 }
 
 .menu li:hover .acordeon {
   display: flex;
   position: absolute;
-  top: 100%; /* Posición debajo del elemento padre */
+  top: 100%; 
   left: 0;
-  /* margin-top: 20px; */
+ 
 }
 
 .menu li:hover .acordeon {

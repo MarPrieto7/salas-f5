@@ -31,18 +31,18 @@
     }
 
     .notification-onworks {
-        font-size: 1.5rem; /* Tamaño de fuente más pequeño */
-        width: auto; /* Ancho automático */
-        margin-bottom: 1rem; /* Espacio entre el texto y el contenedor */
+        font-size: 1.5rem; 
+        width: auto; 
+        margin-bottom: 1rem; 
     }
 
     .image-container {
-        width: 100%; /* Ancho completo */
+        width: 100%;
     }
 
     .worker-image {
-        width: 80%; /* Reducir el tamaño de la imagen */
-        max-width: 28rem; /* Ancho máximo */
+        width: 80%;
+        max-width: 28rem; 
     }
 }
 

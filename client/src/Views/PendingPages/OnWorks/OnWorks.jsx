@@ -4,7 +4,7 @@ import work from '../../../assets/image/onworks-page-2-Finalisimo.png'
 import './OnWorks.css';
 
 function OnWorks() {
-    {/*meter useEfect (hooks)*/ }
+   
 
     return (
 

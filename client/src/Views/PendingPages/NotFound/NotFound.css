@@ -3,8 +3,8 @@
     width: 70rem;
     height: 4rem;
     margin-left: 1rem;
-    display: flex; /* Alinea los elementos en la misma línea horizontal */
-    align-items: center; /* Centra verticalmente */
+    display: flex; 
+    align-items: center; 
 }
 
 .notification-message {
@@ -19,8 +19,8 @@
 .error-container {
     margin-left: 8rem;
     width: 50rem;
-    display: flex; /* Alinea los elementos en la misma línea horizontal */
-    align-items: center; /* Centra verticalmente */
+    display: flex; 
+    align-items: center;
 }
 
 .error-404 {
@@ -34,13 +34,13 @@
 .useful-links {
     width: 20rem;
     margin-left: 1rem;
-    display: flex; /* Alinea los elementos en la misma línea horizontal */
-    flex-direction: column; /* Apila los elementos verticalmente */
+    display: flex; 
+    flex-direction: column; 
 }
 
 .list-of-links {
-    list-style-type: none; /* Quita los puntos de la lista */
-    padding: 0; /* Elimina el relleno predeterminado de la lista */
+    list-style-type: none; 
+    padding: 0; 
     justify-content: center;
     text-align: center;
 }
@@ -51,23 +51,23 @@
     max-width: 400px;
     margin: 0 auto;
     padding: 2rem;
-    box-sizing: border-box; /* Incluye el relleno en el ancho total */
+    box-sizing: border-box; 
 }
 
 .search-box h2 {
-    margin-bottom: 1rem; /* Añade espacio entre el título y el párrafo */
+    margin-bottom: 1rem; 
 }
 
 .search-box p {
-    margin-bottom: 1rem; /* Añade espacio entre el párrafo y el input */
+    margin-bottom: 1rem; 
 }
 
 .search-input-container {
-    display: flex; /* Alinea los elementos en la misma línea horizontal */
+    display: flex; 
 }
 
 .search-input {
-    flex: 1; /* El input ocupa todo el espacio restante */
+    flex: 1; 
     padding: 0.5rem;
     font-size: 1rem;
     border: 1px solid #ccc;
@@ -82,7 +82,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-left: 0.5rem; /* Añade espacio entre el input y el botón */
+    margin-left: 0.5rem; 
 }
 
 .search-button:hover {

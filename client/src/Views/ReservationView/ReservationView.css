@@ -168,7 +168,7 @@
 
 
 
-/* Media query para pantallas con un ancho máximo de 1000px */
+
 @media screen and (max-width: 1000px) {
   .main-section {
     flex-direction: column; 
