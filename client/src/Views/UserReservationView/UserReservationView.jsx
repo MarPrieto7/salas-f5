@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../ReservationView/ReservationView.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { Link } from "react-router-dom";
 
 const UserReservationView = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -21,6 +22,7 @@ const UserReservationView = () => {
       const prevDay = new Date(year, month, 1 - i);
       days.push(prevDay);
     }
+
 
     const lastDayOfMonth = new Date(year, month + 1, 0).getDate();
     for (let i = 1; i <= lastDayOfMonth; i++) {
@@ -229,7 +231,7 @@ const UserReservationView = () => {
                 <td className='table-responsive'>{reservation.date}</td>
                 <td className='table-responsive'>{reservation.hour}</td>
                 <td className='table-responsive'>
-                  <i className="fas fa-edit"></i>
+                <Link to={`/EditReserve/${reservation._id}`} className='btn btn-info'><i className="fas fa-edit"></i></Link>
                 </td>
                 <td className='table-responsive'>
                   <button onClick={() => deleteReservation(reservation._id)} className='btn btn-danger'><i className="fas fa-trash-alt"></i></button>

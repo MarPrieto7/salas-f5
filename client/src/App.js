@@ -57,7 +57,7 @@ function App() {
             />
             <Route
               path="/EditReserve/:id"
-              element={checkAuth(['admin']) ? <EditReserve /> : redirectToLogin()}
+              element={checkAuth(['admin', 'user', 'professor']) ? <EditReserve /> : redirectToLogin()}
             />
           </Routes>
           <Footer />

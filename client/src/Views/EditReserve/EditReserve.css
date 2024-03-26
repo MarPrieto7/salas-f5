@@ -46,5 +46,15 @@
     color: #FF4700; 
 }
 
-
+.btn.btn-secondary.btn-volver {
+    background-color: #FF4700;
+    color: #FFFFFF;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+.btn.btn-secondary:hover {
+    background-color: #FFFFFF;
+    color: #FF4700; 
+}
 

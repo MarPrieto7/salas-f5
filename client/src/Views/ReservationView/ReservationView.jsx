@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './ReservationView.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { Link } from "react-router-dom";
+
 
 const ReservationView = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -232,7 +234,7 @@ const ReservationView = () => {
                 <td className='table-responsive'>{reservation.date}</td>
                 <td className='table-responsive'>{reservation.hour}</td>
                 <td className='table-responsive'>
-                  <i className="fas fa-edit"></i>
+                <Link to={`/EditReserve/${reservation._id}`} className='btn btn-info'><i className="fas fa-edit"></i></Link>
                 </td>
                 <td className='table-responsive'>
                   <button onClick={() => deleteReservation(reservation._id)} className='btn btn-danger'><i className="fas fa-trash-alt"></i></button>
