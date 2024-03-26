@@ -3,7 +3,7 @@ import '../ReservationView/ReservationView.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const UserReservationView = () => {
+const ReservationView = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedDateString, setSelectedDateString] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
@@ -11,6 +11,7 @@ const UserReservationView = () => {
   const [roomName, setRoomName] = useState('');
   const [reservationStatus, setReservationStatus] = useState('');
   const [datos, setDatos] = useState([]);
+  const [selectedDuration, setSelectedDuration] = useState('');
 
  const getDaysInMonth = (year, month) => {
     const firstDayOfMonth = new Date(year, month, 1);
@@ -56,14 +57,20 @@ const UserReservationView = () => {
   const handleRoomChange = (event) => {
     setSelectedRoom(event.target.value);
     if (event.target.value === 'Sala Hedy Lamarr') {
-      setRoomName('Has seleccionado la Sala Conferencias');
+      setRoomName('Has seleccionado la Sala Hedy Lamarr');
     } else if (event.target.value === 'Sala Mary Lee') {
       setRoomName('Has seleccionado la Sala Mary Lee');
+    } else if (event.target.value === 'Sala Conferencia') {
+      setRoomName('Has seleccionado la Sala Conferencia');
     } else if (event.target.value === 'Sala Only') {
       setRoomName('Has seleccionado la Sala Only');
     } else {
       setRoomName('');
     }
+  };
+
+  const handleDurationChange = (event) => {
+    setSelectedDuration(event.target.value);
   };
 
   const handleReservationSubmit = async (e) => {
@@ -93,6 +100,7 @@ const UserReservationView = () => {
         body: JSON.stringify({    
           room: selectedRoom,
           hour: selectedTime,
+          duration : selectedDuration,
           date: selectedDate, 
           user: username  
         })
@@ -156,6 +164,7 @@ const UserReservationView = () => {
             <option value="">Seleccione su sala</option>
             <option value="Sala Hedy Lamarr">Sala Hedy Lamarr</option>
             <option value="Sala Mary Lee">Sala Mary Lee</option>
+            <option value="Sala Conferencia">Sala Conferencia</option>
             <option value="Sala Only">Sala Only</option>
           </select>
           <div style={{ marginBottom: '20px' }}></div>
@@ -167,6 +176,13 @@ const UserReservationView = () => {
             min="09:00" 
             max="21:00" 
           />
+              <h2>Seleccione la duración</h2>
+          <select value={selectedDuration} onChange={handleDurationChange}>
+  <option value="0">1 hora</option>
+  <option value="1">1:30 horas</option>
+  <option value="2">2 horas</option>
+ 
+</select>
           <button onClick={handleReservationSubmit}>Reservar</button>
           <p>{reservationStatus}</p>
         </aside>
@@ -205,6 +221,7 @@ const UserReservationView = () => {
                 <p>{roomName}</p>
                 <p>{selectedDateString}</p>
                 <p>{selectedTime}</p>
+                <p>{selectedDuration}</p>
               </div>
             )}
           </div>
@@ -218,6 +235,7 @@ const UserReservationView = () => {
               <th className='table-responsive'> Sala </th>
               <th className='table-responsive'> Fecha </th>
               <th className='table-responsive'> Horas </th>
+              <th className='table-responsive'> Duracion </th>
               <th className='table-responsive'> Editar </th>
               <th className='table-responsive'> Eliminar </th>
             </tr>
@@ -228,6 +246,7 @@ const UserReservationView = () => {
                 <td className='table-responsive'>{reservation.room}</td>
                 <td className='table-responsive'>{reservation.date}</td>
                 <td className='table-responsive'>{reservation.hour}</td>
+                <td className='table-responsive'>{reservation.duration} h</td>
                 <td className='table-responsive'>
                   <i className="fas fa-edit"></i>
                 </td>
@@ -243,4 +262,4 @@ const UserReservationView = () => {
   );
 };
 
-export default UserReservationView;
+export default ReservationView;
