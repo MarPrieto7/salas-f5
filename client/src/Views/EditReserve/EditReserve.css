@@ -1,0 +1,96 @@
+.contenedor-principal{
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    /* background-color: yellow; */
+}
+.Encabezado-editar {
+    color: #FF4700;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem; /* Ajustar el tamaño del texto */
+    margin-bottom: 1rem; /* Agregar espacio debajo del encabezado */
+}
+
+.contenedor-Editar-Reserva {
+    /* background-color: green; */
+    height: 20rem;
+    width: 70%; /* Ajustar el ancho del contenedor */
+    max-width: 400px; /* Establecer un ancho máximo */
+    padding: 2rem; /* Agregar relleno al contenedor */
+    border-radius: 10px; /* Agregar bordes redondeados */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centrar verticalmente */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Agregar sombra */
+   
+}
+
+.formulario-Editar input {
+    size:15rem;
+    height: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn.btn-primary {
+    background-color: #FFFFFF;
+    size: 4rem;
+    background-color: #080808;
+    color: #FFFFFF;
+}
+
+.btn.btn-primary:hover {
+    background-color: rgb(87, 87, 187); /* Cambia el color de fondo en el hover */
+}
+
+
+@media (max-width: 768px) {
+    .contenedor-principal{
+        display: flex;
+        justify-content: center; /* Centra horizontalmente */
+        align-items: center; /* Centra verticalmente */
+        height: 100vh; /* Ocupa toda la altura de la pantalla */
+        /* background-color: yellow; */
+    }
+    .Encabezado-editar {
+        color: #FF4700;
+        font-family: 'Poppins', sans-serif;
+        font-size: 2.5rem; /* Ajustar el tamaño del texto */
+        margin-bottom: 1rem; /* Agregar espacio debajo del encabezado */
+    }
+    
+    .contenedor-Editar-Reserva {
+        /* background-color: green; */
+        height: 20rem;
+        width: 70%; /* Ajustar el ancho del contenedor */
+        max-width: 400px; /* Establecer un ancho máximo */
+        padding: 2rem; /* Agregar relleno al contenedor */
+        border-radius: 10px; /* Agregar bordes redondeados */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center; /* Centrar verticalmente */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Agregar sombra */
+       
+    }
+    
+    .formulario-Editar input {
+        size:15rem;
+        height: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .btn.btn-primary {
+        background-color: #FFFFFF;
+        size: 4rem;
+        background-color: #080808;
+        color: #FFFFFF;
+    }
+    
+    .btn.btn-primary:hover {
+        background-color: #FFFFFF;
+        color: #020100;
+    }
+}
+

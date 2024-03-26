@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-
+import './EditReserve.css'
 function EditReserve() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -49,46 +49,48 @@ function EditReserve() {
 
 
   return (
-    <div>
-      <h2>Editar Reserva</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="user"
-          value={reserve.user || ''}
-          onChange={handleChange}
-          placeholder="Nombre del usuario"
-        />
-        <br />
-        <input
-          type="text"
-          name="date"
-          value={reserve.date || ''}
-          onChange={handleChange}
-          placeholder="Fecha"
-        />
-        <br />
-        <input
-          type="text"
-          name="hour"
-          value={reserve.hour || ''}
-          onChange={handleChange}
-          placeholder="Hora"
-        />
-        <br />
-        <input
-          type="text"
-          name="room"
-          value={reserve.room || ''}
-          onChange={handleChange}
-          placeholder="sala"
-        />
-        <br />
-        <button type="submit" className="btn btn-primary">
-          Guardar cambios
-        </button>
-      </form>
-    </div>
+    <main className="contenedor-principal">
+      <section className="contenedor-Editar-Reserva">
+        <h2 className="Encabezado-editar">Editar Reserva</h2>
+        <form onSubmit={handleSubmit} className="formulario-Editar">
+          <input
+            type="text"
+            name="user"
+            value={reserve.user || ''}
+            onChange={handleChange}
+            placeholder="Nombre del usuario"
+          />
+          <br />
+          <input
+            type="text"
+            name="date"
+            value={reserve.date || ''}
+            onChange={handleChange}
+            placeholder="Fecha"
+          />
+          <br />
+          <input
+            type="text"
+            name="hour"
+            value={reserve.hour || ''}
+            onChange={handleChange}
+            placeholder="Hora"
+          />
+          <br />
+          <input
+            type="text"
+            name="room"
+            value={reserve.room || ''}
+            onChange={handleChange}
+            placeholder="sala"
+          />
+          <br />
+          <button type="submit" className="btn btn-primary">
+            Guardar cambios
+          </button>
+        </form>
+      </section>
+    </main>
   );
 }
 
