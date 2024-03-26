@@ -48,9 +48,10 @@ function EditRoom() {
 
 
   return (
-    <div>
-      <h2>Editar Sala</h2>
-      <form onSubmit={handleSubmit}>
+    <main className="main-edit-reserve">
+    <section className="section-Edit-Reserve">
+      <h2 className="section-edit-h2">Editar Sala</h2>
+      <form onSubmit={handleSubmit} className="form-Edit">
         <input
           type="text"
           name="name"
@@ -95,7 +96,8 @@ function EditRoom() {
           Guardar cambios
         </button>
       </form>
-    </div>
+    </section>
+    </main>
   );
 }
 

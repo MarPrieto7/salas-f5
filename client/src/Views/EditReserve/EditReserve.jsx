@@ -49,10 +49,10 @@ function EditReserve() {
 
 
   return (
-    <main className="contenedor-principal">
-      <section className="contenedor-Editar-Reserva">
-        <h2 className="Encabezado-editar">Editar Reserva</h2>
-        <form onSubmit={handleSubmit} className="formulario-Editar">
+    <main className="main-edit-reserve">
+      <section className="section-Edit-Reserve">
+        <h2 className="section-edit-h2">Editar Reserva</h2>
+        <form onSubmit={handleSubmit} className="form-Edit">
           <input
             type="text"
             name="user"
