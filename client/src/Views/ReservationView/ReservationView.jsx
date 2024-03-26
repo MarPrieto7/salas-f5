@@ -11,6 +11,7 @@ const ReservationView = () => {
   const [roomName, setRoomName] = useState('');
   const [reservationStatus, setReservationStatus] = useState('');
   const [datos, setDatos] = useState([]);
+  const [selectedDuration, setSelectedDuration] = useState('');
 
   const getDaysInMonth = (year, month) => {
     const date = new Date(year, month, 1);
@@ -47,7 +48,7 @@ const ReservationView = () => {
   const handleRoomChange = (event) => {
     setSelectedRoom(event.target.value);
     if (event.target.value === 'Sala Hedy Lamarr') {
-      setRoomName('Has seleccionado la Sala Conferencias');
+      setRoomName('Has seleccionado la Sala Hedy Lamarr');
     } else if (event.target.value === 'Sala Mary Lee') {
       setRoomName('Has seleccionado la Sala Mary Lee');
     } else if (event.target.value === 'Sala Conferencia') {
@@ -57,6 +58,10 @@ const ReservationView = () => {
     } else {
       setRoomName('');
     }
+  };
+
+  const handleDurationChange = (event) => {
+    setSelectedDuration(event.target.value);
   };
 
   const handleReservationSubmit = async (e) => {
@@ -86,6 +91,7 @@ const ReservationView = () => {
         body: JSON.stringify({    
           room: selectedRoom,
           hour: selectedTime,
+          duration : selectedDuration,
           date: selectedDate, 
           user: username  
         })
@@ -161,6 +167,12 @@ const ReservationView = () => {
             min="09:00" 
             max="21:00" 
           />
+              <h2>Seleccione la duración</h2>
+          <select value={selectedDuration} onChange={handleDurationChange}>
+  <option value="1">1 hora</option>
+  <option value="2">2 horas</option>
+ 
+</select>
           <button onClick={handleReservationSubmit}>Reservar</button>
           <p>{reservationStatus}</p>
         </aside>
@@ -199,6 +211,7 @@ const ReservationView = () => {
                 <p>{roomName}</p>
                 <p>{selectedDateString}</p>
                 <p>{selectedTime}</p>
+                <p>{selectedDuration} hora(s)</p>
               </div>
             )}
           </div>
@@ -212,6 +225,7 @@ const ReservationView = () => {
               <th className='table-responsive'> Sala </th>
               <th className='table-responsive'> Fecha </th>
               <th className='table-responsive'> Horas </th>
+              <th className='table-responsive'> Duracion </th>
               <th className='table-responsive'> Editar </th>
               <th className='table-responsive'> Eliminar </th>
             </tr>
@@ -222,6 +236,7 @@ const ReservationView = () => {
                 <td className='table-responsive'>{reservation.room}</td>
                 <td className='table-responsive'>{reservation.date}</td>
                 <td className='table-responsive'>{reservation.hour}</td>
+                <td className='table-responsive'>{reservation.duration} h</td>
                 <td className='table-responsive'>
                   <i className="fas fa-edit"></i>
                 </td>
