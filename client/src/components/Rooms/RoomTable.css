@@ -1,0 +1,135 @@
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    padding: 2rem;
+  }
+   tr {
+    border-bottom: 1px solid #FF4700;
+  }
+  
+  td, th {
+    text-align: center;
+  }
+  
+  thead th {
+    font-size: 1.2rem; 
+  }
+  
+  .table-primary tr th {
+    background-color: #FF4700;
+    color: #ffffff;
+  }
+
+
+  .form-create-room{
+    max-width: 80%;
+  }
+
+  .form-create-room input{
+    width: 100%;
+  }
+
+  .section-2, .section-3{
+    margin:4rem;
+  }
+  .form-create-room button {
+    margin-top:1rem;
+    background-color: #020100;
+    width: 12rem;
+    font-size: 1.3rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color:#ffffff;
+}
+.form-create-room button:hover {
+  margin-top:1rem;
+  background-color: #ffffff;
+  width: 12rem;
+  font-size: 1.5rem;
+  border-radius: 12px;
+  text-decoration: none;
+  color:#FF4700;
+}
+
+
+
+.btn-h2 {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  margin: 0;
+    background-color: #FF4700;
+    color:#ffffff;
+    padding: 5px;
+    margin-bottom: 1rem;
+}
+
+.section-2 {
+  overflow: hidden;
+  transition: height 0.3s ease;
+}
+
+.form-create-room {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.form-create-room input {
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.section-2.closed {
+  height: 0;
+}
+
+ .btn-danger{
+  color: #FFFFFF;
+    background-color: #FF4700;
+    border-radius: 5px;
+    padding: 8px;
+    border: none;
+}
+.btn-info{
+  color: #FFFFFF;
+    background-color: #FF4700;
+    border-radius: 5px;
+    padding: 6px;
+    border: none;
+}
+.btn-table{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+ 
+  @media screen and (max-width: 500px) {
+    .table-responsive {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+    
+      table {
+        width: 100%;
+      }
+    
+      th, td {
+        padding: 10px;
+        text-align: center;
+        display: block;
+        border: none;
+      }
+    
+      th {
+        font-size: 1rem; 
+        background-color: #FF4700; 
+        color: #ffffff; 
+      }
+  }

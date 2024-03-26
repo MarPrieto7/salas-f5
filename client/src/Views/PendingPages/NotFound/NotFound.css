@@ -1,0 +1,131 @@
+.message-container {
+    background-color: #FF4700;
+    width: 70rem;
+    height: 4rem;
+    margin-left: 1rem;
+    display: flex; 
+    align-items: center; 
+}
+
+.notification-message {
+    margin-left: 5rem;
+    font-size: 2.5rem;
+    font-weight: normal;
+    font-family: 'Poppins', sans-serif;
+    color: black;
+    text-align: center;
+}
+
+.error-container {
+    margin-left: 8rem;
+    width: 50rem;
+    display: flex; 
+    align-items: center;
+}
+
+.error-404 {
+    color: grey;
+    font-size: 15rem;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    margin-left: 5rem;
+}
+
+.useful-links {
+    width: 20rem;
+    margin-left: 1rem;
+    display: flex; 
+    flex-direction: column; 
+}
+
+.list-of-links {
+    list-style-type: none; 
+    padding: 0; 
+    justify-content: center;
+    text-align: center;
+}
+
+.search-box {
+   
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 2rem;
+    box-sizing: border-box; 
+}
+
+.search-box h2 {
+    margin-bottom: 1rem; 
+}
+
+.search-box p {
+    margin-bottom: 1rem; 
+}
+
+.search-input-container {
+    display: flex; 
+}
+
+.search-input {
+    flex: 1; 
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 0.5rem; 
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+
+@media (max-width: 768px) {
+    .message-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .notification-message {
+        margin-left: 0; 
+        text-align: left; 
+        margin-top: 1rem; 
+    }
+
+    .error-container {
+        width: auto; 
+        margin-left: 1rem; 
+    }
+
+    .error-404 {
+        font-size: 8rem; 
+        margin-left: 0; 
+    }
+
+    .useful-links {
+        margin-top: 2rem; 
+        margin-left: 0; 
+    }
+
+    .list-of-links {
+        text-align: left; 
+    }
+
+    .search-box {
+        padding: 1rem; 
+    }
+
+    .search-button {
+        margin-left: 0; 
+    }
+}

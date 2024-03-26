@@ -1,0 +1,72 @@
+.switch {
+  background: #343d5b;
+  border-radius: 100px;
+  border: none;
+  position: absolute;
+  cursor: pointer;
+  display: flex;
+  outline: none;
+  left: 5em;
+  top: 3em;
+
+}
+
+.switch::after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  background: #f1f1f1;
+  top: 0;
+  right: 0;
+  left: unset;
+  border-radius: 100px;
+  transition: .3s ease all;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.switch.active {
+  background: orange;
+  color: #000;
+}
+
+.switch.active::after {
+  right: 0;
+  right: unset;
+}
+
+.fa-sun {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  display: block;
+  background: none;
+  color: #fff;
+}
+
+.fa-moon {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  display: block;
+  background: none;
+  color: #fff;
+}
+
+body.dark {
+  background-color: #342e28;
+  color: white;
+}
+
+
+
+body.dark .nav-bar-section,
+body.dark .languages p,
+body.dark .rrss-logos a {
+  color: white;
+}
+
+body.dark .rrss-logos a i {
+  color: rgb(255, 255, 255);
+}

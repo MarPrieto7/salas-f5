@@ -1,0 +1,62 @@
+.main-edit-reserve{
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+.section-edit-h2 {
+    color: #FF4700;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem; 
+    margin-bottom: 1rem; 
+}
+
+.section-Edit-Reserve {
+   
+    height: 20rem;
+    width: 70%; 
+    max-width: 400px; 
+    padding: 2rem;
+    border-radius: 10px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    box-shadow: 0px 0px 10px #FF4700; 
+   
+}
+
+.form-Edit input {
+    size:15rem;
+    height: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn.btn-primary {
+    background-color: #FFFFFF;
+    size: 4rem;
+    background-color: #080808;
+    color: #FFFFFF;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.btn.btn-primary:hover {
+    background-color: #ffffff;
+    color: #FF4700; 
+}
+
+.btn.btn-secondary.btn-volver {
+    background-color: #FF4700;
+    color: #FFFFFF;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 1rem;
+    margin-left: 2rem;
+    border:2px solid #FF4700;
+}
+.btn.btn-secondary:hover {
+    background-color: #FFFFFF;
+    color: #FF4700; 
+}
+

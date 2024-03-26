@@ -1,0 +1,48 @@
+.notification-image-container {
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+}
+
+.notification-onworks {
+    font-size: 1.75rem;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    margin-bottom: 2rem;
+    background-color: #FF4700;
+    width: 70rem;
+    text-align: center;
+}
+
+.image-container {
+    justify-content: center;
+    width: 50%;
+}
+
+.worker-image {
+    width: 28rem; 
+}
+
+@media (max-width: 768px) {
+    .notification-image-container {
+        flex-direction: column;
+        align-items: center;
+        display: flex;
+    }
+
+    .notification-onworks {
+        font-size: 1.5rem; 
+        width: auto; 
+        margin-bottom: 1rem; 
+    }
+
+    .image-container {
+        width: 100%;
+    }
+
+    .worker-image {
+        width: 80%;
+        max-width: 28rem; 
+    }
+}
+

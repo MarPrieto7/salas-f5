@@ -1,0 +1,205 @@
+
+.contact-form input {
+  color: #000000;
+  height: 2.5rem; 
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 0 1rem;
+  margin-bottom: 1.5rem; 
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.contact-container img {
+  max-width: 100%;
+  height: auto;
+  margin-left: auto; 
+  margin-right: auto; 
+}
+
+.contact-form textarea {
+  color: #000000;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem; 
+  margin-bottom: 1.5rem; 
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+.contact-form h2 {
+  text-align: center;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content-wrap {
+  display: flex;
+  justify-content: space-around;
+  max-width: 75rem; 
+  width: 100%;
+}
+
+.orange-rectangle {
+  background-color: #ff4700;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem; 
+  max-width: 100%;
+  width: 97%;
+  
+
+}
+
+.orange-rectangle h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.ubicacion {
+  width: 18.75rem; 
+  margin-bottom: 2.5rem;
+  margin-right: 50%;
+}
+
+.encabezado-ubicacion {
+  font-size: 24px;
+}
+
+.ubicacion h4 {
+  margin-right: 0;
+  margin-top: 15px;
+  margin-bottom: 10px;;
+}
+
+.contact-form-container {
+  width: 100%;
+  margin-bottom: 1.25rem; 
+}
+
+.comentario-formulario {
+  margin-top: 0.3125rem;
+  margin-right: 1.875rem; 
+  margin-left: auto; 
+  width: calc(100% - 1.875rem); 
+}
+
+.contact-form section {
+  width: 100%;
+  height: 7.5rem; 
+}
+
+.boton-contacto {
+  width: auto;
+   height: 2.5rem; 
+  background-color: #000000;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.boton-contacto-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 1.25rem; 
+}
+
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.25rem; 
+}
+
+.checkbox-container input {
+  margin-right: 0.3125rem; 
+  transform: scale(0.4);
+}
+
+.checkbox-container label {
+  white-space: nowrap;
+}
+
+textarea {
+  height: 12rem;
+  max-width: 40rem;
+  max-height: 12rem;
+}
+
+.siguenos-contactview {
+  margin-top: 0.9375rem; 
+  margin-bottom: 1.5625rem; 
+}
+
+@media screen and (max-width: 62.5rem) { 
+  .contact-form {
+    float: none;
+    margin: 0 auto 1.25rem auto; 
+  }
+
+  .contact-container,
+  .ubicacion,
+  .content-wrap,
+  .encabezado-ubicacion {
+    display: block;
+    font-size: 0.875rem; 
+    margin-left: 1.875rem; 
+    margin-right: 1.875rem; 
+    overflow-x: hidden;
+  }
+
+  .contactImage,
+  .orange-rectangle {
+   max-width: 100%;
+  }
+
+  .ubicacion p {
+    margin-bottom: 1.25rem; 
+  }
+
+  .checkbox-container,
+  .boton-contacto-container {
+    margin-bottom: 1.25rem; 
+  }
+
+  .confirmacion-contactView {
+    margin-top: 0.3125rem; 
+    margin-right: 1.875rem; 
+    margin-left: auto; 
+    width: calc(100% - 3.75rem); 
+  }
+
+  .boton-contacto-container {
+    margin-top: 1.25rem; 
+  }
+
+  .contact-container img {
+    max-width: 100%;
+    height: auto;
+    margin-left: auto; 
+    margin-right: auto; 
+  }
+
+  .comentario-formulario {
+    font-size: 0.875rem; 
+    margin: 0 1.875rem 1.25rem; 
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: calc(100% - 1.875rem); 
+    margin-bottom: 1.25rem; 
+  }
+}
